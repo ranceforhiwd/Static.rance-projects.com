@@ -1,6 +1,6 @@
 var albumBucketName = "rance-business-docs";
 var bucketRegion = "us-east-1";
-var IdentityPoolId = "9e183d4d-ee8d-4070-82a5-3e14a30f22e3";
+var IdentityPoolId = "2f1af2fd-178a-4502-9dac-4a1c24eeaf6c";
 
 AWS.config.update({
   region: bucketRegion,
