@@ -1,31 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script>const handler = (e: ChangeEvent<HTMLInputElement>) => {
-    console.log('breakpoint');
-    const files = e?.target?.files;
   
-    if (files && files.length > 0) {
-      let extension = files[0].name.split(".").pop()
-  
-      if (extension != null) {
-          let response = await fetch(`${serverURL}/upload_url`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ directory, extension, content_type: contentType })
-           })
-              
-          let json = await response.json()
-      
-          let uploadResponse = await fetch(json.url, {
-            method: "PUT",
-            body: content
-          })
-          
-          // handle completion, update state to display uploaded file, etc
-      }
-    }
-  }</script>
 </head>
   <body>
     <form method="POST" action="https://bb8eurpkxj.execute-api.us-east-1.amazonaws.com/Beta/GET">
