@@ -1,6 +1,8 @@
+<!DOCTYPE html>
 <html>
 <head>
   <script>const handler = (e: ChangeEvent<HTMLInputElement>) => {
+    console.log('breakpoint');
     const files = e?.target?.files;
   
     if (files && files.length > 0) {
