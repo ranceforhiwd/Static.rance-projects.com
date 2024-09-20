@@ -8,7 +8,7 @@ const handler = (e: ChangeEvent<HTMLInputElement>) => {
     let extension = files[0].name.split(".").pop()
 
     if (extension != null) {
-        let response = await fetch(`${serverURL}/upload_url`, {
+        let response = await fetch(`${serverURL}/https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/`, {
         	method: 'POST',
 	        headers: { 'Content-Type': 'application/json' },
     	    body: JSON.stringify({ directory, extension, content_type: contentType })
