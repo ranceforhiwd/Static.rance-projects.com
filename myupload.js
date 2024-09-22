@@ -56,7 +56,7 @@ function put(url, data) {
 export const main = async () => {
   const REGION = "us-east-1";
   const BUCKET = "rance-business-docs";
-  const KEY = "example_file.txt";
+  const KEY = "Album1/example_file.txt";
 
   // There are two ways to generate a presigned URL.
   // 1. Use createPresignedUrl without the S3 client.
