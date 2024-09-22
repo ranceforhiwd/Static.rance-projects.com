@@ -57,7 +57,7 @@ export const main = async () => {
   const REGION = "us-east-1";
   const BUCKET = "rance-business-docs";
   const KEY = "Album1/example_file.txt";
-
+  console.log('breakpoint');
   // There are two ways to generate a presigned URL.
   // 1. Use createPresignedUrl without the S3 client.
   // 2. Use getSignedUrl in conjunction with the S3 client and GetObjectCommand.
