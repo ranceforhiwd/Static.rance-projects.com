@@ -164,7 +164,7 @@
 var button = document.getElementById('upload-button');
 var testAjaxCall = document.getElementById('sample-ajax-button');
 
-testAjaxCall.addEventListener('click', function(){
+button.addEventListener('click', function(){
     uploadFile();
 
 });
