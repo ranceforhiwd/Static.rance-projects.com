@@ -55,3 +55,5 @@ export const main = async () => {
     console.error(err);
   }
 };
+
+main();
