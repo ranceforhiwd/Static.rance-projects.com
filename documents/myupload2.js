@@ -29,9 +29,9 @@ const createPresignedUrlWithClient = ({ region, bucket, key }) => {
 
 export const main = async () => {
   const REGION = "us-east-1";
-  const BUCKET = "example_bucket";
-  const KEY = "example_file.jpg";
-
+  const BUCKET = "rance-business-docs";
+  const KEY = "Album/ranceTestFile.txt";
+  console.log("About to try something");
   try {
     const noClientUrl = await createPresignedUrlWithoutClient({
       region: REGION,
@@ -44,7 +44,7 @@ export const main = async () => {
       bucket: BUCKET,
       key: KEY,
     });
-
+    console.log("Start logging");
     console.log("Presigned URL without client");
     console.log(noClientUrl);
     console.log("\n");
