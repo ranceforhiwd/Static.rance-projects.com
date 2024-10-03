@@ -15,8 +15,8 @@ function App() {
 
     // S3 Credentials
     AWS.config.update({
-      accessKeyId: "youraccesskeyhere",
-      secretAccessKey: "yoursecretaccesskeyhere",
+      //accessKeyId: "youraccesskeyhere",
+      //secretAccessKey: "yoursecretaccesskeyhere",
     });
     const s3 = new AWS.S3({
       params: { Bucket: S3_BUCKET },
