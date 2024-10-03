@@ -19,7 +19,7 @@ document.getElementById('upload-form').addEventListener('submit', (event) => {
 
     const key = `${file.name}`;
     const params = {
-        Bucket: 'rance-business-docs',
+        Bucket: 'support-doc-pdfs',
         Key: key,
         Body: file
     };
