@@ -532,18 +532,7 @@
                 <p>This Serverless system will convert PDF documents into PNG file, then perform an OCR scan and save the text into a DynamoDb Table.</p>
               </div>
 
-              <div class="pt-2">
-                <h6>How does it work?</h6>
-                <p>The process is initiated when a document is uploaded to S3, then uses a series of AWS services as shown in the diagram.</p>
-                <h6>Upload a PDF file to try it</h6>
-                <script src="https://sdk.amazonaws.com/js/aws-sdk-2.813.0.min.js"></script>
-                <script src="documents/app.js"></script>
-                <form id="upload-form">
-                      <input class="form-control" type="file" id="file-input">
-                      <button type="submit" class="btn btn-primary">Upload File</button>
-                </form>
-              </div>
-
+              
               <div class="pt-2">
                 <h6>System Diagram</h6>
                 <p><img src="diagrams/documents-pipeline.jpg" /></p>
@@ -816,11 +805,17 @@
           <h5 class="card-title">General Form Elements</h5>
 
           <!-- General Form Elements -->
-          <form>
+          <script src="https://sdk.amazonaws.com/js/aws-sdk-2.813.0.min.js"></script>
+          <script src="documents/app.js"></script>
+          <form >
+                <input class="form-control" type="file" id="file-input">
+                <button type="submit" class="btn btn-primary">Upload File</button>
+          </form>
+          <form id="upload-form">
             <div class="row mb-3">
               <label for="inputNumber" class="col-sm-2 col-form-label">File Upload</label>
               <div class="col-sm-10">
-                <input class="form-control" type="file" id="formFile">
+                <input class="form-control" type="file" id="file-input">
               </div>
             </div>
             <div class="row mb-3">
@@ -830,7 +825,7 @@
               </div>
             </div>
           </form><!-- End General Form Elements -->
-
+          
         </div>
       </div>
 
