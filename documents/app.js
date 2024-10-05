@@ -7,11 +7,10 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 // Create an S3 client
 const s3 = new AWS.S3();
 
-//var x = document.querySelector("#parent #child")
-document.querySelector('body section#app-section form#upload-form').addEventListener('submit', (event) => {
+document.getElementById('upload-form').addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const fileInput = document.querySelector('body section#app-section form#upload-form file-input');
+    const fileInput = document.getElementById('file-input');
     const file = fileInput.files[0];
     if (!file) {
         alert('Please select a file to upload.');
