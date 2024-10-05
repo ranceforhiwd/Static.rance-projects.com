@@ -218,12 +218,10 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>Rance Aaron</h6>
-              <ul>
+              <ul class="profile">
                 <li class="dropdown-header"><span>Solutions Architect</span></li>
                 <li class="dropdown-header"><span>Software Development</span></li>
               </ul>
-              
-              
             </li>
             <li>
               <hr class="dropdown-divider">
@@ -524,7 +522,7 @@
       </nav>
     </div><!-- End Page Title -->
 
-    <section class="section faq">
+    <section id="info-section" class="section faq">
       <div class="row">
         <div class="col-lg-12">
 
@@ -536,13 +534,6 @@
                 <h6>What does this system do?</h6>
                 <p>This Serverless system will convert PDF documents into PNG file, then perform an OCR scan and save the text into a DynamoDb Table.</p>
               </div>
-
-              
-              <div class="pt-2">
-                <h6>System Diagram</h6>
-                <p><img src="diagrams/documents-pipeline.jpg" /></p>
-              </div>
-
             </div>
           </div>
           
@@ -631,7 +622,6 @@
       </div>
     </section>
 <!-- =====CI/CD Section==-->
-
 <div class="pagetitle">
   <h1>CI/CD Scheme</h1>
   <nav>
@@ -641,7 +631,7 @@
       <li class="breadcrumb-item">S3 Bucket</li>
     </ol>
   </nav>
-</div><!-- End Page Title -->
+</div>
 
 <section id="cicd-section" class="section">
   <div class="row">
@@ -650,14 +640,18 @@
         <div class="card-body">
           <h5 class="card-title">Deployment Services</h5>
           <p>This was the easiest to deploy. Use CodePipeline and follow these steps for Github. <a href="#">Click Here</a></p>
-          <!-- General Form Elements -->         
+          <!-- General Form Elements -->
+          <div class="">
+            <h6>System Diagram</h6>
+            <p><img src="diagrams/documents-pipeline.jpg" /></p>
+          </div>          
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- =====new form ======-->
+<!-- =====Application Section ======-->
 <div class="pagetitle">
   <h1>Serverless Application</h1>
   <nav>
@@ -692,14 +686,15 @@
                 <button type="submit" class="btn btn-primary">Upload File</button>
               </div>
             </div>
-          </form><!-- End General Form Elements -->
-          
+          </form>
+          <!-- End General Form Elements -->
         </div>
       </div>
 
     </div>
-
-<!-- ======end form======-->
+  </div>
+</section>
+<!-- ======end Applicaation======-->
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
