@@ -680,7 +680,12 @@
   <!-- ======end Applicaation======-->
   </main><!-- End #main -->
   <!-- General Form Elements -->
-  
+
+  <form id="upload-form">
+    <input type="file" id="file-input">
+    <button type="submit">Upload File</button>
+  </form>
+  <br>
   <form style="display:none" id="upload-form2">
     <div class="row mb-3">
       <label for="inputNumber" class="col-sm-2 col-form-label">File Upload</label>
@@ -725,10 +730,6 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <form id="upload-form">
-    <input type="file" id="file-input">
-    <button type="submit">Upload File</button>
-  </form>
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.813.0.min.js"></script>
   <script src="documents/app.js"></script>
 </body>
