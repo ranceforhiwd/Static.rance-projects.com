@@ -10,7 +10,7 @@ const s3 = new AWS.S3();
 document.getElementById('upload-form').addEventListener('submit', (event) => {
     event.preventDefault();
 
-    const fileInput = document.getElementById('file-input');
+    const fileInput = document.getElementById('form#upload-form file-input');
     const file = fileInput.files[0];
     if (!file) {
         alert('Please select a file to upload.');
