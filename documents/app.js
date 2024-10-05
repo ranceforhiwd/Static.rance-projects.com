@@ -8,7 +8,7 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
 const s3 = new AWS.S3();
 
 //var x = document.querySelector("#parent #child")
-document.querySelector('body sectio#app-section form#upload-form').addEventListener('submit', (event) => {
+document.querySelector('body section#app-section form#upload-form').addEventListener('submit', (event) => {
     event.preventDefault();
 
     const fileInput = document.querySelector('body section#app-section form#upload-form file-input');
