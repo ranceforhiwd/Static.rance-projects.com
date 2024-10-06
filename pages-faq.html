@@ -715,18 +715,31 @@
       <div class="card-header">Cesium</div>
       <div class="card-body">
         <h5 class="card-title">Address of map</h5>
-        <style>
-          @import url(../templates/bucket.css);
-        </style>
-        <script>
-          const viewer = new Cesium.Viewer("cesiumContainer");
-        </script>
-        <div id="cesiumContainer" class="fullSize"></div>
-        <div id="loadingOverlay"><h1>Loading...</h1></div>
-        <div id="toolbar"></div>
-        
-        The globle will display here Ut in ea error laudantium quas omnis officia. Sit sed praesentium voluptas. Corrupti inventore consequatur nisi necessitatibus modi consequuntur soluta id. Enim autem est esse natus assumenda. Non sunt dignissimos officiis expedita. Consequatur sint repellendus voluptas.
-        
+        <div id="cesiumContainer"></div>
+        <script type="module">
+          // Your access token can be found at: https://ion.cesium.com/tokens.
+          // This is the default access token from your ion account
+      
+          Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
+      
+          // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+          const viewer = new Cesium.Viewer('cesiumContainer', {
+            terrain: Cesium.Terrain.fromWorldTerrain(),
+          });    
+      
+          // Fly the camera to San Francisco at the given longitude, latitude, and height.
+          viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 400),
+            orientation: {
+              heading: Cesium.Math.toRadians(0.0),
+              pitch: Cesium.Math.toRadians(-15.0),
+            }
+          });
+      
+          // Add Cesium OSM Buildings, a global 3D buildings layer.
+          const buildingTileset = await Cesium.createOsmBuildingsAsync();
+          viewer.scene.primitives.add(buildingTileset);   
+        </script> 
       </div>
       <div class="card-footer">
         Footer
@@ -786,6 +799,11 @@
   <script src="assets/js/main.js"></script>
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.813.0.min.js"></script>
   <script src="documents/app.js"></script>
+
+  <!-- Include the CesiumJS JavaScript and CSS files -->
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+
 </body>
 
 </html>
