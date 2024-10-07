@@ -713,11 +713,7 @@
               </div>
               <div class="card-footer">
                 <div id="listofpdfs"></div>
-                <script>
-                  list_of_files = "https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject";
-                  $("#listofpdfs").append('<span>'+list_of_files+'</span>');
-                </script>                
-              </div>
+                </div>
             </div><!-- End Card with header and footer -->
                         
         
@@ -815,6 +811,9 @@
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
 
+  <!---Retrived list of files in S3 -->
+  list_of_files = "https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject";
+  $("div#listofpdfs").append('<span>'+list_of_files+'</span>');
 </body>
 
 </html>
