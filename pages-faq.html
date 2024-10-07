@@ -712,7 +712,11 @@
                 <!-- End Default Table Example -->
               </div>
               <div class="card-footer">
-                Footer
+                <div id="listofpdfs"></div>
+                <script>
+                  list_of_files = "https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject";
+                  $("listofpdfs").html(list_of_files);
+                </script>                
               </div>
             </div><!-- End Card with header and footer -->
                         
