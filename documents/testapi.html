@@ -12,15 +12,15 @@
         var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject';
         $(document).ready(function(){
             $.ajax({
-
                 url: API_URL,
                 type: 'GET',
                 dataType: 'json',
-
+                contentType: 'application/json',
                 success: function(data){
                     //$('#entries').html('');
-                    $('#entries').append('<p>Here:' + data + '</p>');
-                    alert(data);
+                    //$('#entries').append('<p>Here:' + data + '</p>');
+                    //alert(data);
+                    $('#entries').after('<p>Hellow</p>');
                 }
             });
         });
