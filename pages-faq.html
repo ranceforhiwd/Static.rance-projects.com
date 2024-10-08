@@ -711,7 +711,18 @@
                 </table>
                 <!-- End Default Table Example -->
                 <script>
-                  
+                   await $.ajax({
+                      type: "GET",
+                      url: apiURL,
+                      enctype: 'multipart/form-data',
+                      data: JSON.stringify(Object.fromEntries(form)), 
+                      headers :{
+                          'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'
+                      },
+                      success: function(response){
+                          $('body').appen(<span>Rance</span>);                          
+                      }
+                  });
                 </script>
               </div>
               <div class="card-footer">
