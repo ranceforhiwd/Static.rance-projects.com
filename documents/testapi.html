@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://sdk.amazonaws.com/js/aws-sdk-2.813.0.min.js"></script>
+</head>
+<body>
+    <script>
+        list_of_files = "https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject";
+              
+              fetch(list_of_files) // Replace with your API Gateway URL
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error('Network response was not ok');
+                  $('body').append('no response');
+                }
+                return response.json(); // Assuming the API returns JSON data
+              })
+              .then(data => {
+                console.log(data); // Print the response data
+                $('body').append(data);
+              })
+              .catch(error => {
+                $('body').append('errors');
+                console.error('There was a problem with the fetch operation:', error);
+              });
+    </script>
+    <p>original message on page load</p>
+    
+</body>
+</html>

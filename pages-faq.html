@@ -711,24 +711,7 @@
                 </table>
                 <!-- End Default Table Example -->
                 <script>
-                  list_of_files = "https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject";
-              
-                  fetch(list_of_files) // Replace with your API Gateway URL
-                  .then(response => {
-                    if (!response.ok) {
-                      throw new Error('Network response was not ok');
-                      $('body #main').append('no response');
-                    }
-                    return response.json(); // Assuming the API returns JSON data
-                  })
-                  .then(data => {
-                    console.log(data); // Print the response data
-                    $('body #main').append(data);
-                  })
-                  .catch(error => {
-                    $('body #main').append('errors');
-                    console.error('There was a problem with the fetch operation:', error);
-                  });
+                  
                 </script>
               </div>
               <div class="card-footer">
@@ -826,11 +809,7 @@
       //  heading: Cesium.Math.toRadians(0.0),
       //  pitch: Cesium.Math.toRadians(-15.0),
       //}
-    });
-
-    // Add Cesium OSM Buildings, a global 3D buildings layer.
-    //const buildingTileset = await Cesium.createOsmBuildingsAsync();
-    //viewer.scene.primitives.add(buildingTileset);   
+    });   
   </script>
   
 </body>
