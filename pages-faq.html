@@ -804,7 +804,14 @@
       navigationHelpButton: false,
       sceneModePicker: false,
       timeline: false,
-    });    
+    });
+    
+    viewer.camera.setView({
+      destination: Cesium.Cartesian3.fromDegrees(8.67, 46.72, 4500),
+      orientation: {
+        pitch: Cesium.Math.toRadius(-20)
+      }
+    });
 
     // Fly the camera to San Francisco at the given longitude, latitude, and height.
     viewer.camera.flyTo({
