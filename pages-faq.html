@@ -818,7 +818,7 @@
     $.get(list_of_files, function(data) {
       // Handle the response here
       console.log(data);
-      $("div#listofpdfs").append('<span>values: '+list_of_files+'</span>');
+      $("body").append('<span>values: '+data+'</span>');
     });
   </script>
 </body>
