@@ -710,10 +710,19 @@
                   </tbody>
                 </table>
                 <!-- End Default Table Example -->
+                <script>
+                  list_of_files = "https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject";
+              
+                  $.get(list_of_files, function(data) {
+                    // Handle the response here
+                    console.log('the data here:'+data);
+                    $("#main").append('<span>values: '+data+'</span>');
+                  });
+                </script>
               </div>
               <div class="card-footer">
-                <div id="listofpdfs"></div>
-                </div>
+                
+              </div>
             </div><!-- End Card with header and footer -->
                         
         
@@ -812,15 +821,7 @@
     //const buildingTileset = await Cesium.createOsmBuildingsAsync();
     //viewer.scene.primitives.add(buildingTileset);   
   </script>
-  <script>
-    list_of_files = "https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject";
-
-    $.get(list_of_files, function(data) {
-      // Handle the response here
-      console.log(data);
-      $("body").append('<span>values: '+data+'</span>');
-    });
-  </script>
+  
 </body>
 
 </html>
