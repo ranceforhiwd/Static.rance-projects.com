@@ -713,10 +713,21 @@
                 <script>
                   list_of_files = "https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject";
               
-                  $.get(list_of_files, function(data) {
-                    // Handle the response here
-                    console.log('the data here:'+data);
-                    $("#main").append('<span>values: '+data+'</span>');
+                  fetch(list_of_files) // Replace with your API Gateway URL
+                  .then(response => {
+                    if (!response.ok) {
+                      throw new Error('Network response was not ok');
+                      $('body #main').append('no response');
+                    }
+                    return response.json(); // Assuming the API returns JSON data
+                  })
+                  .then(data => {
+                    console.log(data); // Print the response data
+                    $('body #main').append(data);
+                  })
+                  .catch(error => {
+                    $('body #main').append('errors');
+                    console.error('There was a problem with the fetch operation:', error);
                   });
                 </script>
               </div>
