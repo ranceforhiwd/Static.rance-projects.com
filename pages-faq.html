@@ -800,6 +800,10 @@
     // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
     const viewer = new Cesium.Viewer('cesiumContainer', {
       terrain: Cesium.Terrain.fromWorldTerrain(),
+      fullscreenButton: false,
+      navigationHelpButton: false,
+      sceneModePicker: false,
+      timeline: false,
     });    
 
     // Fly the camera to San Francisco at the given longitude, latitude, and height.
