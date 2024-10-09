@@ -9,14 +9,8 @@
 <body>
     <div id="entries"></div>
     <script>
-        function createTable(){
-          fileslist = ['file1.txt','file2.txt','file3.txt'];
-          count = 0;
-          tablerow = '<tr>' +
-                      '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1"></th>' +
-                      '<td>file1.pdf</td>' +
-                      '<td>2016-05-25</td>' +
-                    '</tr>';
+        function createTable(f){
+          fileslist = f;
 
             $('#entries').html('<table class="table"></table>');
             $('table').append('<thead />');
@@ -25,10 +19,16 @@
             $('thead tr').append('<th scope="col">Filename</th>');
             $('thead tr').append('<th scope="col">Date</th>');
             $('table').append('<tbody />');
-            $('tbody').append(tablerow);    
+
+            for(x in fileslist){
+              tablerow = '<tr>' +
+                      '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios"'+fc+' value="option'+fc+'">'+fc+'</th>' +
+                      '<td>'+filename+fc+'.txt</td>' +
+                      '<td>2016-05-25</td>' +
+                    '</tr>';
+                    $('tbody').append(tablerow);
+            }    
         }
-
-
     </script>
     <script type="text/javascript">
         var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject';
