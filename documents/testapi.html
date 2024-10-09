@@ -11,7 +11,9 @@
     <script>
         function createTable(f){
           fileslist = f;
+          file_count =0;
 
+          if(file_count > 0){
             $('#entries').html('<table class="table"></table>');
             $('table').append('<thead />');
             $('thead').append('<tr />');
@@ -20,14 +22,17 @@
             $('thead tr').append('<th scope="col">Date</th>');
             $('table').append('<tbody />');
 
-            for(x in fileslist){
+            for(fc in fileslist){
               tablerow = '<tr>' +
                       '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios"'+fc+' value="option'+fc+'">'+fc+'</th>' +
-                      '<td>'+filename+fc+'.txt</td>' +
+                      '<td>'+fc+'.txt</td>' +
                       '<td>2016-05-25</td>' +
                     '</tr>';
                     $('tbody').append(tablerow);
-            }    
+            } 
+          }else{
+            $('#entries').html('<p>No files found</p>');
+          }   
         }
     </script>
     <script type="text/javascript">
