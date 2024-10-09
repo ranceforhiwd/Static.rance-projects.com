@@ -21,14 +21,13 @@
             $('thead tr').append('<th scope="col">Date</th>');
             $('table').append('<tbody />');
 
-            for(fc in f){
-              tablerow = '<tr>' +
-                      '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios"'+fc+' value="option'+fc+'">'+fc+'</th>' +
-                      '<td>'+fc+'.txt</td>' +
-                      '<td>2016-05-25</td>' +
-                    '</tr>';
-                    $('tbody').append(tablerow);
-            } 
+          
+            tablerow = '<tr>' +
+                    '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios"'+f[0]+' value="option'+f[0]+'">'+f[0]+'</th>' +
+                    '<td>'+f[0]+'.txt</td>' +
+                    '<td>2016-05-25</td>' +
+                  '</tr>';
+                    $('tbody').append(tablerow); 
           }else{
             $('#entries').html('<p>No files found</p>');
           }   
