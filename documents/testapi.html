@@ -39,12 +39,10 @@
                 dataType: 'json',
                 contentType: 'application/json',
                 success: function(data){
-                    $('#entries').after('<p>Files</p>');
-                    $("#entries").append('<p>'+ data + '</<p>');
+                    $('#entries').after(createTable(data));
                 }
             });
         });
     </script>
-    <script>createTable()</script>
 </body>
 </html>
