@@ -710,24 +710,24 @@
                   </tbody>
                 </table>
                 <!-- End Default Table Example -->
-                <script>
-                  apiURL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject';
-                   await $.ajax({
-                      type: "GET",
-                      url: apiURL,
-                      enctype: 'multipart/form-data',
-                      datatype: 'json',
-                      headers :{
-                          'Content-Type':'application/x-www-form-urlencoded;charset=UTF-8'
-                      },
-                      success: function(response){
-                          $('body').append('<span>Rance</span>');                          
-                      }
-                  });
-                </script>
+                
               </div>
               <div class="card-footer">
-                
+                <script type="text/javascript">
+                  var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject';
+                  $(document).ready(function(){
+                      $.ajax({
+                          url: API_URL,
+                          type: 'GET',
+                          dataType: 'json',
+                          contentType: 'application/json',
+                          success: function(data){
+                              $(this).after('<p>Files</p>');
+                              $(this).append('<p>'+ data + '</<p>');
+                          }
+                      });
+                  });
+              </script>
               </div>
             </div><!-- End Card with header and footer -->
                         
