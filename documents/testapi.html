@@ -28,7 +28,7 @@
                     //d = JSON.parse(data);
                     //s = JSON.stringify(data);
 
-                    $('#entries').after(JSON.parse(data.body));               
+                    //$('#entries').after(JSON.parse(data.body));               
                   
                     tablerow = '<tr>' +
                             '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="option">*</th>' +
@@ -37,7 +37,7 @@
                           '</tr>';
                     $('tbody').append(tablerow);
 
-                    $('#entries').append('<p>'+s+'>/p>');
+                    //$('#entries').append('<p>'+s+'>/p>');
                 }
           });   
         });
