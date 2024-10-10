@@ -25,6 +25,7 @@
   <link href="assets/vendor/quill/quill.bubble.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
   <link href="assets/vendor/simple-datatables/style.css" rel="stylesheet">
+  <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
@@ -39,7 +40,6 @@
 </head>
 
 <body>
-
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -678,57 +678,96 @@
         </div>
       </div>
     </div>
-    <div id="entries"></div>
-            <!-- Card with header and footer -->
-            <div class="card">
-              <div class="card-header"><button type="button" class="btn btn-outline-info">Find Addresses</button></div>
-              <div class="card-body">
-                <h5 class="card-title">Card with header and footer</h5>
-                <div>Inside the Card</div>                
-              </div>
-              <div class="card-footer"></div>
-            </div><!-- End Card with header and footer -->
-                        
-        
-    <!-- Card with header and footer -->
+    
+    <!-- Card -->
+    <div class="card">
+      <div class="card-header"><button type="button" class="btn btn-outline-info">Find Addresses</button></div>
+      <div class="card-body">
+        <h5 class="card-title">Card with header and footer</h5>
+        <div>Inside the Card</div>
+        <div id="entries"></div>
+        <script type="module">
+          var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject';  
+                            
+          $.ajax({
+                url: API_URL,
+                type: 'GET',
+                dataType: 'json',
+                headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                success: function(data){
+                  fileStr = JSON.stringify(data);
+                  fileArr = fileStr.split(',');
+
+                    //add the table
+                    $('#entries').append('<table class="table"></table>');
+                    $('table').append('<thead />');
+                    $('thead').append('<tr />');
+                    $('thead tr').append('<th scope="col">Row</th>');
+                    $('thead tr').append('<th scope="col">Filename</th>');
+                    $('thead tr').append('<th scope="col">Date</th>');
+                    $('table').append('<tbody />');
+                    //end of table
+
+                    tablerow = '<tr>' +
+                            '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="option"></th>' +
+                            '<td>filename.txt</td>' +
+                            '<td>2016-05-25</td>' +
+                          '</tr>';
+                    
+                    $('tbody').append(tablerow);
+                    
+                    for(x in fileArr){
+                      $('#entries').append('<p>'+x+':'+fileArr[x]+'</p>');
+                    }
+                }
+          });</script>                
+      </div>
+      <div class="card-footer"></div>
+    </div><!-- End Card with header and footer -->       
+
+    <!-- Cesium Card -->
     <div class="card">
       <div class="card-header">Cesium</div>
       <div class="card-body">
         <h5 class="card-title">Address of map</h5>
-        <div id="cesiumContainer"></div> 
+        <div id="cesiumContainer"></div>
+        <script>
+          // Your access token can be found at: https://ion.cesium.com/tokens.
+                  // This is the default access token from your ion account
+        
+                  Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
+        
+                  // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+                  const viewer = new Cesium.Viewer('cesiumContainer', {
+                    terrain: Cesium.Terrain.fromWorldTerrain(),
+                    fullscreenButton: false,
+                    navigationHelpButton: false,
+                    sceneModePicker: false,
+                    timeline: false,
+                    homeButton: false,
+                    geocoder: false,
+                    animation: false,
+                    baseLayerPicker: false
+                  });
+                  
+                  viewer.camera.setView({
+                    destination: Cesium.Cartesian3.fromDegrees(8.67, 46.72, 4500),
+                    orientation: {
+                      pitch: Cesium.Math.toRadius(-20)
+                    }
+                  });
+        </script> 
       </div>
       <div class="card-footer">
         Footer
       </div>
     </div><!-- End Card with header and footer -->
-    <script>
-      // start timer
-      setTimeout(gofly, 13000);
-    </script>
+
   </section>
 
   <!-- ======end Applicaation======-->
   </main><!-- End #main -->
-  <!-- General Form Elements -->
-
   
-  <br>
-  <form style="display:none" id="upload-form2">
-    <div class="row mb-3">
-      <label for="inputNumber" class="col-sm-2 col-form-label">File Upload</label>
-      <div class="col-sm-10">
-        <input class="form-control" type="file" id="file-input">
-      </div>
-    </div>
-    <div class="row mb-3">
-      <label class="col-sm-2 col-form-label"></label>
-      <div class="col-sm-10">
-        <input type="submit" class="btn btn-primary">Upload File />
-      </div>
-    </div>
-  </form>
- 
-  <!-- End General Form Elements -->
   <!-- ======= Footer ======= -->
   <footer id="footer" class="footer">
     <div class="copyright">
@@ -759,78 +798,10 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
-  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.813.0.min.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <script src="documents/app.js"></script>
 
   <!-- Include the CesiumJS JavaScript and CSS files -->
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
-  <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
-
-  <!---Retrived list of files in S3 -->
-  <script type="module">
-    $(document).ready(function(){
-          // Your access token can be found at: https://ion.cesium.com/tokens.
-          // This is the default access token from your ion account
-
-          Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
-
-          // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
-          const viewer = new Cesium.Viewer('cesiumContainer', {
-            terrain: Cesium.Terrain.fromWorldTerrain(),
-            fullscreenButton: false,
-            navigationHelpButton: false,
-            sceneModePicker: false,
-            timeline: false,
-            homeButton: false,
-            geocoder: false,
-            animation: false,
-            baseLayerPicker: false
-          });
-          
-          viewer.camera.setView({
-            destination: Cesium.Cartesian3.fromDegrees(8.67, 46.72, 4500),
-            orientation: {
-              pitch: Cesium.Math.toRadius(-20)
-            }
-          });
-
-
-    
-          var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject';  
-          $('#entries').append('<table class="table"></table>');
-          $('table').append('<thead />');
-          $('thead').append('<tr />');
-          $('thead tr').append('<th scope="col">Row</th>');
-          $('thead tr').append('<th scope="col">Filename</th>');
-          $('thead tr').append('<th scope="col">Date</th>');
-          $('table').append('<tbody />');
-          
-          $.ajax({
-                url: API_URL,
-                type: 'GET',
-                dataType: 'json',
-                headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'
-},
-                success: function(data){                              
-                    fileStr = JSON.stringify(data);
-                    fileArr = fileStr.split(',');
-                    tablerow = '<tr>' +
-                            '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="option"></th>' +
-                            '<td>filename.txt</td>' +
-                            '<td>2016-05-25</td>' +
-                          '</tr>';
-                    $('tbody').append(tablerow);
-                    
-                    for(x in fileArr){
-                      $('#entries').append('<p>'+x+':'+fileArr[x]+'</p>');
-                    }
-                    
-                }
-          });   
-        });
-  </script>
   
 </body>
-
 </html>
