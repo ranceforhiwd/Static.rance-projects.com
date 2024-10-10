@@ -11,6 +11,14 @@
     <script>        
         $(document).ready(function(){
           var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject';  
+          $('#entries').append('<table class="table"></table>');
+          $('table').append('<thead />');
+          $('thead').append('<tr />');
+          $('thead tr').append('<th scope="col">Row</th>');
+          $('thead tr').append('<th scope="col">Filename</th>');
+          $('thead tr').append('<th scope="col">Date</th>');
+          $('table').append('<tbody />');
+          
           $.ajax({
                 url: API_URL,
                 type: 'GET',
@@ -18,15 +26,9 @@
                 contentType: 'application/json',
                 success: function(data){
                     d = JSON.parse(data);
-                    //$('#entries').after('<p>Response</p>');
-                    $('#entries').after('<p>'+d+'</p>');
-                    $('#entries').append('<table class="table"></table>');
-                    $('table').append('<thead />');
-                    $('thead').append('<tr />');
-                    $('thead tr').append('<th scope="col">Row</th>');
-                    $('thead tr').append('<th scope="col">Filename</th>');
-                    $('thead tr').append('<th scope="col">Date</th>');
-                    $('table').append('<tbody />');
+                    s = JSON.stringify(data);
+
+                    $('#entries').after('<p>Response</p>');               
                   
                     tablerow = '<tr>' +
                             '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios"'+d[0]+' value="option'+d[0]+'">'+d[0]+'</th>' +
@@ -34,26 +36,10 @@
                             '<td>2016-05-25</td>' +
                           '</tr>';
                     $('tbody').append(tablerow);
-                }
-          });
 
-          function createTable(f){
-            file_count = count(f);            
-              $('#entries').append('<table class="table"></table>');
-              $('table').append('<thead />');
-              $('thead').append('<tr />');
-              $('thead tr').append('<th scope="col">Row</th>');
-              $('thead tr').append('<th scope="col">Filename</th>');
-              $('thead tr').append('<th scope="col">Date</th>');
-              $('table').append('<tbody />');
-            
-              tablerow = '<tr>' +
-                      '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios"'+f[0]+' value="option'+f[0]+'">'+f[0]+'</th>' +
-                      '<td>'+f[0]+'.txt</td>' +
-                      '<td>2016-05-25</td>' +
-                    '</tr>';
-              $('tbody').append(tablerow);    
-          }
+                    $('#entries').append('<p>'+s+'>/p>');
+                }
+          });   
         });
     </script>
 </body>
