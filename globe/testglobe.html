@@ -36,51 +36,20 @@
   });*/
 
   viewer.camera.flyTo({
-    duration: 500,
-    destination: new Cesium.Cartesian3(
-    -3961951.575572026,
-    3346492.0945766014,
-    3702340.5336036095
-  ),
-  orientation: {
-    direction: new Cesium.Cartesian3(
-      0.8982074415844437,
-      0.4393530288745287,
-      4000
-    ),
-    up: new Cesium.Cartesian3(
-      0.12793638617798253,
-      0.29147314437764565,
-      0.9479850669701113
-    ),
-  },
-  complete: function () {
-    setTimeout(function () {
-      viewer.camera.flyTo({
-        destination: new Cesium.Cartesian3(
-          -2304817.2435183465,
-          -3639113.128132953,
-          4688495.013644141
-        ),
-        orientation: {
-          direction: new Cesium.Cartesian3(
-            0.3760550186878076,
-            0.9007147395506565,
-            0.21747547189489164
-          ),
-          up: new Cesium.Cartesian3(
-            0.20364591529594356,
-            0.14862471084230877,
-            0.9676978022659334
-          ),
-        },
-        easingFunction: Cesium.EasingFunction.QUADRATIC_IN_OUT,
-        duration: 100,
-      });
-    }, 1000);
-  },
+    destination: new Cesium.Cartesian3(41.8781, 87.6298, 4500),
+    easingFunction:Cesium.EasingFunction.QUADRATIC_IN_OUT,
+    duration: 300,
+    complete:function() {
+      setTimeout(function () {
+        viewer.camera.flyTo({
+          destination: new Cesium.Cartesian3(35.2271, 80.8431, 74500),
+          easingFunction:Cesium.EasingFunction.QUADRATIC_IN_OUT,
+          duration: 200,
+        });
+      }, 1000);      
+    }, 
 });
 
-  </script>
-  </body>
-  </html>
+</script>
+</body>
+</html>
