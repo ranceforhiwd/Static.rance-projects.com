@@ -18,7 +18,8 @@
                 contentType: 'application/json',
                 success: function(data){
                     $('#entries').after('<p>Response</p>');
-                    $('entries').append('<p>'+data+'</p>');
+                    $('#entries').append('<p>'+JSON.parse(data)+'</p>');
+                    createTable(data);
                 }
           });
 
@@ -26,7 +27,7 @@
             file_count = count(f);
 
             
-              $('#entries').html('<table class="table"></table>');
+              $('#entries').append('<table class="table"></table>');
               $('table').append('<thead />');
               $('thead').append('<tr />');
               $('thead tr').append('<th scope="col">Row</th>');
