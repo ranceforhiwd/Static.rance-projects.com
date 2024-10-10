@@ -37,13 +37,13 @@
 
   function goaway(){
     viewer.camera.flyTo({
-        destination: new Cesium.Cartesian3(41.8781, 87.6298, 4500),
+        destination: new Cesium.Cartesian3.fromDegrees(41.8781, 87.6298, 4500),
         easingFunction:Cesium.EasingFunction.QUADRATIC_IN_OUT,
         duration: 300,
         complete:function() {
           setTimeout(function () {
             viewer.camera.flyTo({
-              destination: new Cesium.Cartesian3(35.2271, 80.8431, 74500),
+              destination: new Cesium.Cartesian3.fromDegrees(35.2271, 80.8431, 74500),
               easingFunction:Cesium.EasingFunction.QUADRATIC_IN_OUT,
               duration: 200,
             });
