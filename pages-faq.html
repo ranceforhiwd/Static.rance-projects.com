@@ -683,44 +683,7 @@
     <div class="card">
       <div class="card-header"><button type="button" class="btn btn-outline-info">Find Addresses</button></div>
       <div class="card-body">
-        <h5 class="card-title">Card with header and footer</h5>
-        <div>Inside the Card</div>
-        <div id="entries"></div>
-        <script type="module">
-          var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject';  
-                            
-          $.ajax({
-                url: API_URL,
-                type: 'GET',
-                dataType: 'json',
-                headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-                success: function(data){
-                  fileStr = JSON.stringify(data);
-                  fileArr = fileStr.split(',');
-
-                    //add the table
-                    $('#entries').append('<table class="table"></table>');
-                    $('table').append('<thead />');
-                    $('thead').append('<tr />');
-                    $('thead tr').append('<th scope="col">Row</th>');
-                    $('thead tr').append('<th scope="col">Filename</th>');
-                    $('thead tr').append('<th scope="col">Date</th>');
-                    $('table').append('<tbody />');
-                    //end of table
-
-                    tablerow = '<tr>' +
-                            '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="option"></th>' +
-                            '<td>filename.txt</td>' +
-                            '<td>2016-05-25</td>' +
-                          '</tr>';
-                    
-                    $('tbody').append(tablerow);
-                    
-                    for(x in fileArr){
-                      $('#entries').append('<p>'+x+':'+fileArr[x]+'</p>');
-                    }
-                }
-          });</script>                
+        <h5 class="card-title">Card with header and footer</h5>                
       </div>
       <div class="card-footer"></div>
     </div><!-- End Card with header and footer -->       
@@ -803,5 +766,43 @@
   <!-- Include the CesiumJS JavaScript and CSS files -->
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   
+  <div>Inside the Card</div>
+  <div id="entries"></div>
+  <script type="module">
+    var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject';  
+                      
+    $.ajax({
+          url: API_URL,
+          type: 'GET',
+          dataType: 'json',
+          headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+          success: function(data){
+            fileStr = JSON.stringify(data);
+            fileArr = fileStr.split(',');
+
+              //add the table
+              $('#entries').append('<table class="table"></table>');
+              $('table').append('<thead />');
+              $('thead').append('<tr />');
+              $('thead tr').append('<th scope="col">Row</th>');
+              $('thead tr').append('<th scope="col">Filename</th>');
+              $('thead tr').append('<th scope="col">Date</th>');
+              $('table').append('<tbody />');
+              //end of table
+
+              tablerow = '<tr>' +
+                      '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="option"></th>' +
+                      '<td>filename.txt</td>' +
+                      '<td>2016-05-25</td>' +
+                    '</tr>';
+              
+              $('tbody').append(tablerow);
+              
+              for(x in fileArr){
+                $('#entries').append('<p>'+x+':'+fileArr[x]+'</p>');
+              }
+          }
+    });
+</script>
 </body>
 </html>
