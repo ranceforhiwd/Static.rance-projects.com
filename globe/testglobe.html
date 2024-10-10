@@ -36,7 +36,7 @@
   });*/
 
   viewer.camera.flyTo({
-    duration: 300,
+    duration: 500,
     destination: new Cesium.Cartesian3(
     -3961951.575572026,
     3346492.0945766014,
@@ -45,8 +45,8 @@
   orientation: {
     direction: new Cesium.Cartesian3(
       0.8982074415844437,
-      -0.4393530288745287,
-      0.013867512433959908
+      0.4393530288745287,
+      4000
     ),
     up: new Cesium.Cartesian3(
       0.12793638617798253,
@@ -69,13 +69,13 @@
             0.21747547189489164
           ),
           up: new Cesium.Cartesian3(
-            -0.20364591529594356,
-            -0.14862471084230877,
+            0.20364591529594356,
+            0.14862471084230877,
             0.9676978022659334
           ),
         },
         easingFunction: Cesium.EasingFunction.QUADRATIC_IN_OUT,
-        duration: 500,
+        duration: 100,
       });
     }, 1000);
   },
