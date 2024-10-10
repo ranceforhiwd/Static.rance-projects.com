@@ -36,8 +36,11 @@
   });*/
 
   viewer.camera.flyTo({
-  destination: new Cesium.Cartesian3.fromDegrees(8.67, 46.72, 4500),
-  duration: 3000,
+  destination: new Cesium.Cartesian3(
+    -3961951.575572026,
+    3346492.0945766014,
+    3702340.5336036095
+  ),
   orientation: {
     direction: new Cesium.Cartesian3(
       0.8982074415844437,
@@ -53,7 +56,11 @@
   complete: function () {
     setTimeout(function () {
       viewer.camera.flyTo({
-        destination: new Cesium.Cartesian3.fromDegrees(38.67, 37.72, 344500),
+        destination: new Cesium.Cartesian3(
+          -2304817.2435183465,
+          -3639113.128132953,
+          4688495.013644141
+        ),
         orientation: {
           direction: new Cesium.Cartesian3(
             0.3760550186878076,
@@ -67,7 +74,7 @@
           ),
         },
         easingFunction: Cesium.EasingFunction.QUADRATIC_IN_OUT,
-        duration: 1005,
+        duration: 50,
       });
     }, 1000);
   },
