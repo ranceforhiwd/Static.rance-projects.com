@@ -721,7 +721,7 @@
     </div><!-- End Card with header and footer -->       
 
     <!-- Cesium Card -->
-    <div class="card">
+    <div id="globe" class="card">
       <div class="card-header">Cesium</div>
       <div class="card-body">
         <h5 class="card-title">Address of map</h5>
@@ -770,7 +770,7 @@
   <script src="documents/file_list.js"></script>
   <!-- Include the CesiumJS JavaScript and CSS files -->
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
-  <script>function globe(){
+  <script>
     Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
 
     // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
@@ -790,9 +790,6 @@
     // Add Cesium OSM Buildings, a global 3D buildings layer.
     const buildingTileset = await Cesium.createOsmBuildingsAsync();
     viewer.scene.primitives.add(buildingTileset);
-  }
-
-  globe();
   </script>   
 </body>
 </html>
