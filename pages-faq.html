@@ -686,7 +686,9 @@
         <h5 class="card-title">PDF Files</h5>  
         <div id="entries"></div>              
       </div>
-      <div class="card-footer"></div>
+      <div class="card-footer">
+        Github Project Link
+      </div>
     </div><!-- End Card with header and footer -->       
 
     <!-- Cesium Card -->
@@ -697,7 +699,7 @@
         <div id="cesiumContainer"></div> 
       </div>
       <div class="card-footer">
-        Footer
+        Github Project Link
       </div>
     </div><!-- End Card with header and footer -->
 
@@ -741,9 +743,7 @@
   <!-- Include the CesiumJS JavaScript and CSS files -->
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <script>
-    // Your access token can be found at: https://ion.cesium.com/tokens.
-            // This is the default access token from your ion account
-  
+    
             Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
   
             // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
@@ -765,6 +765,25 @@
                 pitch: Cesium.Math.toRadius(-20)
               }
             });
+
+            function goaway(){
+              viewer.camera.flyTo({
+                  destination: new Cesium.Cartesian3.fromDegrees(41.8781, 87.6298, 4500),
+                  easingFunction:Cesium.EasingFunction.QUADRATIC_IN_OUT,
+                  duration: 300,
+                  complete:function(){
+                    setTimeout(function(){
+                      viewer.camera.flyTo({
+                        destination: new Cesium.Cartesian3.fromDegrees(35.2271, 80.8431, 74500),
+                        easingFunction:Cesium.EasingFunction.QUADRATIC_IN_OUT,
+                        duration: 200,
+                      });
+                    }, 1000);      
+                  } 
+              });
+            }
+
+            goaway();
   </script>
 
   <!-- Get list of files-->
@@ -781,7 +800,7 @@
             fileArr = fileStr.split(',');
 
               //add the table
-              $('#entries').append('<table class="table"></table>');
+              $('body #main #entries').html('<table class="table"></table>');
               $('table').append('<thead />');
               $('thead').append('<tr />');
               $('thead tr').append('<th scope="col">Row</th>');
