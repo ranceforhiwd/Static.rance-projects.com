@@ -1,4 +1,5 @@
-$(document).ready(function(){
+//test append to page before ajax call
+  $("#entries").append('<p>Hi World</p>');
     var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject';  
               
     $.ajax({
@@ -32,4 +33,3 @@ $(document).ready(function(){
               
           }
     });   
-  });
