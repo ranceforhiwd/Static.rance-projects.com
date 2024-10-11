@@ -1,5 +1,5 @@
 //test append to page before ajax call
-  $("#entries").append('<p>Hi World</p>');
+  $("#upload-list #entries").append('<p>Hi World</p>');
     var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject';  
               
     $.ajax({
@@ -12,7 +12,7 @@
               fileStr = JSON.stringify(data);
               fileArr = fileStr.split(',');
 
-              $('#entries').append('<table class="table"></table>');
+              $('#upload-list #entries').append('<table class="table"></table>');
               $('table').append('<thead />');
               $('thead').append('<tr />');
               $('thead tr').append('<th scope="col">Row</th>');
@@ -28,7 +28,7 @@
               $('tbody').append(tablerow);
               
               for(x in fileArr){
-                $('#entries').append('<p>'+x+':'+fileArr[x]+'</p>');
+                $('#upload-list #entries').append('<p>'+x+':'+fileArr[x]+'</p>');
               }
               
           }
