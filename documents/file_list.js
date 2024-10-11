@@ -27,7 +27,6 @@
                       '<td>2016-05-25</td>' +
                       '</tr>';
                     $('tbody').append(tablerow);
-                    //$('#upload-list #entries').append('<p>'+x+':'+fileArr[x]+'</p>');
               }
               
           }
