@@ -19,16 +19,15 @@
               $('thead tr').append('<th scope="col">Filename</th>');
               $('thead tr').append('<th scope="col">Date</th>');
               $('table').append('<tbody />');
-              
-              tablerow = '<tr>' +
-                      '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="option"></th>' +
-                      '<td>filename.txt</td>' +
-                      '<td>2016-05-25</td>' +
-                    '</tr>';
-              $('tbody').append(tablerow);
-              
+                            
               for(x in fileArr){
-                $('#upload-list #entries').append('<p>'+x+':'+fileArr[x]+'</p>');
+                tablerow = '<tr>' +
+                      '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="option"></th>' +
+                      '<td>'+fileArr[x]+'</td>' +
+                      '<td>2016-05-25</td>' +
+                      '</tr>';
+                    $('tbody').append(tablerow);
+                    //$('#upload-list #entries').append('<p>'+x+':'+fileArr[x]+'</p>');
               }
               
           }
