@@ -683,7 +683,8 @@
     <div class="card">
       <div class="card-header"><button type="button" class="btn btn-outline-info">Find Addresses</button></div>
       <div class="card-body">
-        <h5 class="card-title">Card with header and footer</h5>                
+        <h5 class="card-title">PDF Files</h5>  
+        <div id="entries"></div>              
       </div>
       <div class="card-footer"></div>
     </div><!-- End Card with header and footer -->       
@@ -693,33 +694,7 @@
       <div class="card-header">Cesium</div>
       <div class="card-body">
         <h5 class="card-title">Address of map</h5>
-        <div id="cesiumContainer"></div>
-        <script>
-          // Your access token can be found at: https://ion.cesium.com/tokens.
-                  // This is the default access token from your ion account
-        
-                  Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
-        
-                  // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
-                  const viewer = new Cesium.Viewer('cesiumContainer', {
-                    terrain: Cesium.Terrain.fromWorldTerrain(),
-                    fullscreenButton: false,
-                    navigationHelpButton: false,
-                    sceneModePicker: false,
-                    timeline: false,
-                    homeButton: false,
-                    geocoder: false,
-                    animation: false,
-                    baseLayerPicker: false
-                  });
-                  
-                  viewer.camera.setView({
-                    destination: Cesium.Cartesian3.fromDegrees(8.67, 46.72, 4500),
-                    orientation: {
-                      pitch: Cesium.Math.toRadius(-20)
-                    }
-                  });
-        </script> 
+        <div id="cesiumContainer"></div> 
       </div>
       <div class="card-footer">
         Footer
@@ -765,9 +740,34 @@
 
   <!-- Include the CesiumJS JavaScript and CSS files -->
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
+  <script>
+    // Your access token can be found at: https://ion.cesium.com/tokens.
+            // This is the default access token from your ion account
   
-  <div>Inside the Card</div>
-  <div id="entries"></div>
+            Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
+  
+            // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+            const viewer = new Cesium.Viewer('cesiumContainer', {
+              terrain: Cesium.Terrain.fromWorldTerrain(),
+              fullscreenButton: false,
+              navigationHelpButton: false,
+              sceneModePicker: false,
+              timeline: false,
+              homeButton: false,
+              geocoder: false,
+              animation: false,
+              baseLayerPicker: false
+            });
+            
+            viewer.camera.setView({
+              destination: Cesium.Cartesian3.fromDegrees(8.67, 46.72, 4500),
+              orientation: {
+                pitch: Cesium.Math.toRadius(-20)
+              }
+            });
+  </script>
+
+  <!-- Get list of files-->
   <script type="module">
     var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject';  
                       
@@ -801,6 +801,8 @@
               for(x in fileArr){
                 $('#entries').append('<p>'+x+':'+fileArr[x]+'</p>');
               }
+
+              $().append('<p>response</p>');
           }
     });
 </script>
