@@ -10,9 +10,6 @@
   <div id="cesiumContainer"></div>
 
 <script type="module">
-  // Your access token can be found at: https://ion.cesium.com/tokens.
-  // This is the default access token from your ion account
-
   Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
 
   // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
@@ -28,19 +25,19 @@
     baseLayerPicker: false
   });
   
-  viewer.camera.setView({
+  /*viewer.camera.setView({
         destination: Cesium.Cartesian3.fromDegrees(8.67, 46.72, 4500),
         orientation: {
         pitch: Cesium.Math.toRadius(-20)
         }
-  });
+  });*/
 
   function goaway(){
     viewer.camera.flyTo({
         destination: new Cesium.Cartesian3.fromDegrees(41.8781, 87.6298, 4500),
         easingFunction:Cesium.EasingFunction.QUADRATIC_IN_OUT,
         duration: 300,
-        complete:function() {
+        /*complete:function() {
           setTimeout(function () {
             viewer.camera.flyTo({
               destination: new Cesium.Cartesian3.fromDegrees(35.2271, 80.8431, 74500),
@@ -48,7 +45,7 @@
               duration: 200,
             });
           }, 1000)      
-        } 
+        }*/ 
     });
   }
 
