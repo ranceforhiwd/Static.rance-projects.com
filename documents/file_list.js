@@ -12,13 +12,13 @@ var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject'
             fileStr = JSON.stringify(data);
             fileArr = fileStr.split(',');
 
-            $('#upload-list #entries').append('<table class="table"></table>');
-            $('table').append('<thead />');
+            $('#upload-list #entries').append('<table id="filelist" class="table"></table>');
+            $('table#filelist').append('<thead />');
             $('thead').append('<tr />');
             $('thead tr').append('<th scope="col">Row</th>');
             $('thead tr').append('<th scope="col">Filename</th>');
             $('thead tr').append('<th scope="col">Date</th>');
-            $('table').append('<tbody />');
+            $('table#filelist').append('<tbody />');
                           
             for(x in fileArr){
               tablerow = '<tr>' +
@@ -42,13 +42,13 @@ var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject'
           adxStr = JSON.stringify(data);
           adxArr = adxStr.split(',');
 
-          $('#globe #addresses').append('<table class="table"></table>');
-          $('table').append('<thead />');
+          $('#globe #addresses').append('<table id="adx" class="table"></table>');
+          $('table#adx').append('<thead />');
           $('thead').append('<tr />');
           $('thead tr').append('<th scope="col">Row</th>');
           $('thead tr').append('<th scope="col">Filename</th>');
           $('thead tr').append('<th scope="col">Date</th>');
-          $('table').append('<tbody />');
+          $('table#adx').append('<tbody />');
                         
           for(x in adxArr){
             tablerow = '<tr>' +
