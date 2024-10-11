@@ -733,7 +733,6 @@
     </div><!-- End Card with header and footer -->
 
   </section>
-  <script>globe();</script>
   <!-- ======end Applicaation======-->
   </main><!-- End #main -->
   
@@ -792,6 +791,8 @@
     const buildingTileset = await Cesium.createOsmBuildingsAsync();
     viewer.scene.primitives.add(buildingTileset);
   }
+
+  globe();
   </script>   
 </body>
 </html>
