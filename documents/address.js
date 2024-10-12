@@ -10,12 +10,12 @@ $.ajax({
         adxStr = JSON.stringify(data);
         adxArr = adxStr.split(',');
 
-        $('#globe #addresses').append('<table id="adx" class="table"></table>');
+        $('#globe #addresses').htm('<table id="adx" class="table"></table>');
         $('table#adx').append('<thead />');
         $('thead').append('<tr />');
         $('thead tr').append('<th scope="col">Row</th>');
-        $('thead tr').append('<th scope="col">Filename</th>');
-        $('thead tr').append('<th scope="col">Date</th>');
+        $('thead tr').append('<th scope="col">City</th>');
+        $('thead tr').append('<th scope="col">Zipi</th>');
         $('table#adx').append('<tbody />');
                       
         for(x in adxArr){

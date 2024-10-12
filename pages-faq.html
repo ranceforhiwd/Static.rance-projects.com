@@ -710,7 +710,7 @@
     
     <!-- Card -->
     <div id="upload-list" class="card">
-      <div class="card-header"><button type="button" class="btn btn-outline-info">Find Addresses</button></div>
+      <div class="card-header"><button id="adxbtn" type="button" class="btn btn-outline-info">Find Addresses</button></div>
       <div class="card-body">
         <h5 class="card-title">PDF Files</h5>  
         <div id="entries"></div>              
@@ -791,7 +791,7 @@
       duration:25,
       complete: function(){
         viewer.camera.flyTo({
-          destination:Cesium.Cartesian3.fromDegrees(35.2271, -80.8431, 900),
+          destination:Cesium.Cartesian3.fromDegrees(-80.8431,35.2271, 900),
           orientation:{
             heading:Cesium.Math.toRadians(0.0)
           },
