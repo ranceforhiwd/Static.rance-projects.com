@@ -4,7 +4,7 @@ $.ajax({
     url: API_URL,
     type: 'GET',
     dataType: 'json',
-    headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'
+    headers: {'Cont.   -Type': 'application/json', 'Access-Control-Allow-Origin': '*'
 },
     success: function(data){                              
         adxStr = JSON.stringify(data);
