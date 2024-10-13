@@ -41,6 +41,39 @@ $(document).ready(function(){
     });
 
 
+// Your access token can be found at: https://ion.cesium.com/tokens.
+    // Replace `your_access_token` with your Cesium ion access token.
+
+    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
+
+    // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+    const viewer = new Cesium.Viewer('cesiumContainer', {
+      terrain: Cesium.Terrain.fromWorldTerrain(),
+    });    
+
+    // Add Cesium OSM Buildings, a global 3D buildings layer.
+    const buildingTileset = await Cesium.createOsmBuildingsAsync();
+    viewer.scene.primitives.add(buildingTileset);
+    
+    function gonow(){
+        // Fly the camera to San Francisco at the given longitude, latitude, and height.
+      viewer.camera.flyTo({
+        destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 11400),
+        orientation: {
+          heading:Cesium.Math.toRadians(0.0),
+        },
+        duration:25,
+        complete: function(){
+          viewer.camera.flyTo({
+            destination:Cesium.Cartesian3.fromDegrees(-80.8431,35.2271, 900),
+            orientation:{
+              heading:Cesium.Math.toRadians(0.0)
+            },
+            duration:25
+          })
+        }
+      });
+    }
 
 
 
