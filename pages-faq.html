@@ -724,18 +724,7 @@
         Github Project Link
       </div>
     </div><!-- End Card with header and footer -->       
-    <script>
-      // Check the radio button value. 
-      $('#adxbtn').on('click', function() { 
-          output =  
-            $('input[name=option]:checked', 
-              '#myForm').val(); 
-          
-            $("#addresses").html('<span>Adx Here'+output+'</span>');
-          document.querySelector( 
-            '.output').textContent = output; 
-      });
-    </script>
+  
     <!-- Cesium Card -->
     <div id="globe" class="card">
       <div class="card-header">
@@ -825,6 +814,18 @@
     }
 
     gonow();
-  </script>  
+  </script>
+    <script>
+      // Check the radio button value. 
+      $('#adxbtn').on('click', function() { 
+          output =  
+            $('input[name=option]:checked', 
+              '#myForm').val(); 
+          
+            $("#addresses").html('<span>Adx Here'+output+'</span>');
+          document.querySelector( 
+            '.output').textContent = output; 
+      });
+    </script>  
 </body>
 </html>
