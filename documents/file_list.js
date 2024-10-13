@@ -34,36 +34,13 @@ $(document).ready(function(){
   $("input[type='button']").click(function(){
       var radioValue = $("input[name='option']:checked").val();
         if(radioValue){
-            alert("Your are a - " + radioValue);
+            alert("fly to address - " + radioValue);
             gonow();
         }
-    });
     
-    function gonow(){
-        // Fly the camera to San Francisco at the given longitude, latitude, and height.
-      viewer.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 11400),
-        orientation: {
-          heading:Cesium.Math.toRadians(0.0),
-        },
-        duration:25,
-        complete: function(){
-          viewer.camera.flyTo({
-            destination:Cesium.Cartesian3.fromDegrees(-80.8431,35.2271, 900),
-            orientation:{
-              heading:Cesium.Math.toRadians(0.0)
-            },
-            duration:25
-          })
-        }
       });
-    }
-
-
-
-
-
-
+    
+    
   });
 
   
