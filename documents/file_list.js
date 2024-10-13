@@ -1,5 +1,5 @@
-//test append to page before ajax call
-var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject';  
+$(document).ready(function(){
+  var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject';  
               
   $.ajax({
         url: API_URL,
@@ -21,7 +21,7 @@ var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject'
                           
             for(x in fileArr){
               tablerow = '<tr>' +
-                    '<th scope="row"><input class="form-check-input" type="radio" name="option" id="gridRadios" value="option'+x+'"></th>' +
+                    '<th scope="row"><input class="form-check-input" type="radio" name="option" id="gridRadios" value="'+x+'"></th>' +
                     '<td>'+fileArr[x]+'</td>' +
                     '<td>2016-05-25</td>' +
                     '</tr>';
@@ -31,6 +31,22 @@ var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject'
         }
   });
 
-  /*$("button#adxbtn").click(function(){
-      alert('button clicked');
-  })*/
+
+
+  $("input[type='button']").click(function(){
+      var radioValue = $("input[name='option']:checked").val();
+        if(radioValue){
+            alert("Your are a - " + radioValue);
+        }
+    });
+
+
+
+
+
+
+
+
+  });
+
+  
