@@ -31,8 +31,6 @@ $(document).ready(function(){
         }
   });
 
-
-
   $("input[type='button']").click(function(){
       var radioValue = $("input[name='option']:checked").val();
         if(radioValue){
@@ -40,21 +38,6 @@ $(document).ready(function(){
             gonow();
         }
     });
-
-
-// Your access token can be found at: https://ion.cesium.com/tokens.
-// Replace `your_access_token` with your Cesium ion access token.
-
-    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
-
-    // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
-    const viewer = new Cesium.Viewer('cesiumContainer', {
-      terrain: Cesium.Terrain.fromWorldTerrain(),
-    });    
-
-    // Add Cesium OSM Buildings, a global 3D buildings layer.
-    const buildingTileset = await Cesium.createOsmBuildingsAsync();
-    viewer.scene.primitives.add(buildingTileset);
     
     function gonow(){
         // Fly the camera to San Francisco at the given longitude, latitude, and height.
