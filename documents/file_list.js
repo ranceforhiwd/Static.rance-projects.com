@@ -31,7 +31,7 @@ $(document).ready(function(){
         }
   });
 
-  $("input[type='button']").click(function(){
+  $("button#adxbtn").click(function(){
       var radioValue = $("input[name='option']:checked").val();
         if(radioValue){
             alert("fly to address - " + radioValue);
