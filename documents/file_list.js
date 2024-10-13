@@ -41,5 +41,5 @@ var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject'
               $('input[name=gridRadios]:checked', 
                 '#myForm').val(); 
             
-                alert($(this)); 
+                alert(output); 
         });
