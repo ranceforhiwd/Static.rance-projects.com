@@ -817,15 +817,25 @@
   </script>
     <script>
       // Check the radio button value. 
-      $('#adxbtn').on('click', function() { 
-          output =  
-            $('input[name="option"]:checked', 
-              '#myForm').val(); 
+      //$('#adxbtn').on('click', function() { 
+          //output =  
+            //$('input[name="option"]:checked', 
+              //'#myForm').val(); 
           
-            $("#addresses").html('<span>Adx Here'+output+'</span>');
-          document.querySelector( 
-            '.output').textContent = output; 
+            //$("#addresses").html('<span>Adx Here'+output+'</span>');
+          //document.querySelector( 
+            //'.output').textContent = output; 
+      //});
+    </script>
+    <script>
+      $(document).ready(function(){
+          $("input[type='button']").click(function(){
+            var radioValue = $("input[name='option']:checked").val();
+              if(radioValue){
+                  alert("Your are a - " + radioValue);
+              }
+          });
       });
-    </script>  
+  </script>  
 </body>
 </html>
