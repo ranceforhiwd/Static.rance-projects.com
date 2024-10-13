@@ -38,8 +38,8 @@ var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject'
    
         $('button#adxbtn').on('click', function() { 
             output =  
-              $('input[name=option]:checked', 
+              $('input[name=gridRadios]:checked', 
                 '#myForm').val(); 
             
-                alert('button clicked'+ output); 
+                alert($(this)); 
         });
