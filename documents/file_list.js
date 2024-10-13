@@ -21,7 +21,7 @@ var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject'
                           
             for(x in fileArr){
               tablerow = '<tr>' +
-                    '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="option"></th>' +
+                    '<th scope="row"><input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="option'+x+'"></th>' +
                     '<td>'+fileArr[x]+'</td>' +
                     '<td>2016-05-25</td>' +
                     '</tr>';

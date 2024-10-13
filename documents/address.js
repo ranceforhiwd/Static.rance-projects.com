@@ -10,7 +10,7 @@ $.ajax({
         adxStr = JSON.stringify(data);
         adxArr = adxStr.split(',');
 
-        $('#globe #addresses').htm('<table id="adx" class="table"></table>');
+        $('card#globe div#addrersses').htm('<table id="adx" class="table"></table>');
         $('table#adx').append('<thead />');
         $('thead').append('<tr />');
         $('thead tr').append('<th scope="col">Row</th>');
