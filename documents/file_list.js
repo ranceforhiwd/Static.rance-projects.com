@@ -35,11 +35,15 @@ var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject'
       alert('button clicked');
   })*/
 
-   
-        $('button#adxbtn').on('click', function() { 
-            output =  
-              $('input[name=gridRadios]:checked', 
-                '#myForm').val(); 
-            
-                alert(output); 
-        });
+
+    
+        
+    // Check the radio button value. 
+      $('#adxbtn').on('click', function() { 
+          output =  
+            $('input[name=gridRadios]:checked', 
+              '#myForm').val(); 
+          
+          document.querySelector( 
+            '.output').textContent = output; 
+      });
