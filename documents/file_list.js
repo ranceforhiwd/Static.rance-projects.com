@@ -34,17 +34,3 @@ var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject'
   /*$("button#adxbtn").click(function(){
       alert('button clicked');
   })*/
-
-
-    
-        
-    // Check the radio button value. 
-      $('#adxbtn').on('click', function() { 
-          output =  
-            $('input[name=option]:checked', 
-              '#myForm').val(); 
-          
-            $("#addresses").html('<span>Adx Here'+output+'</span>');
-          document.querySelector( 
-            '.output').textContent = output; 
-      });

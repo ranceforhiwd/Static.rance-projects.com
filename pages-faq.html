@@ -724,7 +724,18 @@
         Github Project Link
       </div>
     </div><!-- End Card with header and footer -->       
-
+    <script>
+      // Check the radio button value. 
+      $('#adxbtn').on('click', function() { 
+          output =  
+            $('input[name=option]:checked', 
+              '#myForm').val(); 
+          
+            $("#addresses").html('<span>Adx Here'+output+'</span>');
+          document.querySelector( 
+            '.output').textContent = output; 
+      });
+    </script>
     <!-- Cesium Card -->
     <div id="globe" class="card">
       <div class="card-header">
@@ -775,7 +786,7 @@
   <script src="assets/js/main.js"></script>
   <script src="documents/app.js"></script>
   <script src="documents/file_list.js"></script>
-  <script src="documents/address.js"></script>
+  
   <!-- Include the CesiumJS JavaScript and CSS files -->
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <script type="module">
