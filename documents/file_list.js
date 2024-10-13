@@ -35,9 +35,8 @@ $(document).ready(function(){
       var radioValue = $("input[name='option']:checked").val();
         if(radioValue){
             alert("fly to address - " + radioValue);
-            gonow();
-        }
-    
+            $('.output').html("Address: "+radioValue);
+        }    
       });
     
     
