@@ -37,12 +37,13 @@ $(document).ready(function(){
       var radioValue = $("input[name='option']:checked").val();
         if(radioValue){
             alert("Your are a - " + radioValue);
+            gonow();
         }
     });
 
 
 // Your access token can be found at: https://ion.cesium.com/tokens.
-    // Replace `your_access_token` with your Cesium ion access token.
+// Replace `your_access_token` with your Cesium ion access token.
 
     Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
 
