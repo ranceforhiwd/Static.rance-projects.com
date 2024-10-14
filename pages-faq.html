@@ -810,6 +810,23 @@
       });
     }
 
+    function startFindAdx(){
+      var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/postObject';
+
+      $.ajax({
+        url: API_URL,
+        type: 'GET',
+        dataType: 'json',
+        headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'
+},
+        success: function(data){                              
+            
+            
+        }
+  });
+
+    }
+
     $("button#adxbtn").click(function(){
       var radioValue = $("input[name='option']:checked").val();
         if(radioValue){
