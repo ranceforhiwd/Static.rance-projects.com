@@ -810,20 +810,20 @@
       });
     }
 
-    function startFindAdx(selectedPDF){
-      var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/postObject/'+selectedPDF;
-
+    function startFindAdx(filename){
+      var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject/findAdx/filename';
+      alert("Searching: " + filename);
+      
       $.ajax({
-        url: API_URL,
-        type: 'GET',
-        dataType: 'json',
-        headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'
-},
-        success: function(data){                              
-          $('#addresses').html("Searching for addresses...");    
-            
-        }
-  });
+              url: API_URL,
+              type: 'GET',
+              dataType: 'json',
+              headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+              success: function(data){                              
+                $('#addresses').html("Searching for addresses...");    
+                  
+              }
+        });
 
     }
 
