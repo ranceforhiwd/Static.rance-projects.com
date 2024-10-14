@@ -810,8 +810,8 @@
       });
     }
 
-    function startFindAdx(){
-      var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/postObject';
+    function startFindAdx(selectedPDF){
+      var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/postObject/'+selectedPDF;
 
       $.ajax({
         url: API_URL,
@@ -820,7 +820,7 @@
         headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'
 },
         success: function(data){                              
-            
+          $('#addresses').html("Searching for addresses...");    
             
         }
   });
@@ -831,7 +831,8 @@
       var radioValue = $("input[name='option']:checked").val();
         if(radioValue){
             alert("fly to address - " + radioValue);
-            $('#addresses').html("Address: "+radioValue);
+            //$('#addresses').html("Address: "+radioValue);
+            startFindAdx(radioValue);
             gonow();
         }    
       });
