@@ -812,10 +812,11 @@
 
 
     function startFindAdx(selectedPDF){
-      var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject/?method=findadx';
+      alert('search for addresses...');
+      var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx';
 
       $.ajax({
-              url: API_URL,
+              url: ADX_URL,
               type: 'GET',
               dataType: 'json',
               headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
@@ -828,7 +829,6 @@
     $("button#adxbtn").click(function(){
       var radioValue = $("input[name='option']:checked").val();
         if(radioValue){
-            //$('#addresses').html("Address: "+radioValue);
             startFindAdx(radioValue);
         }    
       });
