@@ -810,16 +810,10 @@
       });
     }
 
-<<<<<<< HEAD
+
     function startFindAdx(selectedPDF){
       var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/postObject/?filename='+selectedPDF;
 
-=======
-    function startFindAdx(filename){
-      var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/GetAddresses/findAdx/filename';
-      alert("Searching: " + filename);
-      
->>>>>>> 75b3be617d6a4480eadc7901293541be80b0d268
       $.ajax({
               url: API_URL,
               type: 'GET',
