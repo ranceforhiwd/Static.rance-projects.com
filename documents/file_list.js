@@ -21,7 +21,7 @@ $(document).ready(function(){
                           
             for(x in fileArr){
               tablerow = '<tr>' +
-                    '<th scope="row"><input class="form-check-input" type="radio" name="option" id="gridRadios" value="'+x+'"></th>' +
+                    '<th scope="row"><input class="form-check-input" type="radio" name="option" id="gridRadios" value="'+fileArr[x]+'"></th>' +
                     '<td>'+fileArr[x].replace(/"/g, '');+'</td>' +
                     '<td>2016-05-25</td>' +
                     '</tr>';
