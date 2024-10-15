@@ -821,7 +821,7 @@
               dataType: 'json',
               headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
               success: function(data){ 
-                gonow('address');            
+                            
               }
       });
     }
@@ -830,7 +830,9 @@
       var radioValue = $("input[name='option']:checked").val();
         if(radioValue){
             startFindAdx(radioValue);
-        }    
+        }
+        
+        gonow('address');
       });
   </script>
       
