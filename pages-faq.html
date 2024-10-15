@@ -819,8 +819,8 @@
               type: 'GET',
               dataType: 'json',
               headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-              success: function(data){                              
-                $('#addresses').html("Search for addresses...");            
+              success: function(data){ 
+                gonow('address');            
               }
       });
     }
@@ -830,7 +830,6 @@
         if(radioValue){
             //$('#addresses').html("Address: "+radioValue);
             startFindAdx(radioValue);
-            gonow(radioValue);
         }    
       });
   </script>
