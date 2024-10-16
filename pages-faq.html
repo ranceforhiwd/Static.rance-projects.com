@@ -813,7 +813,7 @@
 
     function startFindAdx(selectedPDF){
       alert('search for addresses...');
-      var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx';
+      var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action='+selectedPDF;
 
       $.ajax({
               url: ADX_URL,
