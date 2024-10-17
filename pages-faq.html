@@ -784,12 +784,27 @@
             $('thead tr').append('<th scope="col">Date</th>');
             $('table#filelist').append('<tbody />');
 
+    function startFindAdx(selectedPDF){
+        var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
+
+        $.ajax({
+                url: ADX_URL,
+                type: 'GET',
+                dataType: 'json',
+                headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                success: function(data){ 
+                       $('#addresses').html('<span>Search for addresses now...</span>');       
+                }
+        });
+    }
+
+
     $("button#adxbtn").click(function(){
         var radioValue = $("table#filelist input[name='option']:checked").val();
         alert('selection: ' + radioValue);
         $('#addresses').html('<span>'+radioValue+'</span>');
         if(radioValue){
-          startFindAdx(radioValue);
+          //startFindAdx(radioValue);
           gonow(radioValue);
         }else{
           alert('no values found');
@@ -828,21 +843,6 @@
             duration:25
           })
         }
-      });
-    }
-
-
-    function startFindAdx(selectedPDF){
-      var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
-
-      $.ajax({
-              url: ADX_URL,
-              type: 'GET',
-              dataType: 'json',
-              headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-              success: function(data){ 
-                            
-              }
       });
     }
 
