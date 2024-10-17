@@ -785,7 +785,7 @@
             $('table#filelist').append('<tbody />');
 
     $("button#adxbtn").click(function(){
-        var radioValue = $("input[name='option']:checked").val();
+        var radioValue = $("table#filelist input[name='option']:checked").val();
         alert('selection: ' + radioValue);
         $('#addresses').html('<span>'+radioValue+'</span>');
         if(radioValue){
