@@ -775,6 +775,27 @@
   <script src="assets/js/main.js"></script>
   <script src="documents/app.js"></script>
   <script src="documents/file_list.js"></script>
+  <script>
+    $('#upload-list #entries').html('<table id="filelist" class="table"></table>');
+            $('table#filelist').append('<thead />');
+            $('thead').append('<tr />');
+            $('thead tr').append('<th scope="col">Row</th>');
+            $('thead tr').append('<th scope="col">Filename</th>');
+            $('thead tr').append('<th scope="col">Date</th>');
+            $('table#filelist').append('<tbody />');
+
+    $("button#adxbtn").click(function(){
+        var radioValue = $("input[name='option']:checked").val();
+        alert('selection: ' + radioValue);
+        $('#addresses').html('<span>'+radioValue+'</span>');
+        if(radioValue){
+          startFindAdx(radioValue);
+          gonow(radioValue);
+        }else{
+          alert('no values found');
+        }      
+    });
+  </script>
   
   <!-- Include the CesiumJS JavaScript and CSS files -->
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
@@ -825,19 +846,6 @@
       });
     }
 
-    $("button#adxbtn").click(function(){
-      var radioValue = $("input[name='option']:checked").val();
-        alert('selection: ' + radioValue);
-        $('#addresses').html('<span>'+radioValue+'</span>');
-        if(radioValue){
-            startFindAdx(radioValue);
-            gonow(radioValue);
-        }else{
-          alert('no values found');
-        }
-              
-      });
-      
   </script>
       
 </body>

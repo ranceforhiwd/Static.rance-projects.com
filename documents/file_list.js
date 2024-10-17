@@ -9,16 +9,8 @@ $(document).ready(function(){
 },
         success: function(data){                              
             fileStr = JSON.stringify(data);
-            fileStr_ = fileStr.slice(0,-1);
+            fileStr_ = fileStr.slice(1,-1);
             fileArr = fileStr_.split(',');
-
-            $('#upload-list #entries').html('<table id="filelist" class="table"></table>');
-            $('table#filelist').append('<thead />');
-            $('thead').append('<tr />');
-            $('thead tr').append('<th scope="col">Row</th>');
-            $('thead tr').append('<th scope="col">Filename</th>');
-            $('thead tr').append('<th scope="col">Date</th>');
-            $('table#filelist').append('<tbody />');
                           
             for(x in fileArr){
               tablerow = '<tr>' +
