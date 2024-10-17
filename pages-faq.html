@@ -827,14 +827,17 @@
 
     $("button#adxbtn").click(function(){
       var radioValue = $("input[name='option']:checked").val();
+        alert('selection: ' + radioValue);
         $('#addresses').html('<span>'+radioValue+'</span>');
         if(radioValue){
             startFindAdx(radioValue);
             gonow(radioValue);
+        }else{
+          alert('no values found');
         }
-        
-        
+              
       });
+      
   </script>
       
 </body>
