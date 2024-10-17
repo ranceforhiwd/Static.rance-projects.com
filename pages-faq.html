@@ -775,44 +775,7 @@
   <script src="assets/js/main.js"></script>
   <script src="documents/app.js"></script>
   <script src="documents/file_list.js"></script>
-  <script>
-    $('#upload-list #entries').html('<table id="filelist" class="table"></table>');
-            $('table#filelist').append('<thead />');
-            $('thead').append('<tr />');
-            $('thead tr').append('<th scope="col">Row</th>');
-            $('thead tr').append('<th scope="col">Filename</th>');
-            $('thead tr').append('<th scope="col">Date</th>');
-            $('table#filelist').append('<tbody />');
-
-    function startFindAdx(selectedPDF){
-        var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
-
-        $.ajax({
-                url: ADX_URL,
-                type: 'GET',
-                dataType: 'json',
-                headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-                success: function(data){ 
-                       $('#addresses').html('<span>Search for addresses now...</span>');       
-                }
-        });
-    }
-
-
-    $("button#adxbtn").click(function(){
-        var radioValue = $("table#filelist input[name='option']:checked").val();
-        
-        $('#addresses').html('<span>'+radioValue+'</span>');
-        if(radioValue){
-          //startFindAdx(radioValue);
-          alert('selection: ' + radioValue);
-          gonow(radioValue);
-        }else{
-          alert('no values found');
-        }      
-    });
-  </script>
-  
+    
   <!-- Include the CesiumJS JavaScript and CSS files -->
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <script type="module">
@@ -848,6 +811,45 @@
     }
 
   </script>
+
+<script>
+  $('#upload-list #entries').html('<table id="filelist" class="table"></table>');
+          $('table#filelist').append('<thead />');
+          $('thead').append('<tr />');
+          $('thead tr').append('<th scope="col">Row</th>');
+          $('thead tr').append('<th scope="col">Filename</th>');
+          $('thead tr').append('<th scope="col">Date</th>');
+          $('table#filelist').append('<tbody />');
+
+  function startFindAdx(selectedPDF){
+      var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
+
+      $.ajax({
+              url: ADX_URL,
+              type: 'GET',
+              dataType: 'json',
+              headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+              success: function(data){ 
+                     $('#addresses').html('<span>Search for addresses now...</span>');       
+              }
+      });
+  }
+
+
+  $("button#adxbtn").click(function(){
+      var radioValue = $("table#filelist input[name='option']:checked").val();
+      
+      $('#addresses').html('<span>'+radioValue+'</span>');
+      gonow(radioValue);
+      if(radioValue){
+        //startFindAdx(radioValue);
+        alert('selection: ' + radioValue);
+      }else{
+        alert('no values found');
+      }      
+  });
+</script>
+
       
 </body>
 </html>
