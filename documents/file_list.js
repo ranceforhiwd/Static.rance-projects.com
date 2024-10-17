@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=filelist';  
+  var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=filelist&action=search';  
               
   $.ajax({
         url: API_URL,
