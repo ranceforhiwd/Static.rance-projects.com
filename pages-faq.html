@@ -812,7 +812,7 @@
 
 
     function startFindAdx(selectedPDF){
-      var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action='+selectedPDF;
+      var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
 
       $.ajax({
               url: ADX_URL,
@@ -827,12 +827,13 @@
 
     $("button#adxbtn").click(function(){
       var radioValue = $("input[name='option']:checked").val();
-        alert('selected:'+radioValue);
+        $('#addresses').html('<span>'+radioValue+'</span>');
         if(radioValue){
             startFindAdx(radioValue);
+            gonow(radioValue);
         }
         
-        gonow('address');
+        
       });
   </script>
       

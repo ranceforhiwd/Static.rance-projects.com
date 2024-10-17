@@ -1,5 +1,5 @@
 $(document).ready(function(){
-  var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=filelist&action=search';  
+  var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=search&action=normal&data=none';  
               
   $.ajax({
         url: API_URL,
@@ -9,7 +9,8 @@ $(document).ready(function(){
 },
         success: function(data){                              
             fileStr = JSON.stringify(data);
-            fileArr = fileStr.split(',');
+            fileStr_ = fileStr.slice(0,-1);
+            fileArr = fileStr_.split(',');
 
             $('#upload-list #entries').html('<table id="filelist" class="table"></table>');
             $('table#filelist').append('<thead />');
