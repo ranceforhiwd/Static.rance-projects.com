@@ -13,10 +13,11 @@ $(document).ready(function(){
             fileArr = fileStr_.split(',');
                           
             for(x in fileArr){
+              f = fileArr[x].replace(/"/g, '');    
               tablerow = '<tr>' +
-                    '<th scope="row"><input class="form-check-input" type="radio" name="option" id="gridRadios" value="'+fileArr[x]+'"></th>' +
-                    '<td>'+fileArr[x].replace(/"/g, '');+'</td>' +
-                    '<td>2016-05-25</td>' +
+                    '<th scope="row"><input class="form-check-input" type="radio" name="option" id="'+f+'" value="'+f+'"></th>' +
+                    '<td>'+f+'</td>' +
+                    '<td>2024-10-17</td>' +
                     '</tr>';
                   $('tbody').append(tablerow);
             }
