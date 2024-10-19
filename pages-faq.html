@@ -828,7 +828,8 @@
               dataType: 'json',
               headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
               success: function(data){
-                     gonow(data);       
+                $("addresses").html("<span>ECS Ouput: Address Here</span>");
+                     //gonow(data);       
               }
       });
   }
