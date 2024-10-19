@@ -1,0 +1,39 @@
+{
+    "StartAt": "ECS RunTask",
+    "States": {
+      "ECS RunTask": {
+        "Type": "Task",
+        "Resource": "arn:aws:states:::ecs:runTask.sync",
+        "Parameters": {
+          "LaunchType": "FARGATE",
+          "Cluster": "arn:aws:ecs:us-east-1:624827327374:cluster/RanceCluster",
+          "TaskDefinition": "arn:aws:ecs:us-east-1:624827327374:task-definition/Find-adx:5",
+          "NetworkConfiguration": {
+            "AwsvpcConfiguration": {
+              "Subnets": [
+                "subnet-0ebb5c9c9e211c25a",
+                "subnet-010e95e3d92614de6"
+              ],
+              "AssignPublicIp": "ENABLED"
+            }
+          }
+        },
+        "Next": "Publish to SNS'"
+      },
+      "Publish to SNS": {
+     "Type": "Task",
+     "Resource": "arn:aws:states:::sns:publish",
+     "Parameters": {
+       "TopicArn": "arn:aws:sns:us-east-1:624827327374:Lambda-Route-Requests",
+       "Message.$": "$.input.message",
+       "MessageAttributes": {
+         "my_attribute_no_1": {
+           "DataType": "String",
+           "StringValue": "value of message"
+         }
+       }
+     },
+        "End": true
+      }
+    }
+  }
