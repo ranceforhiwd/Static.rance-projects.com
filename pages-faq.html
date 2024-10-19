@@ -821,14 +821,14 @@
 
   function startFindAdx(selectedPDF){
       var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
-
+      $('#addresses').html('<span>Search for addresses in '+selectedPDF+'</span>');
       $.ajax({
               url: ADX_URL,
               type: 'GET',
               dataType: 'json',
               headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-              success: function(data){ 
-                     $('#addresses').html('<span>Search for addresses now...</span>');       
+              success: function(data){
+                     gonow(data);       
               }
       });
   }
@@ -837,10 +837,10 @@
   $("button#adxbtn").click(function(){
       var radioValue = $("table#filelist input[name='option']:checked").val();
       
-      $('#addresses').html('<span>'+radioValue+'</span>');
-      gonow(radioValue);
+      //$('#addresses').html('<span>'+radioValue+'</span>');
+      
       if(radioValue){
-        alert('selection: ' + radioValue);
+        //alert('selection: ' + radioValue);
         startFindAdx(radioValue);
       }else{
         alert('no values found');
