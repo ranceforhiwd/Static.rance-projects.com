@@ -828,27 +828,21 @@
               dataType: 'json',
               headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
               success: function(data){
-                $("#addresses").html("<span>ECS Ouput: Address Here</span>"+"<p>"+data+"</p>");
-                     gonow(data);       
+                       
               }
       });
   }
 
 
   $("button#adxbtn").click(function(){
-      var radioValue = $("table#filelist input[name='option']:checked").val();
-      
-      //$('#addresses').html('<span>'+radioValue+'</span>');
-      
+      var radioValue = $("table#filelist input[name='option']:checked").val();            
       if(radioValue){
-        //alert('selection: ' + radioValue);
         startFindAdx(radioValue);
       }else{
         alert('no values found');
       }      
   });
 </script>
-
       
 </body>
 </html>
