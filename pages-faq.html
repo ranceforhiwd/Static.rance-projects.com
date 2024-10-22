@@ -774,10 +774,10 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="documents/app.js"></script>
-  <script src="documents/file_list.js"></script>
     
   <!-- Include the CesiumJS JavaScript and CSS files -->
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
+  
   <script type="module">
     Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
 
@@ -811,15 +811,7 @@
     }
 
   
-  $('#upload-list #entries').html('<table id="filelist" class="table"></table>');
-          $('table#filelist').append('<thead />');
-          $('thead').append('<tr />');
-          $('thead tr').append('<th scope="col">Row</th>');
-          $('thead tr').append('<th scope="col">Filename</th>');
-          $('thead tr').append('<th scope="col">Date</th>');
-          $('table#filelist').append('<tbody />');
-
-  function startFindAdx(selectedPDF){
+    function startFindAdx(selectedPDF){
       var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
       $('#addresses').html('<span>Search for addresses in '+selectedPDF+'</span>');
       $.ajax({
@@ -834,14 +826,73 @@
   }
 
 
+    function start_app(){
+        var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=search&action=normal&data=none';  
+        $('#upload-list #entries').html('<table id="filelist" class="table"></table>');
+        $('table#filelist').append('<thead />');
+        $('thead').append('<tr />');
+        $('thead tr').append('<th scope="col">Row</th>');
+        $('thead tr').append('<th scope="col">Filename</th>');
+        $('thead tr').append('<th scope="col">Date</th>');
+        $('table#filelist').append('<tbody />');
+              
+        $.ajax({
+              url: API_URL,
+              type: 'GET',
+              dataType: 'json',
+              headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'
+      },
+              success: function(data){                              
+                  fileStr = JSON.stringify(data);
+                  fileStr_ = fileStr.slice(1,-1);
+                  fileArr = fileStr_.split(',');
+                                
+                  for(x in fileArr){
+                    f = fileArr[x].replace(/"/g, '');    
+                    tablerow = '<tr>' +
+                          '<th scope="row"><input class="form-check-input" type="radio" name="option" id="'+f+'" value="'+f+'"></th>' +
+                          '<td>'+f+'</td>' +
+                          '<td>2024-10-17</td>' +
+                          '</tr>';
+                        $('tbody').append(tablerow);
+                  }
+                  
+              }
+        });
+  }
+
+
+    function fetchdata(){
+      var API_CHK = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=normal&data=none';  
+    
+      $.ajax({ 
+        url: API_CHK, 
+        type: 'GET', 
+        success: function(data){ 
+          // Perform operation on return value 
+          //alert(data);
+          gonow(data); 
+        }, 
+        complete:function(data){ 
+          setTimeout(fetchdata,5000); 
+        } 
+      }); 
+    } 
+  
+  $(document).ready(function(){ 
+    setTimeout(fetchdata,5000); 
+  });
+
   $("button#adxbtn").click(function(){
       var radioValue = $("table#filelist input[name='option']:checked").val();            
       if(radioValue){
         startFindAdx(radioValue);
       }else{
-        alert('no values found');
+        fetchdata();
       }      
   });
+
+  start_app();
 </script>
       
 </body>
