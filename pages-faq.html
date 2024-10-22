@@ -798,7 +798,8 @@
               if(radioValue){
                 startFindAdx(radioValue);
               }else{
-                fetchdata();
+                gonow(data);
+                //fetchdata();
               }      
           });
 
@@ -878,7 +879,7 @@
         success: function(data){ 
           // Perform operation on return value 
           //alert(data);
-          gonow(data); 
+           
         }, 
         complete:function(data){ 
           setTimeout(fetchdata,5000); 
