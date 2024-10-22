@@ -779,6 +779,8 @@
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   
   <script type="module">
+    $(document).ready(function(){
+    
     Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
 
     // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
@@ -879,12 +881,9 @@
       }); 
     } 
   
-  $(document).ready(function(){ 
-    //setTimeout(fetchdata,5000);
-    start_app() 
-  });
-
-  $("button#adxbtn").click(function(){
+    //setTimeout(fetchdata,5000);    
+  
+    $("button#adxbtn").click(function(){
       var radioValue = $("table#filelist input[name='option']:checked").val();            
       if(radioValue){
         startFindAdx(radioValue);
@@ -893,6 +892,8 @@
       }      
   });
 
+    start_app();
+});
 </script>
       
 </body>
