@@ -789,26 +789,8 @@
       // Add Cesium OSM Buildings, a global 3D buildings layer.
       const buildingTileset = await Cesium.createOsmBuildingsAsync();
       viewer.scene.primitives.add(buildingTileset);
-  
-  </script>
-  <script>
-    $(document).ready(function(){  
-    
-        function startFindAdx(selectedPDF){
-            var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
-            $('#addresses').html('<span>Search for addresses in '+selectedPDF+'</span>');
-            $.ajax({
-                    url: ADX_URL,
-                    type: 'GET',
-                    dataType: 'json',
-                    headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-                    success: function(data){
-                        $("#addresses").html('<span>Job Done</span>');   
-                    }
-            });
-        }
-        
-        function gonow(x){
+      
+      function gonow(x){
             // Fly the camera to San Francisco at the given longitude, latitude, and height.
           viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 11400),
@@ -827,7 +809,24 @@
             }
           });
         }
-
+  </script>
+  <script>
+    $(document).ready(function(){  
+    
+        function startFindAdx(selectedPDF){
+            var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
+            $('#addresses').html('<span>Search for addresses in '+selectedPDF+'</span>');
+            $.ajax({
+                    url: ADX_URL,
+                    type: 'GET',
+                    dataType: 'json',
+                    headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                    success: function(data){
+                        $("#addresses").html('<span>Job Done</span>');   
+                    }
+            });
+        }
+        
         function fetchdata(){
           var API_CHK = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=normal&data=none';  
         
