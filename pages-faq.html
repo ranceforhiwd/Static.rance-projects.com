@@ -834,12 +834,13 @@
     //setTimeout(fetchdata,5000);
 
         $("button#adxbtn").click(function(){
+          gonow(70);
               var radioValue = $("table#filelist input[name='option']:checked").val();            
               if(radioValue){
                 startFindAdx(radioValue);
               }else{
                 alert('no selection');
-                gonow(80);
+                
                 //fetchdata();
               }      
           });
