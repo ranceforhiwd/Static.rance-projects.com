@@ -851,6 +851,12 @@
       const buildingTileset = await Cesium.createOsmBuildingsAsync();
       viewer.scene.primitives.add(buildingTileset);
 
+      const myButton = document.getElementById("adxbtn");
+
+      myButton.addEventListener("click", function(){
+        viewer.scene.postRennder.raiseEvent();
+      });
+
       var handler = new Cesium.ScreenSpaceEventHandler(viewer.canvas);
 
           handler.setInputAction((click) => {

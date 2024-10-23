@@ -22,16 +22,21 @@
       const buildingTileset = await Cesium.createOsmBuildingsAsync();
       viewer.scene.primitives.add(buildingTileset);
 
-      var handler = new Cesium.ScreenSpaceEventHandler(viewer.canvas);        
-      const myButton = document.getElementsByID("adxbtn");
-      myButton.addEventListener("click", function(){
-        handler.setInputAction((click) => {
-          // your code here
+      // Create a custom event
+      const myCustomEvent = new Cesium.Event();
+
+      // Add a listener to the custom event
+      myCustomEvent.addEventListener((data) => {
+          console.log("Custom event triggered with data:", data);
           viewer.camera.flyTo({
             destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 1400),
             duration: 20
-          })  
-        }, Cesium.ScreenSpaceEventType.LEFT_DOWN);
+          })
+      });
+
+      // Trigger the event from a DOM element
+      myButton.addEventListener("click", function() {
+          myCustomEvent.raiseEvent("Hello from DOM!");
       });    
   </script>
 </head>
