@@ -829,25 +829,16 @@
         
        
         $("button#adxbtn").click(function(){
-              gonow(80);
               var radioValue = $("table#filelist input[name='option']:checked").val();            
               if(radioValue){
                 startFindAdx(radioValue);
               }else{
-                alert('no selection');                
-                //fetchdata();
+                alert('select a document');
               }      
-          });
+        });
 
         var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=search&action=normal&data=none';  
-            $('#upload-list #entries').html('<table id="filelist" class="table"></table>');
-            $('table#filelist').append('<thead />');
-            $('thead').append('<tr />');
-            $('thead tr').append('<th scope="col">Row</th>');
-            $('thead tr').append('<th scope="col">Filename</th>');
-            $('thead tr').append('<th scope="col">Date</th>');
-            $('table#filelist').append('<tbody />');
-                  
+                              
             $.ajax({
                   url: API_URL,
                   type: 'GET',
@@ -858,6 +849,14 @@
                       fileStr = JSON.stringify(data);
                       fileStr_ = fileStr.slice(1,-1);
                       fileArr = fileStr_.split(',');
+
+                      $('#upload-list #entries').html('<table id="filelist" class="table"></table>');
+                      $('table#filelist').append('<thead />');
+                      $('thead').append('<tr />');
+                      $('thead tr').append('<th scope="col">Row</th>');
+                      $('thead tr').append('<th scope="col">Filename</th>');
+                      $('thead tr').append('<th scope="col">Date</th>');
+                      $('table#filelist').append('<tbody />');
                                     
                       for(x in fileArr){
                         f = fileArr[x].replace(/"/g, '');    
@@ -872,7 +871,6 @@
                   }
             });
             
-            gonow(38);
       });
 
       
