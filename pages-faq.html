@@ -800,7 +800,8 @@
                     dataType: 'json',
                     headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                     success: function(data){
-                        $("#addresses").html('<span>Job Done</span>');   
+                        $("#addresses").html('<span>Job Done</span>');
+                        flynow();   
                     }
             });
         }
@@ -882,6 +883,13 @@
           duration: 20
         })  
       }, Cesium.ScreenSpaceEventType.LEFT_DOWN);
+
+      function flynow(){
+            viewer.camera.flyTo({
+              destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 1400),
+              duration: 20
+            });  
+      }
     
   </script>        
 </body>
