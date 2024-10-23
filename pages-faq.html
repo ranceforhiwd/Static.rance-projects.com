@@ -775,7 +775,7 @@
   <script src="documents/app.js"></script>
   
   <script>
-    $(document).ready(function(){
+    //$(document).ready(function(){
       var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=search&action=normal&data=none';  
     
         function startFindAdx(selectedPDF){
@@ -831,10 +831,8 @@
                       }
                   }
             });
-          });
+          //});
 
-  </script>
-  <script>
     //$(document).ready(function () { code-here  });
     setInterval(function () {
         var someval = Math.floor(Math.random() * 100)
@@ -842,7 +840,7 @@
       }, 15000) //Delay here = 15 seconds
   </script>
   <script type="module">
-    //$(function() {
+    $(function() {
       console.log( "ready!" );
       // Your access token can be found at: https://ion.cesium.com/tokens.
       // This is the default access token from your ion account
@@ -866,7 +864,7 @@
       // Add Cesium OSM Buildings, a global 3D buildings layer.
       const buildingTileset = await Cesium.createOsmBuildingsAsync();
       viewer.scene.primitives.add(buildingTileset);
-    //});
+    });
   </script>      
 </body>
 </html>
