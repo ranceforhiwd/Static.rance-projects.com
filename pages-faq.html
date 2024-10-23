@@ -849,12 +849,13 @@
     setInterval(function () {
         var someval = Math.floor(Math.random() * 100)
         $("#addresses").text("Checking for addresses:" + someval);
-        checkForAdx();
+        
     }, 15000); //Delay here = 15 seconds
 
     
     $('#addresses').on('DOMSubtreeModified', function(){
       alert('detected response');
+      checkForAdx();
     });
 </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
