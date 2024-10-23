@@ -22,6 +22,8 @@
       const buildingTileset = await Cesium.createOsmBuildingsAsync();
       viewer.scene.primitives.add(buildingTileset);
 
+      myButton = getElementById("adxbtn");
+
       // Create a custom event
       const myCustomEvent = new Cesium.Event();
 
