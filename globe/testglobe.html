@@ -7,6 +7,7 @@
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
 </head>
 <body>
+  <div id="messageContainer"></div>
   <div id="cesiumContainer"></div>
   <script type="module">
     
@@ -34,7 +35,7 @@
           duration:25,
           complete: function(){
             viewer.camera.flyTo({
-              destination:Cesium.Cartesian3.fromDegrees(35.2271, 80.8431, 900),
+              destination:Cesium.Cartesian3.fromDegrees( -80.8431, 35.2271, 900),
               orientation:{
                 heading:Cesium.Math.toRadians(0.0)
               },
@@ -53,19 +54,19 @@
           $.ajax({ 
             url: API_CHK, 
             type: 'GET', 
-            success: function(data){ 
-              
-              
+            success: function(data){               
+              $("#messageContainer").html('<span>messasge found</span>');
             }, 
             complete:function(data){ 
-              setTimeout(fetchdata,5000); 
+              setTimeout(fetchdata,5000);
+              $("messageContainer").html('<span>updated message</span>'); 
             } 
           }); 
     } 
   
     //setTimeout(fetchdata,5000);
 
-   // fetchdata();
+   fetchdata();
   </script>
  </div>
 </body>

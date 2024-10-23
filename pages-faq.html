@@ -790,25 +790,6 @@
       const buildingTileset = await Cesium.createOsmBuildingsAsync();
       viewer.scene.primitives.add(buildingTileset);
       
-      function gonow(x){
-            // Fly the camera to San Francisco at the given longitude, latitude, and height.
-          viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 11400),
-            orientation: {
-              heading:Cesium.Math.toRadians(0.0),
-            },
-            duration:25,
-            complete: function(){
-              viewer.camera.flyTo({
-                destination:Cesium.Cartesian3.fromDegrees(-80.8431,35.2271, 900),
-                orientation:{
-                  heading:Cesium.Math.toRadians(0.0)
-                },
-                duration:25
-              })
-            }
-          });
-        }
   </script>
   <script>
     $(document).ready(function(){  
@@ -833,8 +814,25 @@
               if(radioValue){
                 startFindAdx(radioValue);
               }else{
-                alert('select a document');
-              }      
+                      alert('select a document');
+                    // Fly the camera to San Francisco at the given longitude, latitude, and height.
+                    viewer.camera.flyTo({
+                      destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 11400),
+                      orientation: {
+                        heading:Cesium.Math.toRadians(0.0),
+                      },
+                      duration:25,
+                      complete: function(){
+                        viewer.camera.flyTo({
+                          destination:Cesium.Cartesian3.fromDegrees(-80.8431,35.2271, 900),
+                          orientation:{
+                            heading:Cesium.Math.toRadians(0.0)
+                          },
+                          duration:25
+                        })
+                      }
+                    });
+                  }      
         });
 
         var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=search&action=normal&data=none';  
