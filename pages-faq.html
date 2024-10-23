@@ -827,25 +827,7 @@
             });
         }
         
-        function fetchdata(){
-          var API_CHK = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=normal&data=none';  
-        
-          $.ajax({ 
-            url: API_CHK, 
-            type: 'GET', 
-            success: function(data){ 
-              // Perform operation on return value 
-              //alert(data);
-              
-            }, 
-            complete:function(data){ 
-              //setTimeout(fetchdata,5000); 
-            } 
-          }); 
-        } 
-  
-    //setTimeout(fetchdata,5000);
-
+       
         $("button#adxbtn").click(function(){
               gonow(80);
               var radioValue = $("table#filelist input[name='option']:checked").val();            
