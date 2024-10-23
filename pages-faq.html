@@ -775,6 +775,7 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="documents/app.js"></script>
+  <script src="globe/globe.js"></script>
   <script>
     $(document).ready(function(){
       var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=search&action=normal&data=none';  
@@ -831,7 +832,7 @@
                   }      
         });
 
-        function startApp(){ 
+  
           $.ajax({
                   url: API_URL,
                   type: 'GET',
@@ -861,9 +862,8 @@
                       }
                   }
             });
-        }          
+          });
 
-        startApp();
   </script>
         
 </body>
