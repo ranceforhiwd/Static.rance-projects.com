@@ -790,6 +790,20 @@
                     }
             });
         }
+
+        function checkForAdx(){
+            var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=normal&data=bibw';
+            
+            $.ajax({
+                    url: ADX_URL,
+                    type: 'GET',
+                    dataType: 'json',
+                    headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                    success: function(data){
+                        $("#addresses").html('<span>Job Done</span>');   
+                    }
+            });
+        }
         
         $("button#adxbtn").click(function(){
               var radioValue = $("table#filelist input[name='option']:checked").val();            
@@ -834,7 +848,8 @@
     
     setInterval(function () {
         var someval = Math.floor(Math.random() * 100)
-        $("#addresses").text("Checking for addresses:" + someval)
+        $("#addresses").text("Checking for addresses:" + someval);
+        checkForAdx();
     }, 15000); //Delay here = 15 seconds
 
     
