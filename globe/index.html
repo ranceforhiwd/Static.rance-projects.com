@@ -22,17 +22,17 @@
       const buildingTileset = await Cesium.createOsmBuildingsAsync();
       viewer.scene.primitives.add(buildingTileset);
 
-      //var handler = new Cesium.ScreenSpaceEventHandler(viewer.canvas);
+      var handler = new Cesium.ScreenSpaceEventHandler(viewer.canvas);
 
-          /*handler.setInputAction((click) => {
+          handler.setInputAction((click) => {
           // your code here
-              
-          }, Cesium.ScreenSpaceEventType.LEFT_DOWN);*/
-
-        button.addEventListener("click", viewer.camera.flyTo({
+          viewer.camera.flyTo({
               destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 1400),
               duration: 20
-            }));
+            })  
+          }, Cesium.ScreenSpaceEventType.LEFT_DOWN);
+
+        button.addEventListener("click", alert('button clicked'));
     
   </script>
 </head>

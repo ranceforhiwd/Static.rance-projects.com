@@ -839,9 +839,13 @@
         $("#addresses").text("Checking for addresses:" + someval)
       }, 15000) //Delay here = 15 seconds
   </script>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+  
   <script type="module">
-    $(function() {
+  
       console.log( "ready!" );
+
       // Your access token can be found at: https://ion.cesium.com/tokens.
       // This is the default access token from your ion account
 
@@ -850,21 +854,24 @@
       // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
       const viewer = new Cesium.Viewer('cesiumContainer', {
         terrain: Cesium.Terrain.fromWorldTerrain(),
-      });
-
-      // Fly the camera to San Francisco at the given longitude, latitude, and height.
-      viewer.camera.flyTo({
-        destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 400),
-        orientation: {
-          heading: Cesium.Math.toRadians(0.0),
-          pitch: Cesium.Math.toRadians(-15.0),
-        }
-      });
+      });   
 
       // Add Cesium OSM Buildings, a global 3D buildings layer.
       const buildingTileset = await Cesium.createOsmBuildingsAsync();
       viewer.scene.primitives.add(buildingTileset);
-    });
-  </script>      
+
+      var handler = new Cesium.ScreenSpaceEventHandler(viewer.canvas);
+
+          handler.setInputAction((click) => {
+          // your code here
+          viewer.camera.flyTo({
+              destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 1400),
+              duration: 20
+            })  
+          }, Cesium.ScreenSpaceEventType.LEFT_DOWN);
+
+        button.addEventListener("click", alert('button clicked'));
+    
+  </script>        
 </body>
 </html>
