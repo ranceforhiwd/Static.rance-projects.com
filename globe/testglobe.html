@@ -2,44 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <!-- Include the CesiumJS JavaScript and CSS files -->
-  <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
-  <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
 </head>
 <body>
   <div id="cesiumContainer"></div>
-  <script type="module">
-        var API_CHK = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=normal&data=none';
-    
-        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
-
-        // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
-        const viewer = new Cesium.Viewer('cesiumContainer', {
-          terrain: Cesium.Terrain.fromWorldTerrain(),
-        });
-        
-        // Add Cesium OSM Buildings, a global 3D buildings layer.
-        const buildingTileset = await Cesium.createOsmBuildingsAsync();
-        viewer.scene.primitives.add(buildingTileset);
-
-        // Fly the camera to San Francisco at the given longitude, latitude, and height.
-        viewer.camera.flyTo({
-          destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 11400),
-          orientation: {
-            heading:Cesium.Math.toRadians(0.0),
-          },
-          duration:25,
-          complete: function(){
-            viewer.camera.flyTo({
-              destination:Cesium.Cartesian3.fromDegrees( -80.8431, 35.2271, 900),
-              orientation:{
-                heading:Cesium.Math.toRadians(0.0)
-              },
-              duration:25
-            })
-          }
-        });
-  </script>
- </div>
+  <script src="globe.js"></script>
 </body>
 </html>
