@@ -776,7 +776,8 @@
   
   <script>
       var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=search&action=normal&data=none';  
-    
+      //import Cesium Module so flynow() can work when triggered
+      import {flynow} from './globe.js';
         function startFindAdx(selectedPDF){
             var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
             $('#addresses').html('<span>Search for addresses in '+selectedPDF+'</span>');
@@ -855,7 +856,6 @@
 
     
     $('#addresses').on('DOMSubtreeModified', function(){
-      alert('detected response');
       checkForAdx();
     });
 </script>
@@ -883,13 +883,6 @@
           duration: 20
         })  
       }, Cesium.ScreenSpaceEventType.LEFT_DOWN);
-
-      function flynow(){
-            viewer.camera.flyTo({
-              destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 1400),
-              duration: 20
-            });  
-      }
     
   </script>        
 </body>
