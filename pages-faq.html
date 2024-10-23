@@ -841,6 +841,19 @@
         $("#addresses").text("Checking for addresses:" + someval)
       }, 15000) //Delay here = 15 seconds
   </script>
-        
+  <script type="module">
+    //$(function() {
+      console.log( "ready!" );
+      // Your access token can be found at: https://ion.cesium.com/tokens.
+      // This is the default access token from your ion account
+
+      Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
+
+      // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+      const viewer = new Cesium.Viewer('cesiumContainer', {
+        terrain: Cesium.Terrain.fromWorldTerrain(),
+      });  
+    //});
+  </script>      
 </body>
 </html>
