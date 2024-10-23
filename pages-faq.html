@@ -770,29 +770,14 @@
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="https://sdk.amazonaws.com/js/aws-sdk-2.813.0.min.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-
+  <!-- Include the CesiumJS JavaScript and CSS files -->
+  <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="documents/app.js"></script>
-    
-  <!-- Include the CesiumJS JavaScript and CSS files -->
-  <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <script type="module">
-        
-      Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
-
-      // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
-      const viewer = new Cesium.Viewer('cesiumContainer', {
-        terrain: Cesium.Terrain.fromWorldTerrain(),
-      });    
-
-      // Add Cesium OSM Buildings, a global 3D buildings layer.
-      const buildingTileset = await Cesium.createOsmBuildingsAsync();
-      viewer.scene.primitives.add(buildingTileset);
-      
-  </script>
-  <script>
-    $(document).ready(function(){  
+    $(document).ready(function(){
+      var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=search&action=normal&data=none';  
     
         function startFindAdx(selectedPDF){
             var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
@@ -814,7 +799,18 @@
               if(radioValue){
                 startFindAdx(radioValue);
               }else{
-                      alert('select a document');
+                    alert('select a document');
+                    Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiJkNjViMzZhNS00MGJlLTQ4YTktOWUzNS1mYjNkZjNkYjViMmYiLCJpZCI6MzQyMjcsImlhdCI6MTYwMDAzNTkxMX0.EQBtegHNt-HolrydRiNV0gD75tu0cbpo57K-Hwfcu4E';
+
+                    // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
+                    const viewer = new Cesium.Viewer('cesiumContainer', {
+                      terrain: Cesium.Terrain.fromWorldTerrain(),
+                    });    
+
+                    // Add Cesium OSM Buildings, a global 3D buildings layer.
+                    const buildingTileset = await Cesium.createOsmBuildingsAsync();
+                    viewer.scene.primitives.add(buildingTileset);
+
                     // Fly the camera to San Francisco at the given longitude, latitude, and height.
                     viewer.camera.flyTo({
                       destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 11400),
@@ -835,14 +831,12 @@
                   }      
         });
 
-        var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=search&action=normal&data=none';  
-                              
-            $.ajax({
+        function startApp(){ 
+          $.ajax({
                   url: API_URL,
                   type: 'GET',
                   dataType: 'json',
-                  headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'
-          },
+  headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                   success: function(data){                              
                       fileStr = JSON.stringify(data);
                       fileStr_ = fileStr.slice(1,-1);
@@ -865,13 +859,11 @@
                               '</tr>';
                             $('tbody').append(tablerow);
                       }
-                      
                   }
             });
-            
-      });
+        }          
 
-      
+        startApp();
   </script>
         
 </body>
