@@ -1,5 +1,5 @@
 // The URL on your server where CesiumJS's static files are hosted.
-window.CESIUM_BASE_URL = '/';
+window.CESIUM_BASE_URL = 'cesium';
 
 import { Cartesian3, createOsmBuildingsAsync, Ion, Math as CesiumMath, Terrain, Viewer } from 'cesium';
 import "cesium/Build/Cesium/Widgets/widgets.css";
