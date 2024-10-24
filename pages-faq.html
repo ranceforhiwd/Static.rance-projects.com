@@ -793,7 +793,7 @@
         }
 
         function checkForAdx(){
-            var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=normal&data=bibw';
+            var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=checkadx&data=bibw';
             
             $.ajax({
                     url: ADX_URL,
@@ -801,8 +801,7 @@
                     dataType: 'json',
                     headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                     success: function(data){
-                        $("#addresses").html('<span>Job Done</span>');
-                        flynow();   
+                        $("#addresses").html('<span>Job Done</span>');   
                     }
             });
         }
@@ -858,6 +857,8 @@
     $('#addresses').on('DOMSubtreeModified', function(){
       checkForAdx();
     });
+
+     flynow();
 </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
