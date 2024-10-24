@@ -815,7 +815,7 @@
   </script>
   <script>  
       //import Cesium Module so flynow() can work when triggered
-      //import {flynow} from './globe.js';
+      import {flynow} from './globe.js';
         function startFindAdx(selectedPDF){
             var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
             $('#addresses').html('<span>Search for addresses in '+selectedPDF+'</span>');
@@ -850,6 +850,7 @@
                 startFindAdx(radioValue);
               }else{
                     alert('select a document');
+                    flynow()
                   }      
         });  
     
