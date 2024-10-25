@@ -789,7 +789,7 @@
         }
 
         function checkForAdx(){
-            var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=checkadx&data=bibw';
+            var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=checkadx&data=none';
             
             $.ajax({
                     url: ADX_URL,
@@ -858,7 +858,7 @@
         });  
     
         $('#addresses').on('DOMSubtreeModified', function(){
-            //checkForAdx();
+            checkForAdx();
         });     
 </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
