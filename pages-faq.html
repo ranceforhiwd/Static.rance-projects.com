@@ -797,7 +797,8 @@
                     dataType: 'json',
                     headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                     success: function(data){
-                        $("#addresses").html('<span>Job Done</span>');   
+                        $("#addresses").html('<span>Job Done</span>');
+                        $("#addresses").append("<p>"+data+"</p>");   
                     }
             });
         }
