@@ -832,21 +832,11 @@
                       '</tr>';
                     $('tbody').append(tablerow);
               }
-
-              setInterval(function () {
-                  var someval = Math.floor(Math.random() * 100);
-                  //update the address div that will trigger a check for adx
-                  $("#addresses").text("Checking for addresses:" + someval);
-              }, 35000); //Delay here = 35 seconds
-
           }
-    });
+        });
     
       //import Cesium Module so flynow() can work when triggered
-      //import {flynow} from './globe.js';
-        
-
-        
+      //import {flynow} from './globe.js';      
         
         $("button#adxbtn").click(function(){
               var radioValue = $("table#filelist input[name='option']:checked").val();            
@@ -860,7 +850,13 @@
     
         $('#addresses').on('DOMSubtreeModified', function(){
             checkForAdx();
-        });     
+        });
+        
+        setInterval(function () {
+            var someval = Math.floor(Math.random() * 100);
+            //update the address div that will trigger a check for adx
+            $("#addresses").text("Checking for addresses:" + someval);
+        }, 35000); //Delay here = 35 seconds
 </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
@@ -885,8 +881,7 @@
           destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 1400),
           duration: 20
         })  
-      }, Cesium.ScreenSpaceEventType.LEFT_DOWN);
-    
+      }, Cesium.ScreenSpaceEventType.LEFT_DOWN);    
   </script>        
 </body>
 </html>
