@@ -797,8 +797,8 @@
                     dataType: 'json',
                     headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                     success: function(data){
-                        $("#addresses").html('<span>Job Done</span>');
-                        $("#addresses").append("<p>"+data+"</p>");   
+                        $("#addresses").html('<p>Job Done</p>');
+                        $("#addresses").append("<p>"+JSON.stringify(data)+"</p>");   
                     }
             });
         }
@@ -837,7 +837,7 @@
                   var someval = Math.floor(Math.random() * 100);
                   //update the address div that will trigger a check for adx
                   $("#addresses").text("Checking for addresses:" + someval);
-              }, 30000); //Delay here = 30 seconds
+              }, 35000); //Delay here = 35 seconds
 
           }
     });
