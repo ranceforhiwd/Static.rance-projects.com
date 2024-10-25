@@ -774,6 +774,34 @@
   <script src="assets/js/main.js"></script>
   <script src="documents/app.js"></script>
   <script>
+        function startFindAdx(selectedPDF){
+            var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
+            $('#addresses').html('<span>Search for addresses in '+selectedPDF+'</span>');
+            $.ajax({
+                    url: ADX_URL,
+                    type: 'GET',
+                    dataType: 'json',
+                    headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                    success: function(data){
+                        $("#addresses").html('<span>Job Done</span>');   
+                    }
+            });
+        }
+
+        function checkForAdx(){
+            var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=checkadx&data=bibw';
+            
+            $.ajax({
+                    url: ADX_URL,
+                    type: 'GET',
+                    dataType: 'json',
+                    headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                    success: function(data){
+                        $("#addresses").html('<span>Job Done</span>');   
+                    }
+            });
+        }
+        
         var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=search&action=normal&data=none';
         $.ajax({
           url: API_URL,
@@ -805,44 +833,19 @@
               }
 
               setInterval(function () {
-                  var someval = Math.floor(Math.random() * 100)
+                  var someval = Math.floor(Math.random() * 100);
+                  //update the address div that will trigger a check for adx
                   $("#addresses").text("Checking for addresses:" + someval);
-                  
-              }, 15000); //Delay here = 15 seconds
+              }, 30000); //Delay here = 30 seconds
 
           }
     });
-  </script>
-  <script>  
+    
       //import Cesium Module so flynow() can work when triggered
-      import {flynow} from './globe.js';
-        function startFindAdx(selectedPDF){
-            var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
-            $('#addresses').html('<span>Search for addresses in '+selectedPDF+'</span>');
-            $.ajax({
-                    url: ADX_URL,
-                    type: 'GET',
-                    dataType: 'json',
-                    headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-                    success: function(data){
-                        $("#addresses").html('<span>Job Done</span>');   
-                    }
-            });
-        }
+      //import {flynow} from './globe.js';
+        
 
-        function checkForAdx(){
-            var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=checkadx&data=bibw';
-            
-            $.ajax({
-                    url: ADX_URL,
-                    type: 'GET',
-                    dataType: 'json',
-                    headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-                    success: function(data){
-                        $("#addresses").html('<span>Job Done</span>');   
-                    }
-            });
-        }
+        
         
         $("button#adxbtn").click(function(){
               var radioValue = $("table#filelist input[name='option']:checked").val();            
