@@ -799,7 +799,8 @@
                     headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                     success: function(data){
                         $("#addresses").html('<p>Job Done</p>');
-                        $("#addresses").append("<p>"+JSON.stringify(data)+"</p>");   
+                        $("#addresses").append("<p>"+JSON.stringify(data)+"</p>");
+                        flynow(-122.4175, 37.655, 1400);   
                     }
             });
         }
@@ -885,7 +886,7 @@
 
       $('#addresses').on('DOMSubtreeModified', function(){
             checkForAdx();
-            flynow(-122.4175, 37.655, 1400);
+            
         });
   </script>        
 </body>
