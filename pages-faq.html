@@ -773,7 +773,6 @@
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="documents/app.js"></script>
-  <script src="globe/globe.js"></script>
   <script>
         function startFindAdx(selectedPDF){
             var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
@@ -884,6 +883,26 @@
       $('#globeloc').on('DOMSubtreeModified', function(){
           flynow(-122.4175, 37.655, 1400);            
       });
+  </script>
+  <script>
+    function getLatLngFromAddress(address) {
+      const geocoder = new google.maps.Geocoder();
+
+      geocoder.geocode({ address: address }, (results, status) => {
+        if (status === "OK") {
+          const lat = results[0].geometry.location.lat();
+          const lng = results[0].geometry.location.lng();
+          alert(`Latitude: ${lat}, Longitude: ${lng}`);
+          console.log(`Latitude: ${lat}, Longitude: ${lng}`);
+        } else {
+          console.error(`Geocoding failed: ${status}`);
+        }
+      });
+    }
+
+    // Example usage
+    getLatLngFromAddress("1600 Amphitheatre Parkway, Mountain View, CA");
+
   </script>        
 </body>
 </html>
