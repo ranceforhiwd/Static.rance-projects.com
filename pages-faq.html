@@ -798,9 +798,9 @@
                     dataType: 'json',
                     headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                     success: function(data){
-                        $("#addresses").html('<p>Job Done</p>');
-                        $("#addresses").append("<p>"+JSON.stringify(data)+"</p>");
-                        flynow(-122.4175, 37.655, 1400);   
+                        //$("#addresses").html('<p>Job Done</p>');
+                        $("#addresses").html("<p>"+JSON.stringify(data)+"</p>");
+                           
                     }
             });
         }
@@ -850,7 +850,7 @@
             var someval = Math.floor(Math.random() * 100);
             //update the address div that will trigger a check for adx
             $("#addresses").text("Checking for addresses:" + someval);
-        }, 50000); //Delay here = 50 seconds
+        }, 10000); //Delay here = 10 seconds
 </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
@@ -876,7 +876,8 @@
       }
 
       $('#addresses').on('DOMSubtreeModified', function(){
-            checkForAdx();            
+            checkForAdx();
+            flynow(-122.4175, 37.655, 1400);            
         });
   </script>        
 </body>
