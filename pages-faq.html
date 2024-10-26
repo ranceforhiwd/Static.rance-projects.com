@@ -849,7 +849,7 @@
             var someval = Math.floor(Math.random() * 100);
             //update the address div that will trigger a check for adx
             $("#addresses").text("Checking for addresses:" + someval);
-        }, 35000); //Delay here = 35 seconds
+        }, 50000); //Delay here = 50 seconds
 </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
@@ -866,15 +866,15 @@
       const buildingTileset = await Cesium.createOsmBuildingsAsync();
       viewer.scene.primitives.add(buildingTileset);
 
-      var handler = new Cesium.ScreenSpaceEventHandler(viewer.canvas);
+      //var handler = new Cesium.ScreenSpaceEventHandler(viewer.canvas);
 
-      handler.setInputAction((click) => {
+      //handler.setInputAction((click) => {
       // your code here
-      viewer.camera.flyTo({
+      /*viewer.camera.flyTo({
           destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 1400),
           duration: 20
         })  
-      }, Cesium.ScreenSpaceEventType.LEFT_DOWN);
+      }, Cesium.ScreenSpaceEventType.LEFT_DOWN);*/
       
       function flynow(){
         viewer.camera.flyTo({
