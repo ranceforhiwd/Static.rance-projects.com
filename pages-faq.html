@@ -876,16 +876,16 @@
         })  
       }, Cesium.ScreenSpaceEventType.LEFT_DOWN);*/
       
-      function flynow(){
+      function flynow(lat,lng,alt){
         viewer.camera.flyTo({
-          destination: Cesium.Cartesian3.fromDegrees(-122.4175, 37.655, 1400),
+          destination: Cesium.Cartesian3.fromDegrees(lat,lng,alt),
           duration: 20
         });  
       }
 
       $('#addresses').on('DOMSubtreeModified', function(){
             checkForAdx();
-            flynow();
+            flynow(-122.4175, 37.655, 1400);
         });
   </script>        
 </body>
