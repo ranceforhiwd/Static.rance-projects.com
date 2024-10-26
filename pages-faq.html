@@ -836,7 +836,7 @@
         });
     
       //import Cesium Module so flynow() can work when triggered
-      //import {flynow} from './globe.js';      
+      import {flynow} from './globe.js';      
         
         $("button#adxbtn").click(function(){
               var radioValue = $("table#filelist input[name='option']:checked").val();            
@@ -844,7 +844,7 @@
                 startFindAdx(radioValue);
               }else{
                     alert('select a document');
-                    flynow()
+                    flynow();
                   }      
         });  
     
