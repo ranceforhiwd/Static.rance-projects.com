@@ -777,14 +777,14 @@
   <script>
         function startFindAdx(selectedPDF){
             var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
-            $('#addresses').html('<span>Search for addresses in '+selectedPDF+'</span>');
+            //$('#addresses').html('<span>Search for addresses in '+selectedPDF+'</span>');
             $.ajax({
                     url: ADX_URL,
                     type: 'GET',
                     dataType: 'json',
                     headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                     success: function(data){
-                        $("#addresses").html('<span>Job Done</span>');   
+                        //$("#addresses").html('<span>Job Done</span>');   
                     }
             });
         }
@@ -799,7 +799,7 @@
                     headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                     success: function(data){
                         //$("#addresses").html('<p>Job Done</p>');
-                        $("#addresses").html("<p>"+JSON.stringify(data)+"</p>");
+                        $("#globeloc").html("<p>"+JSON.stringify(data)+"</p>");
                            
                     }
             });
@@ -878,9 +878,12 @@
       }
 
       $('#addresses').on('DOMSubtreeModified', function(){
-            checkForAdx();
-            flynow(-122.4175, 37.655, 1400);            
+            checkForAdx();            
         });
+
+      $('#adxloc').on('DOMSubtreeModified', function(){
+          flynow(-122.4175, 37.655, 1400);            
+      });
   </script>        
 </body>
 </html>
