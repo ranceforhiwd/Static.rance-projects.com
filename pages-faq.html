@@ -869,10 +869,17 @@
 
 
       function flynow(lat,lng,alt){
-       
         viewer.camera.flyTo({
           destination: Cesium.Cartesian3.fromDegrees(lat,lng,alt),
-          duration: 15
+          duration: 15,
+          easingFunction: Cesium.EasingFunction.QUADRATIC_IN_OUT,
+          complete: function(){
+            viewer.camera.flyTo({
+              destination: Cesium.Cartesian3.fromDegrees(-80.843124,35.227085,900),
+              duration: 15,
+              easingFunction: Cesium.EasingFunction.QUADRATIC_IN_OUT
+            })
+          }
         });  
       }
 
