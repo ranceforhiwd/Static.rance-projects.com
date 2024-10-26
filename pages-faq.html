@@ -850,7 +850,7 @@
             var someval = Math.floor(Math.random() * 100);
             //update the address div that will trigger a check for adx
             $("#addresses").text("Checking for addresses:" + someval);
-        }, 10000); //Delay here = 10 seconds
+        }, 20000); //Delay here = 10 seconds
 </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
@@ -873,7 +873,7 @@
        
         viewer.camera.flyTo({
           destination: Cesium.Cartesian3.fromDegrees(lat,lng,alt),
-          duration: 20
+          duration: 15
         });  
       }
 
