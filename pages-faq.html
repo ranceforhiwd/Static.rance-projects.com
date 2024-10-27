@@ -887,14 +887,12 @@
         });
       }
 
-      fly(coords2, coords1)
-
       $('#addresses').on('DOMSubtreeModified', function(){
             checkForAdx();            
       });
 
       $('#globeloc').on('DOMSubtreeModified', function(){
-          flynow(-122.4175, 37.655, 1400);            
+        fly(coords2, coords1);            
       });
   </script>        
 </body>
