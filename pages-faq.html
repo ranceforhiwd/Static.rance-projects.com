@@ -842,7 +842,8 @@
         $("button#adxbtn").click(function(){
               var radioValue = $("table#filelist input[name='option']:checked").val();            
               if(radioValue){
-                startFindAdx(radioValue);
+                //startFindAdx(radioValue);
+                checkForAdx();
               }else{
                     alert('select a document');
                   }      
