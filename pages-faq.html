@@ -869,7 +869,7 @@
       coords1 = [-80.843124,35.227085,500,20.0,-35.0];
       corrds2 = [-80.843124,35.227085,1000,0.0,0.0];
 
-      function fly(c, d){
+      function fly(c){
         viewer.camera.flyTo({
           destination: Cesium.Cartesian3.fromDegrees(c[0], c[1], c[2]),
           duration:20,
@@ -880,9 +880,7 @@
           },
           easingfunction: Cesium.EasingFunction.QUADRATIC_IN_OUT,
           complete: function(){
-            if(d){
-              fly(d);
-            }
+            
           }
         });
       }
@@ -892,7 +890,7 @@
       });
 
       $('#globeloc').on('DOMSubtreeModified', function(){
-        fly(coords2, coords1);            
+        fly(coords2);            
       });
   </script>        
 </body>
