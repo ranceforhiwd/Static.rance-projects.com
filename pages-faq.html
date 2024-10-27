@@ -783,7 +783,8 @@
                     dataType: 'json',
                     headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                     success: function(data){
-                        //$("#addresses").html('<span>Job Done</span>');   
+                      var someval = Math.floor(Math.random() * 100);
+                      $("#addresses").text("Checking for addresses:" + someval);   
                     }
             });
         }
@@ -845,11 +846,11 @@
                   }      
         });  
            
-        setInterval(function () {
-            var someval = Math.floor(Math.random() * 100);
+        /*setInterval(function () {
+            
             //update the address div that will trigger a check for adx
-            $("#addresses").text("Checking for addresses:" + someval);
-        }, 50000); //Delay here = 10 seconds
+            
+        }, 50000);*/ //Delay here = 10 seconds
 </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
