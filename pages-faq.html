@@ -783,7 +783,8 @@
                     dataType: 'json',
                     headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                     success: function(data){
-                        
+                      var someval = Math.floor(Math.random() * 100);
+                      $("#addresses").text("Addresses found:" + someval);
                     }
             });
         }
@@ -840,8 +841,6 @@
               var radioValue = $("table#filelist input[name='option']:checked").val();            
               if(radioValue){
                 startFindAdx(radioValue);
-                var someval = Math.floor(Math.random() * 100);
-                $("#addresses").text("Addresses found:" + someval);
               }else{
                     alert('select a document');
                   }      
