@@ -874,10 +874,10 @@
           duration: 20,
           easingFunction: Cesium.EasingFunction.QUADRATIC_IN_OUT,
           complete: function(){
-            setTimeout(function(){}, 4500);
+        
             viewer.camera.flyTo({
               destination: Cesium.Cartesian3.fromDegrees(-80.843124,35.227085,1000),
-              duration: 20,
+              duration: 25,
               easingFunction: Cesium.EasingFunction.QUADRATIC_IN_OUT,
               complete: function(){
                 viewer.camera.flyTo({
@@ -891,7 +891,7 @@
                   easingFunction:Cesium.EasingFunction.QUADRATIC_IN_OUT,
                   complete: function(){
                     viewer.camera.flyTo({
-                      destination: Cesium.Cartesian3.fromDegrees(-80.843124,35.227085,350),
+                      destination: Cesium.Cartesian3.fromDegrees(-80.843124,35.227085,60),
                       duration:20,
                       orientation:{
                         heading:Cesium.Math.toRadians(80.0),
