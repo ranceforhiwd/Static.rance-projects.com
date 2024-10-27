@@ -842,8 +842,7 @@
         $("button#adxbtn").click(function(){
               var radioValue = $("table#filelist input[name='option']:checked").val();            
               if(radioValue){
-                //startFindAdx(radioValue);
-                checkForAdx();
+                startFindAdx(radioValue);                
               }else{
                     alert('select a document');
                   }      
@@ -891,7 +890,7 @@
       });
 
       $('#globeloc').on('DOMSubtreeModified', function(){
-        fly([-80.843124,35.227085,1000,0.0,0.0]);            
+        fly(70);            
       });
   </script>        
 </body>
