@@ -776,7 +776,7 @@
   <script>
         function startFindAdx(selectedPDF){
             var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
-            //$('#addresses').html('<span>Search for addresses in '+selectedPDF+'</span>');
+            
             $.ajax({
                     url: ADX_URL,
                     type: 'GET',
@@ -797,45 +797,46 @@
                     type: 'GET',
                     dataType: 'json',
                     headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-                    success: function(data){
-                        //$("#addresses").html('<p>Job Done</p>');
-                        $("#globeloc").html("<p>"+JSON.stringify(data)+"</p>");
-                           
+                    success: function(data){                        
+                        $("#globeloc").html("<p>"+JSON.stringify(data)+"</p>");                           
                     }
             });
         }
         
-        var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=search&action=normal&data=none';
-        $.ajax({
-          url: API_URL,
-          type: 'GET',
-          dataType: 'json',
-              headers: {'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': '*'},
-          success: function(data){                              
-              fileStr = JSON.stringify(data);
-              fileStr_ = fileStr.slice(1,-1);
-              fileArr = fileStr_.split(',');
+        function init(){
+          var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=search&action=normal&data=none';
+            $.ajax({
+              url: API_URL,
+              type: 'GET',
+              dataType: 'json',
+                  headers: {'Content-Type': 'application/json',
+                  'Access-Control-Allow-Origin': '*'},
+              success: function(data){                              
+                  fileStr = JSON.stringify(data);
+                  fileStr_ = fileStr.slice(1,-1);
+                  fileArr = fileStr_.split(',');
 
-              $('#upload-list #entries').html('<table id="filelist" class="table"></table>');
-              $('table#filelist').append('<thead />');
-              $('thead').append('<tr />');
-              $('thead tr').append('<th scope="col">Row</th>');
-              $('thead tr').append('<th scope="col">Filename</th>');
-              $('thead tr').append('<th scope="col">Date</th>');
-              $('table#filelist').append('<tbody />');
-                            
-              for(x in fileArr){
-                f = fileArr[x].replace(/"/g, '');    
-                tablerow = '<tr>' +
-                      '<th scope="row"><input class="form-check-input" type="radio" name="option" id="'+f+'" value="'+f+'"></th>' +
-                      '<td>'+f+'</td>' +
-                      '<td>2024-10-17</td>' +
-                      '</tr>';
-                    $('tbody').append(tablerow);
+                  $('#upload-list #entries').html('<table id="filelist" class="table"></table>');
+                  $('table#filelist').append('<thead />');
+                  $('thead').append('<tr />');
+                  $('thead tr').append('<th scope="col">Row</th>');
+                  $('thead tr').append('<th scope="col">Filename</th>');
+                  $('thead tr').append('<th scope="col">Date</th>');
+                  $('table#filelist').append('<tbody />');
+                                
+                  for(x in fileArr){
+                    f = fileArr[x].replace(/"/g, '');    
+                    tablerow = '<tr>' +
+                          '<th scope="row"><input class="form-check-input" type="radio" name="option" id="'+f+'" value="'+f+'"></th>' +
+                          '<td>'+f+'</td>' +
+                          '<td>2024-10-17</td>' +
+                          '</tr>';
+                        $('tbody').append(tablerow);
+                  }
               }
-          }
-        });    
+            });
+        }
+         
         
         $("button#adxbtn").click(function(){
               var radioValue = $("table#filelist input[name='option']:checked").val();            
@@ -845,12 +846,8 @@
                     alert('select a document');
                   }      
         });  
-           
-        /*setInterval(function () {
-            
-            //update the address div that will trigger a check for adx
-            
-        }, 50000);*/ //Delay here = 10 seconds
+
+        init();
 </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
@@ -914,26 +911,6 @@
       $('#globeloc').on('DOMSubtreeModified', function(){
           flynow(-122.4175, 37.655, 1400);            
       });
-  </script>
-  <script>
-    function getLatLngFromAddress(address) {
-      const geocoder = new google.maps.Geocoder();
-
-      geocoder.geocode({ address: address }, (results, status) => {
-        if (status === "OK") {
-          const lat = results[0].geometry.location.lat();
-          const lng = results[0].geometry.location.lng();
-          alert(`Latitude: ${lat}, Longitude: ${lng}`);
-          console.log(`Latitude: ${lat}, Longitude: ${lng}`);
-        } else {
-          console.error(`Geocoding failed: ${status}`);
-        }
-      });
-    }
-
-    // Example usage
-    getLatLngFromAddress("1600 Amphitheatre Parkway, Mountain View, CA");
-
   </script>        
 </body>
 </html>
