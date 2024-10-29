@@ -866,9 +866,9 @@
       const buildingTileset = await Cesium.createOsmBuildingsAsync();
       viewer.scene.primitives.add(buildingTileset);
 
-      /*$('#addresses').on('DOMSubtreeModified', function(){
+      $('#addresses').on('DOMSubtreeModified', function(){
             checkForAdx();           
-      });*/
+      });
 
       $('#globeloc').on('DOMSubtreeModified', function(){
         viewer.camera.flyTo({
