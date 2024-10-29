@@ -790,8 +790,8 @@
             });
         }
 
-        function checkForAdx(){
-            var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=checkadx&data=none';
+        function checkForAdx(selected_pdf){
+            var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=checkadx&data='+selected_pdf;
             
             $.ajax({
                     url: ADX_URL,
