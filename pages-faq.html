@@ -842,8 +842,7 @@
         $("button#adxbtn").click(function(){
               var radioValue = $("table#filelist input[name='option']:checked").val();            
               if(radioValue){
-                //startFindAdx(radioValue);
-                checkForAdx(radioValue);                
+                  checkForAdx(radioValue);                
               }else{
                     alert('select a document');
                   }      
@@ -867,7 +866,7 @@
       viewer.scene.primitives.add(buildingTileset);
 
       $('#addresses').on('DOMSubtreeModified', function(){
-            checkForAdx();           
+            //checkForAdx();           
       });
 
       $('#globeloc').on('DOMSubtreeModified', function(){
