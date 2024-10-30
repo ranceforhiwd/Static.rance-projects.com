@@ -34,19 +34,3 @@ document.getElementById('upload-form').addEventListener('submit', (event) => {
         }
     });
 });
-
-function startFindAdx(selectedPDF){
-    var someval = Math.floor(Math.random() * 100);
-    $("#addresses").text("Addresses found:" + someval);
-    var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=findadx&action=normal&data='+selectedPDF;
-    
-    $.ajax({
-            url: ADX_URL,
-            type: 'GET',
-            dataType: 'json',
-            headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-            success: function(data){
-              
-            }
-    });
-}

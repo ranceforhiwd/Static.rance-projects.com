@@ -733,25 +733,23 @@ function init(){
           fileStr = JSON.stringify(data);
           fileStr_ = fileStr.slice(1,-1);
           fileArr = fileStr_.split(',');
-                        
+          k = 1;              
           for(x in fileArr){
             f = fileArr[x].replace(/"/g, '');
             n = f.split('~');
             pdfname = n[0];
-            group = '<div class="accordion accordion-flush" id="faq-group-1"></div>';; 
-            item = '<div class="accordion-item">'+
-                '<h2 class="accordion-header">'+
-                  '<button id="faqu" class="accordion-button collapsed" data-bs-target="#faqsOne-1" type="button" data-bs-toggle="collapse"></button>'+
-                '</h2>'+
-                '<div id="faqsOne-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">'+
-                  '<div class="accordion-body">'+
-                    '<ul id="faqu"></ul>'+
-                  '</div>'+
-                '</div>'+
-              '</div>'; 
-            
-
-            $('button#faqu').html('<span>'+pdfname+'</span>');
+             
+            item = '<div class="accordion accordion-flush" id="faq-group-'+k+'"><div class="accordion-item">'+
+                      '<h2 class="accordion-header">'+
+                        '<button id="faqu"'+k+' class="accordion-button collapsed" data-bs-target="#faqsOne-'+k+'" type="button" data-bs-toggle="collapse">'+pdfname+'</button>'+
+                      '</h2>'+
+                      '<div id="faqsOne-'+k+'" class="accordion-collapse collapse" data-bs-parent="#faq-group-'+k+'">'+
+                        '<div class="accordion-body">'+
+                          '<ul id="faqu'+k+'"></ul>'+
+                        '</div>'+
+                      '</div>'+
+                    '</div>';
+                     
 
             tablerow = '<table><tr>' +
                   '<th scope="row"><input class="form-check-input" type="radio" name="option" id="'+f+'" value="'+f+'"></th>' +
@@ -759,7 +757,7 @@ function init(){
                   '<td>2024-10-17</td>' +
                   '</tr></table>';
 
-            $('ul#faqu').append('<li>'+tablerow+'</li>');
+            //$('ul#faqu').append('<li>'+tablerow+'</li>');
             $('#entries').append(item);
           }
       }
