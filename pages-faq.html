@@ -540,100 +540,7 @@
           </div>
           
           <!-- F.A.Q Group 1 -->
-          <div class="card">
-            <div class="card-body">
-              <h5 class="card-title">Components</h5>
-
-              <div class="accordion accordion-flush" id="faq-group-1">
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-1" type="button" data-bs-toggle="collapse">
-                      Route53 - CloudFront
-                    </button>
-                  </h2>
-                  <div id="faqsOne-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
-                    <div class="accordion-body">
-                      <ul>
-                        <li>Route53 - DNS configuration for the static website using a subdomain</li>
-                        <li>CloudFront - CDN Distribution for availability</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-1" type="button" data-bs-toggle="collapse">
-                      S3 Buckets
-                    </button>
-                  </h2>
-                  <div id="faqsOne-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
-                    <div class="accordion-body">
-                      S3 buckets are configured to filter for specific file types (PDF). Data is intentially saved in separate buckets to decouple processed data while converting files.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-2" type="button" data-bs-toggle="collapse">
-                      Event Bridge
-                    </button>
-                  </h2>
-                  <div id="faqsOne-2" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
-                    <div class="accordion-body">
-                      Eventbridge rules trigger various processes during exectution based on data workflows, formats, and values. Eventbridge replaces a lot of if/else code and event listeners.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-3" type="button" data-bs-toggle="collapse">
-                      ECS Tasks - Fargate Configuration
-                    </button>
-                  </h2>
-                  <div id="faqsOne-3" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
-                    <div class="accordion-body">
-                      <p>Docker Containers</p>
-                      <ul>
-                        <li>Convert PDF files into PNGs using PHP & Ghostscript</li>
-                        <li>OCR PNG files using Tesseract by Google</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-4" type="button" data-bs-toggle="collapse">
-                      SQS
-                    </button>
-                  </h2>
-                  <div id="faqsOne-4" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
-                    <div class="accordion-body">
-                      Throttle the process using queues containing messages for containers to use as parameters.
-                    </div>
-                  </div>
-                </div>
-
-                <div class="accordion-item">
-                  <h2 class="accordion-header">
-                    <button class="accordion-button collapsed" data-bs-target="#faqsOne-5" type="button" data-bs-toggle="collapse">
-                      DynamoDb
-                    </button>
-                  </h2>
-                  <div id="faqsOne-5" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
-                    <div class="accordion-body">
-                      Using NOSQL option for scanned text data also leveraging DynamoDb scaling features along with the ability to trigger ohter processes based on record formats.
-                    </div>
-                  </div>
-                </div>
-
-              </div>
-
-            </div>
-          </div><!-- End F.A.Q Group 1 -->
+          <!-- End F.A.Q Group 1 -->
 
         </div>
       </div>
@@ -751,7 +658,37 @@
       <div class="card-footer">
         Github Project Link
       </div>
-    </div><!-- End Card with header and footer -->       
+    </div>
+    <!-- Test Block---------->
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Files</h5>
+        <form id="myform">
+          <button id="adxbtn" type="button" class="btn btn-outline-info">Find Address</button>
+          <div id="entries"></div>
+          <div class="accordion accordion-flush" id="faq-group-1">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" data-bs-target="#faqsOne-1" type="button" data-bs-toggle="collapse">
+                  PDF Filename
+                </button>
+              </h2>
+              <div id="faqsOne-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">
+                <div class="accordion-body">
+                  <ul>
+                    <li>pngfilename 1</li>
+                    <li>pngfilename 2</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+        
+                  
+          </div>
+        </form>
+        </div>
+    </div>
+    <!-- End Card with header and footer -->       
   
     <!-- Cesium Card -->
     <div id="globe" class="card">
