@@ -761,24 +761,19 @@ function init(){
           fileStr = JSON.stringify(data);
           fileStr_ = fileStr.slice(1,-1);
           fileArr = fileStr_.split(',');
-
-          $('#upload-list #entries').html('<table id="filelist" class="table"></table>');
-          $('table#filelist').append('<thead />');
-          $('thead').append('<tr />');
-          $('thead tr').append('<th scope="col">Row</th>');
-          $('thead tr').append('<th scope="col">Filename</th>');
-          $('thead tr').append('<th scope="col">Date</th>');
-          $('table#filelist').append('<tbody />');
                         
           for(x in fileArr){
             f = fileArr[x].replace(/"/g, '');
-            $('ul#faqu').append('<li>'+f+'</li>');    
-            tablerow = '<tr>' +
+            n = f.split('~');
+            pdfname = n[0];
+            $('button#faqu').html('<span>'+pdfname+'</span>');
+            tablerow = '<table><tr>' +
                   '<th scope="row"><input class="form-check-input" type="radio" name="option" id="'+f+'" value="'+f+'"></th>' +
                   '<td>'+f+'</td>' +
                   '<td>2024-10-17</td>' +
-                  '</tr>';
-                $('tbody').append(tablerow);
+                  '</tr></table>';
+
+            $('ul#faqu').append('<li>'+tablerow+'</li>');
           }
       }
     });
