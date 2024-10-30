@@ -644,21 +644,7 @@
     </div>
     
     <!-- Card -->
-    <div id="upload-list" class="card">
-      <div class="card-header">
-        <h5 class="card-title">PDF Files</h5>
-      </div>
-      <div class="card-body">  
-        <form id="myform">
-          <button id="adxbtn" type="button" class="btn btn-outline-info">Find Address</button>
-          <div class="output"></div>
-          <div id="entries"></div>
-        </form>              
-      </div>
-      <div class="card-footer">
-        Github Project Link
-      </div>
-    </div>
+    
     <!-- Test Block---------->
     <div class="card">
       <div class="card-body">
@@ -752,19 +738,18 @@ function init(){
             f = fileArr[x].replace(/"/g, '');
             n = f.split('~');
             pdfname = n[0];
-
             item = '<div class="accordion accordion-flush" id="faq-group-1">'+
             '<div class="accordion-item">'+
-              '<h2 class="accordion-header">'+
-                '<button id="faqu" class="accordion-button collapsed" data-bs-target="#faqsOne-1" type="button" data-bs-toggle="collapse"></button>'+
-              '</h2>'+
-              '<div id="faqsOne-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">'+
-                '<div class="accordion-body">'+
-                  '<ul id="faqu"></ul>'+
+                '<h2 class="accordion-header">'+
+                  '<button id="faqu" class="accordion-button collapsed" data-bs-target="#faqsOne-1" type="button" data-bs-toggle="collapse"></button>'+
+                '</h2>'+
+                '<div id="faqsOne-1" class="accordion-collapse collapse" data-bs-parent="#faq-group-1">'+
+                  '<div class="accordion-body">'+
+                    '<ul id="faqu"></ul>'+
+                  '</div>'+
                 '</div>'+
-              '</div>'+
-            '</div>'+ 
-          '</div>';
+              '</div>'+ 
+            '</div>';
 
             $('button#faqu').html('<span>'+pdfname+'</span>');
 
@@ -775,7 +760,7 @@ function init(){
                   '</tr></table>';
 
             $('ul#faqu').append('<li>'+tablerow+'</li>');
-            $('#entries').html(item);
+            $('#entries').append(item);
           }
       }
     });
