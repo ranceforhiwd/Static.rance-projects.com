@@ -738,8 +738,8 @@ function init(){
             f = fileArr[x].replace(/"/g, '');
             n = f.split('~');
             pdfname = n[0];
-            item = '<div class="accordion accordion-flush" id="faq-group-1">'+
-            '<div class="accordion-item">'+
+            group = '<div class="accordion accordion-flush" id="faq-group-1"></div>';; 
+            item = '<div class="accordion-item">'+
                 '<h2 class="accordion-header">'+
                   '<button id="faqu" class="accordion-button collapsed" data-bs-target="#faqsOne-1" type="button" data-bs-toggle="collapse"></button>'+
                 '</h2>'+
@@ -748,8 +748,8 @@ function init(){
                     '<ul id="faqu"></ul>'+
                   '</div>'+
                 '</div>'+
-              '</div>'+ 
-            '</div>';
+              '</div>'; 
+            
 
             $('button#faqu').html('<span>'+pdfname+'</span>');
 
