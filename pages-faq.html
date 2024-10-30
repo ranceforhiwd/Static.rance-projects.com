@@ -745,7 +745,7 @@ function init(){
                       '</h2>'+
                       '<div id="faqsOne-'+k+'" class="accordion-collapse collapse" data-bs-parent="#faq-group-'+k+'">'+
                         '<div class="accordion-body">'+
-                          '<ul id="faqu'+k+'"></ul>'+
+                          '<ul class="list-group" id="faqu'+k+'"></ul>'+
                         '</div>'+
                       '</div>'+
                     '</div>';
@@ -757,7 +757,7 @@ function init(){
                   '<td>2024-10-17</td>' +
                   '</tr></table>';
 
-            //$('ul#faqu').append('<li>'+tablerow+'</li>');
+            $('ul#faqu').append('<li class="list-group-item">'+tablerow+'</li>');
             $('#entries').append(item);
             k++;
           }
