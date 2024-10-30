@@ -688,8 +688,37 @@
             <h5 class="card-title">AWS Document Pipeline</h5>
 
             <div>
-              <h6>What does this system do?</h6>
-              <p>This Serverless system will convert PDF documents into PNG file, then perform an OCR scan and save the text into a DynamoDb Table.</p>
+              <!-- wp:paragraph -->
+<p>This project explores a serverless design using <strong>ECS</strong> &amp; <strong>Fargate,</strong>  <strong>Eventbridge</strong>, <strong>SQS Queues</strong>, and <strong>Lambda Functions</strong> to convert and OCR scan documents, leaving the text as a json object that could be searched or used for other data processing from documents.  The actual process of converting documents and scanning are abstracted from this presentation to focus on the services AWS provide to build serverless systems beyond simply putting code into lambda functions.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>The first stage of my serverless architecture extends the functionality of the Static Hosting/CDN project documented on this website.  Users are first required to login or sign up for an account, then they are allowed through an API Gateway and routed to the S3 website.  Ajax calls are then made to the routing lambda function with can start other backend processes.  The lambda function routes responses back to the success function from ajax calls and notifies the end user. </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":146,"sizeSlug":"full","linkDestination":"none"} -->
+<img src="http://rance-projects.com/wp-content/uploads/2024/07/cognito-sign-in.jpg" alt="" class="" />
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The primary function for this website is to allow an interface where users can upload files.  The files need to be processed once they are stored. Processing could include a variety of operations to include altering file formats, scanning content, or saving different versions as a few examples.  </p>
+<!-- /wp:paragraph -->
+
+<!-- wp:image {"id":157,"sizeSlug":"full","linkDestination":"none"} -->
+<img src="http://rance-projects.com/wp-content/uploads/2024/07/serverless.jpg" alt="" class="" />
+<!-- /wp:image -->
+
+<!-- wp:paragraph -->
+<p>The S3 buckets are configured with triggers to send a message to the queues about the file stored.  On the first stage, an Eventbridge rule is set to only trigger the first ECS Task (PDF-PNG) when the uploaded file has a pdf file extension.  When the file is converted, the resulting image is stored into another bucket for PNG files only.  This decouples the different file types and a variety of operations could be used such as a file naming convention or tags on the files to categorize them in context.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p>A similar trigger is configured on the second bucket (PNG) where another rule starts the second stage ECS Task (PNG-TXT) which polls a message about the file, scans it for text, and saves the txt in a db record.</p>
+<!-- /wp:paragraph -->
+
+<!-- wp:paragraph -->
+<p></p>
+<!-- /wp:paragraph -->
             </div>
           </div>
         </div>
@@ -783,24 +812,49 @@
       // Initialize the Cesium Viewer in the HTML element with the `cesiumContainer` ID.
       const viewer = new Cesium.Viewer('cesiumContainer', {
         terrain: Cesium.Terrain.fromWorldTerrain(),
+        infoBox: false,
+        sceneModePicker: false,
+        timeline: false,
+        fullscreenButton: false
       });   
 
       // Add Cesium OSM Buildings, a global 3D buildings layer.
       const buildingTileset = await Cesium.createOsmBuildingsAsync();
       viewer.scene.primitives.add(buildingTileset);
 
-      /*$('#addresses').on('DOMSubtreeModified', function(){
-            checkForAdx();           
-      });*/
+      $('#addresses').on('DOMSubtreeModified', function(){
+            //checkForAdx();           
+      });
 
       $('#globeloc').on('DOMSubtreeModified', function(){
         viewer.camera.flyTo({
-                destination: Cesium.Cartesian3.fromDegrees(-80.843124, 35.227085, 10000.0),
-                orientation: {
-                  heading: Cesium.Math.toRadians(0.0),
-                  pitch: Cesium.Math.toRadians(0.0),
-                  roll: 0.0,
-                },
+                destination: Cesium.Cartesian3.fromDegrees(-80.843124, 35.227085, 1000.0),
+                duration:20,
+                easingFunction : Cesium.EasingFunction.LINEAR_NONE,
+                complete: function(){
+                  viewer.camera.flyTo({
+                      destination:Cesium.Cartesian3.fromDegrees(-122.4194, 37.7749, 800.0),
+                      duration:20,
+                      orientation: {
+                          heading: Cesium.Math.toRadians(0.0),
+                          pitch: Cesium.Math.toRadians(-30.0),
+                          roll: 0.0,
+                      },
+                      easingFunction : Cesium.EasingFunction.LINEAR_NONE,
+                      complete: function(){
+                          viewer.camera.flyTo({
+                              destination:Cesium.Cartesian3.fromDegrees(-122.4194, 37.7749, 150.0),
+                              duration:20,
+                              orientation: {
+                                  heading: Cesium.Math.toRadians(110.0),
+                                  pitch: Cesium.Math.toRadians(-30.0),
+                                  roll: 0.0,
+                              },
+                              easingFunction : Cesium.EasingFunction.LINEAR_NONE
+                          });      
+                      }
+                  });
+                }
             });        
       });
   </script>        
