@@ -701,14 +701,19 @@ function init(){
           fileStr = JSON.stringify(data);
           fileStr_ = fileStr.slice(1,-1);
           fileArr = fileStr_.split(',');
-          k = 1;              
+          k = 1;
+          a = [];
+          b =[];
+                        
           for(x in fileArr){
             page = fileArr[x].replace(/"/g, '');
             n = page.split('~');
             pdfname = n[0];
-            $("#entries").append('<span>'+pdfname+'</span>');  
+            a.push(pdfname);
+            b.push(page);  
             k++;
           }
+          $("#entries").append('<p>'+a+'</p><p>'+b+'</p>');
       }
     });
 }
