@@ -717,8 +717,8 @@ function init(){
 
           for(x in a){
             for(y in b){
-                if(b[y].search(a[x])){
-                  c[a[x]].push(b[y]) ;
+                if(b[y].includes(a[x])){
+                  c.push(b[y]) ;
                 }
             }
             d.push(c);
