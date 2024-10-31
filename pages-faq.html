@@ -703,8 +703,9 @@ function init(){
           fileArr = fileStr_.split(',');
           k = 1;
           a = [];
-          b =[];
-                        
+          b = [];
+          c = [];
+          d = [];
           for(x in fileArr){
             page = fileArr[x].replace(/"/g, '');
             n = page.split('~');
@@ -713,7 +714,16 @@ function init(){
             b.push(page);  
             k++;
           }
-          $("#entries").append('<p>'+a+'</p><p>'+b+'</p>');
+
+          for(x in a){
+            for(y in b){
+                if(y.search(x)){
+                  c.push(y);
+                }
+            }
+            d.push(c);
+          }
+          $("#entries").append('<p>'+d+'</p>');
       }
     });
 }
