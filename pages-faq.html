@@ -705,8 +705,7 @@ function init(){
             page = fileArr[x].replace(/"/g, '');
             n = page.split('~');
             pdfname = n[0];
-            
-            $('#entries').append('<span>'+pdfname+page+k+'</span>');  
+            $("#entries").append('<span>'+pdfname+'</span>');  
             k++;
           }
       }
@@ -766,9 +765,9 @@ init();
       const buildingTileset = await Cesium.createOsmBuildingsAsync();
       viewer.scene.primitives.add(buildingTileset);
 
-      $('#addresses').on('DOMSubtreeModified', function(){
-            //checkForAdx();           
-      });
+      /*$('#addresses').on('DOMSubtreeModified', function(){
+                       
+      });*/
 
       $('#globeloc').on('DOMSubtreeModified', function(){
         viewer.camera.flyTo({
