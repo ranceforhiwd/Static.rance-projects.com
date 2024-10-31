@@ -569,7 +569,7 @@
           <div class="card-body">
             <h5 class="card-title">AWS Document Pipeline</h5>
 
-            <div>
+            <div class="container">
                   <!-- wp:paragraph -->
                   <p>This project explores a serverless design using <strong>ECS</strong> &amp; <strong>Fargate,</strong>  <strong>Eventbridge</strong>, <strong>SQS Queues</strong>, and <strong>Lambda Functions</strong> to convert and OCR scan documents, leaving the text as a json object that could be searched or used for other data processing from documents.  The actual process of converting documents and scanning are abstracted from this presentation to focus on the services AWS provide to build serverless systems beyond simply putting code into lambda functions.</p>
                   <!-- /wp:paragraph -->
@@ -597,16 +597,13 @@
                       <button class="btn btn-outline-info" type="submit">Upload File</button>
                     </form>
                   </div>
+                  <br>
                   <!-- wp:paragraph -->
                   <p>The S3 buckets are configured with triggers to send a message to the queues about the file stored.  On the first stage, an Eventbridge rule is set to only trigger the first ECS Task (PDF-PNG) when the uploaded file has a pdf file extension.  When the file is converted, the resulting image is stored into another bucket for PNG files only.  This decouples the different file types and a variety of operations could be used such as a file naming convention or tags on the files to categorize them in context.</p>
                   <!-- /wp:paragraph -->
 
                   <!-- wp:paragraph -->
                   <p>A similar trigger is configured on the second bucket (PNG) where another rule starts the second stage ECS Task (PNG-TXT) which polls a message about the file, scans it for text, and saves the txt in a db record.</p>
-                  <!-- /wp:paragraph -->
-
-                  <!-- wp:paragraph -->
-                  <p></p>
                   <!-- /wp:paragraph -->
             </div>
           </div>
@@ -622,9 +619,9 @@
         <h5 class="card-title">Files</h5>
         <form id="myform">
           <button id="adxbtn" type="button" class="btn btn-outline-info">Find Address</button>
-          <div id="entries"></div>
+          <div id="entries" class="container></div>
         </form>
-        </div>
+      </div>
     </div>
     <!-- End Card with header and footer -->       
   
@@ -634,7 +631,7 @@
         <div id="addresses"></div>
       </div>
       <div class="card-body">
-        <h5 class="card-title"><div id="globeloc"></div></h5>
+        <h5 class="card-title"><div class="container" id="globeloc"></div></h5>
         <div id="cesiumContainer"></div> 
       </div>
       <div class="card-footer">
@@ -711,46 +708,38 @@ function init(){
             page = fileArr[x].replace(/"/g, '');
             n = page.split('~');
             pdfname = n[0];
-
-            //arrange pages inside pdfs
-            if(pdfname in page){
-              b.push(page);
-            }
-
-            a.push(b);
-
-
-            $('#entries').append(a);
+            //push pdf name in a
+            a.push(pdfname);
+            //push png name in b
+            b.push(page);
             k++;
-
-
-
-
-
-
-
-
-
-            /*item = '<div class="accordion accordion-flush" id="faq-group-'+k+'"><div class="accordion-item">'+
-                      '<h2 class="accordion-header">'+
-                        '<button id="faqu"'+k+' class="accordion-button collapsed" data-bs-target="#faqsOne-'+k+'" type="button" data-bs-toggle="collapse">'+pdfname+'</button>'+
-                      '</h2>'+
-                      '<div id="faqsOne-'+k+'" class="accordion-collapse collapse" data-bs-parent="#faq-group-'+k+'">'+
-                        '<div class="accordion-body">'+
-                          '<ul class="list-group" id="faqu'+k+'"><table><tr>' +
-                              '<th scope="row"><input class="form-check-input" type="radio" name="option" id="'+f+'" value="'+f+'"></th>' +
-                              '<td>'+f+'</td>' +
-                              '<td>2024-10-17</td>' +
-                              '</tr></table>;</ul>'+
-                        '</div>'+
-                      '</div>'+
-                    '</div>';*/
-                     
-            //$('ul#faqu').append('<li class="list-group-item">'+tablerow+'</li>');
-            
           }
+          $('#entries').append(a);
+          $('#entries').append('<hr>');
+          $('#entries').append(b);
       }
     });
+}
+
+add_file(data){
+  /*item = '<div class="accordion accordion-flush" id="faq-group-'+k+'"><div class="accordion-item">'+
+            '<h2 class="accordion-header">'+
+              '<button id="faqu"'+k+' class="accordion-button collapsed" data-bs-target="#faqsOne-'+k+'" type="button" data-bs-toggle="collapse">'+pdfname+'</button>'+
+            '</h2>'+
+            '<div id="faqsOne-'+k+'" class="accordion-collapse collapse" data-bs-parent="#faq-group-'+k+'">'+
+              '<div class="accordion-body">'+
+                '<ul class="list-group" id="faqu'+k+'"><table><tr>' +
+                    '<th scope="row"><input class="form-check-input" type="radio" name="option" id="'+f+'" value="'+f+'"></th>' +
+                    '<td>'+f+'</td>' +
+                    '<td>2024-10-17</td>' +
+                    '</tr></table>;</ul>'+
+              '</div>'+
+            '</div>'+
+          '</div>';*/
+            
+  //$('ul#faqu').append('<li class="list-group-item">'+tablerow+'</li>');
+  
+  return;
 }
  
 
