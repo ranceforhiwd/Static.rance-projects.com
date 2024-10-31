@@ -619,7 +619,7 @@
         <h5 class="card-title">Files</h5>
         <form id="myform">
           <button id="adxbtn" type="button" class="btn btn-outline-info">Find Address</button>
-          <div id="entries" class="container></div>
+          <div id="entries"></div>
         </form>
       </div>
     </div>
@@ -690,6 +690,7 @@
 }
 
 function init(){
+  $("#entries").html('<span>initializing...</span>');
   var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=search&action=normal&data=none';
     $.ajax({
       url: API_URL,
