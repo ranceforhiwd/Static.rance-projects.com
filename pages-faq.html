@@ -581,13 +581,7 @@
                   <!-- wp:image {"id":146,"sizeSlug":"full","linkDestination":"none"} -->
                   <img src="http://rance-projects.com/wp-content/uploads/2024/07/cognito-sign-in.jpg" alt="" class="img-fluid" />
                   <!-- /wp:image -->
-                  <div class="row">
-                    <h5 class="card-title">Upload PDF Document</h5>
-                    <form id="upload-form">
-                      <input type="file" id="file-input">
-                      <button class="btn btn-outline-info" type="submit">Upload File</button>
-                    </form>
-                  </div>
+                  
                   <!-- wp:paragraph -->
                   <p>The primary function for this website is to allow an interface where users can upload files.  The files need to be processed once they are stored. Processing could include a variety of operations to include altering file formats, scanning content, or saving different versions as a few examples.  </p>
                   <!-- /wp:paragraph -->
@@ -595,7 +589,14 @@
                   <!-- wp:image {"id":157,"sizeSlug":"full","linkDestination":"none"} -->
                   <img src="http://rance-projects.com/wp-content/uploads/2024/07/serverless.jpg" alt="" class="img-fluid" />
                   <!-- /wp:image -->
-
+                  <br>
+                  <div class="row">
+                    <h5 class="card-title">Upload PDF Document</h5>
+                    <form id="upload-form">
+                      <input class="file" type="file" id="file-input">
+                      <button class="btn btn-outline-info" type="submit">Upload File</button>
+                    </form>
+                  </div>
                   <!-- wp:paragraph -->
                   <p>The S3 buckets are configured with triggers to send a message to the queues about the file stored.  On the first stage, an Eventbridge rule is set to only trigger the first ECS Task (PDF-PNG) when the uploaded file has a pdf file extension.  When the file is converted, the resulting image is stored into another bucket for PNG files only.  This decouples the different file types and a variety of operations could be used such as a file naming convention or tags on the files to categorize them in context.</p>
                   <!-- /wp:paragraph -->
@@ -699,17 +700,38 @@ function init(){
       dataType: 'json',
           headers: {'Content-Type': 'application/json',
           'Access-Control-Allow-Origin': '*'},
-      success: function(data){                              
+      success: function(data){
+          a = [];
+          b = [];                              
           fileStr = JSON.stringify(data);
           fileStr_ = fileStr.slice(1,-1);
           fileArr = fileStr_.split(',');
           k = 1;              
           for(x in fileArr){
-            f = fileArr[x].replace(/"/g, '');
-            n = f.split('~');
+            page = fileArr[x].replace(/"/g, '');
+            n = page.split('~');
             pdfname = n[0];
-             
-            item = '<div class="accordion accordion-flush" id="faq-group-'+k+'"><div class="accordion-item">'+
+
+            //arrange pages inside pdfs
+            if(pdfname in page){
+              b.push(page);
+            }
+
+            a.push(b);
+
+
+            $('#entries').append(a);
+            k++;
+
+
+
+
+
+
+
+
+
+            /*item = '<div class="accordion accordion-flush" id="faq-group-'+k+'"><div class="accordion-item">'+
                       '<h2 class="accordion-header">'+
                         '<button id="faqu"'+k+' class="accordion-button collapsed" data-bs-target="#faqsOne-'+k+'" type="button" data-bs-toggle="collapse">'+pdfname+'</button>'+
                       '</h2>'+
@@ -722,11 +744,10 @@ function init(){
                               '</tr></table>;</ul>'+
                         '</div>'+
                       '</div>'+
-                    '</div>';
+                    '</div>';*/
                      
             //$('ul#faqu').append('<li class="list-group-item">'+tablerow+'</li>');
-            $('#entries').append(item);
-            k++;
+            
           }
       }
     });
