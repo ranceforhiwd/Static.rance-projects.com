@@ -717,8 +717,8 @@ function init(){
 
           for(x in a){
             for(y in b){
-                if(y.search(x)){
-                  c.push(y);
+                if(b[y].search(a[x])){
+                  c.push(b[y]);
                 }
             }
             d.push(c);
