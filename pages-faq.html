@@ -708,7 +708,8 @@ function init(){
             page = fileArr[x].replace(/"/g, '');
             n = page.split('~');
             pdfname = n[0];
-
+            a.push(pdfname);
+            b.push(page);
             $('#entries').append(a);
             $('#entries').append('<hr>');
             $('#entries').append(b);
