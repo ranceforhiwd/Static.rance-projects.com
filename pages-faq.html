@@ -695,11 +695,8 @@ function init(){
       url: API_URL,
       type: 'GET',
       dataType: 'json',
-          headers: {'Content-Type': 'application/json',
-          'Access-Control-Allow-Origin': '*'},
-      success: function(data){
-          a = [];
-          b = [];                              
+          headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+      success: function(data){                              
           fileStr = JSON.stringify(data);
           fileStr_ = fileStr.slice(1,-1);
           fileArr = fileStr_.split(',');
@@ -708,19 +705,15 @@ function init(){
             page = fileArr[x].replace(/"/g, '');
             n = page.split('~');
             pdfname = n[0];
-            a.push(pdfname);
-            b.push(page);
-            $('#entries').append(x);
-            $('#entries').append('<hr>');
-            $('#entries').append(page);
-            $('#entries').append('<span>'+k+'</span>')  
+            
+            $('#entries').append('<span>'+pdfname+page+k+'</span>');  
             k++;
           }
       }
     });
 }
 
-add_file(data){
+function add_file(data){
   /*item = '<div class="accordion accordion-flush" id="faq-group-'+k+'"><div class="accordion-item">'+
             '<h2 class="accordion-header">'+
               '<button id="faqu"'+k+' class="accordion-button collapsed" data-bs-target="#faqsOne-'+k+'" type="button" data-bs-toggle="collapse">'+pdfname+'</button>'+
