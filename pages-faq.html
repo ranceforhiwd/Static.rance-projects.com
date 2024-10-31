@@ -708,15 +708,14 @@ function init(){
             page = fileArr[x].replace(/"/g, '');
             n = page.split('~');
             pdfname = n[0];
-            //push pdf name in a
-            a.push(pdfname);
-            //push png name in b
-            b.push(page);
-            k++;
-          }
+
           $('#entries').append(a);
           $('#entries').append('<hr>');
           $('#entries').append(b);
+            
+            k++;
+          }
+          
       }
     });
 }
