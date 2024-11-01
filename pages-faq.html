@@ -691,7 +691,7 @@
 
 function init(){
   $("#entries").html('<span>initializing...</span>');
-  var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=search&action=normal&data=none';
+  var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=init&action=normal&data=none';
     $.ajax({
       url: API_URL,
       type: 'GET',
@@ -701,29 +701,8 @@ function init(){
           fileStr = JSON.stringify(data);
           fileStr_ = fileStr.slice(1,-1);
           fileArr = fileStr_.split(',');
-          k = 1;
-          a = [];
-          b = [];
-          c = [];
-          d = [];
-          for(x in fileArr){
-            page = fileArr[x].replace(/"/g, '');
-            n = page.split('~');
-            pdfname = n[0];
-            a.push(pdfname);
-            b.push(page);  
-            k++;
-          }
-
-          for(x in a){
-            for(y in b){
-                if(b[y].includes(a[x])){
-                  c.push(b[y]) ;
-                }
-            }
-            d.push(c);
-          }
-          $("#entries").append('<p>'+d+'</p>');
+          
+          $("#entries").append('<p>'+fileStr+'</p>');
       }
     });
 }
