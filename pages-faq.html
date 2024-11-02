@@ -699,15 +699,15 @@ function init(){
           headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
       success: function(data){                              
           fileStr = JSON.stringify(data);
-          fileStr_ = fileStr.slice(1,-1);
-          fileArr = fileStr_.split(',');
-          
-          for(farry in fileStr){
-            $("#entries").append('<span>'+farry+'</span>');
+          //fileStr_ = fileStr.slice(1,-1);
+          //fileArr = fileStr_.split(',');
+          $("#entries").html(fileStr);
+          //for(farry in fileStr){
+            //$("#entries").append('<span>'+farry+'</span>');
             /*for(parry in farry){
               $("#entries").append('<li>'+fileStr+'</li>');
             }*/
-          }
+          //}
       }
     });
 }
