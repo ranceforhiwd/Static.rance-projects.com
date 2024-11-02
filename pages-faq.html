@@ -699,15 +699,10 @@ function init(){
           headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
       success: function(data){                              
           fileStr = JSON.stringify(data);
-          //fileStr_ = fileStr.slice(1,-1);
-          //fileArr = fileStr_.split(',');
-          $("#entries").html(fileStr);
-          //for(farry in fileStr){
-            //$("#entries").append('<span>'+farry+'</span>');
-            /*for(parry in farry){
-              $("#entries").append('<li>'+fileStr+'</li>');
-            }*/
-          //}
+          for(let k in fileStr){
+            $("#entries").append(k);
+          }       
+          
       }
     });
 }
@@ -760,7 +755,8 @@ init();
         timeline: false,
         fullscreenButton: false,
         homeButton: false,
-        navigationHelpButton: false
+        navigationHelpButton: false,
+        baseLayerPicker: false
       });   
 
       // Add Cesium OSM Buildings, a global 3D buildings layer.
