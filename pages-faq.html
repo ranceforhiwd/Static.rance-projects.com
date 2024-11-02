@@ -699,9 +699,9 @@ function init(){
           headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
       success: function(data){                              
           resp = JSON.stringify(data);
-          pser = JSON.parse(data);
+          //pser = JSON.parse(data);
           $("#entries").append('<p>'+resp+'</p>');
-          $("#entries").append('<p>'+pser+'</p>');       
+          //$("#entries").append('<p>'+pser+'</p>');       
       }
     });
 }
