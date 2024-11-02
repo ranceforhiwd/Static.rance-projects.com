@@ -698,11 +698,10 @@ function init(){
       dataType: 'json',
           headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
       success: function(data){                              
-          fileStr = JSON.stringify(data);
-          //for(let k in fileStr){
-            $("#entries").append(fileStr.keys());
-          //}       
-          
+          resp = JSON.stringify(data);
+          pser = JSON.parse(data);
+          $("#entries").append('<p>'+resp+'</p>');
+          $("#entries").append('<p>'+pser+'</p>');       
       }
     });
 }
