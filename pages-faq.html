@@ -703,10 +703,10 @@ function init(){
           fileArr = fileStr_.split(',');
           
           for(farry in fileStr){
-            $("#entries").append('<ul>'+fileStr+'</ul>');
-            for(parry in farry){
+            $("#entries").append('<span>'+farry+'</span>');
+            /*for(parry in farry){
               $("#entries").append('<li>'+fileStr+'</li>');
-            }
+            }*/
           }
       }
     });
