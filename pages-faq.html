@@ -698,7 +698,7 @@ function init(){
       dataType: 'json',
           headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
       success: function(data){                              
-          fileStr = JSON.stringify(data);
+          fileStr = JSON.parse(data);
           for(let k in fileStr){
             $("#entries").append(k);
           }       
