@@ -698,9 +698,9 @@ function init(){
       dataType: 'json',
           headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
       success: function(data){                              
-          fileStr = JSON.parse(data);
+          fileStr = JSON.stringify(data);
           //for(let k in fileStr){
-            $("#entries").append(fileStr);
+            $("#entries").append(fileStr.keys());
           //}       
           
       }
@@ -756,7 +756,9 @@ init();
         fullscreenButton: false,
         homeButton: false,
         navigationHelpButton: false,
-        baseLayerPicker: false
+        baseLayerPicker: false,
+        selectionIndicator: false,
+        animation: false
       });   
 
       // Add Cesium OSM Buildings, a global 3D buildings layer.
