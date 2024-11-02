@@ -699,9 +699,9 @@ function init(){
           headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
       success: function(data){                              
           fileStr = JSON.parse(data);
-          for(let k in fileStr){
-            $("#entries").append(k);
-          }       
+          //for(let k in fileStr){
+            $("#entries").append(fileStr);
+          //}       
           
       }
     });
