@@ -689,58 +689,36 @@
     });
 }
 
-function init(){
-  //$("#entries").html('<span>initializing...</span>');
-  var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=init&action=normal&data=none';
-    $.ajax({
-      url: API_URL,
-      type: 'GET',
-      dataType: 'json',
-          headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-      success: function(data){
-          for(title in data){
-            $("#entries").append('<h3 id="'+title+'">'+title+'</h3>');
-              for(j in data[title]){
-                x = data[title][j].split('_folder');
-                y = x[0];
-                pngfile = x[1];
-                $("#entries").append('<input class="form-check-input" type="radio" name="option" id="'+pngfile+'" value="'+pngfile+'">');                   
-              }
-          }         
+      function init(){
+        var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=init&action=normal&data=none';
+          $.ajax({
+            url: API_URL,
+            type: 'GET',
+            dataType: 'json',
+                headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+            success: function(data){
+                for(title in data){
+                  $("#entries").append('<legend class="">'+title+'</legend>');
+                    for(j in data[title]){
+                      x = data[title][j].split('_folder');
+                      y = x[0];
+                      pngfile = x[1];
+                      $("#entries").append('<input class="form-check-input" type="radio" name="option" id="'+pngfile+'" value="'+pngfile+'">');                   
+                      $("#entries").append('<label class="form-check-label" for="'+pngfile+'">'+pngfile+'</label>');
+                    }
+                }         
+            }
+          });
       }
-    });
-}
 
-function add_file(data){
-  /*item = ;*/
-  /*'+
-                    );
-                    '<div id="faqsOne-'+title+'" class="accordion-collapse collapse" data-bs-parent="#faq-group-'+title+'">'+
-                      '<div class="accordion-body">'+
-                        '<ul class="list-group" id="faqu'+title+'"><li><table><tr>' +
-                            '<th scope="row"></th>' +
-                            '<td>'+pngfile+'</td>' +
-                            '<td>2024-10-17</td>' +
-                            '</tr></table></li>'+
-                          '</ul>'+
-                      '</div>'+
-                    '</div>'+
-                '</div>');*/
-  //$('ul#faqu').append('<li class="list-group-item">'+tablerow+'</li>');
-  
-  //return;
-}
- 
-
-$("button#adxbtn").click(function(){
-      var radioValue = $("table#filelist input[name='option']:checked").val();            
-      if(radioValue){
-        //startFindAdx(radioValue);
-        checkForAdx(radioValue);                
-      }else{
-            alert('select a document');
-          }      
-});  
+      $("button#adxbtn").click(function(){
+            var radioValue = $("#entries input[name='option']:checked").val();            
+            if(radioValue){
+              checkForAdx(radioValue);                
+            }else{
+                  alert('select a document');
+                }      
+      });  
 
 init();
 </script>
