@@ -703,10 +703,7 @@ function init(){
                 x = data[title][j].split('_folder');
                 y = x[0];
                 pngfile = x[1];
-                t = '<table border="1" id="'+title+'"></table>';
-                $('#entries').append(t);
-                $('table#'+title).append('<tr id="'+title+'"></tr>');
-                $('tr#'+title).append('<td>'+pngfile+'</td>');                   
+                $("#entries").append('<p>'+title+'</p>');                   
               }
           }         
       }
