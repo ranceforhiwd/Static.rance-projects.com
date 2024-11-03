@@ -705,19 +705,20 @@ function init(){
                 y = x[0];
                 pngfile = x[1];
                 $("#entries").append('<div class="accordion accordion-flush" id="faq-group-'+title+'"><div class="accordion-item">'+
-            '<h2 class="accordion-header">'+
-              '<button id="faqu"'+title+' class="accordion-button collapsed" data-bs-target="#faqsOne-'+title+'" type="button" data-bs-toggle="collapse">'+pdfname+'</button>'+
-            '</h2>'+
-            '<div id="faqsOne-'+title+'" class="accordion-collapse collapse" data-bs-parent="#faq-group-'+title+'">'+
-              '<div class="accordion-body">'+
-                '<ul class="list-group" id="faqu'+title+'"><table><tr>' +
-                    '<th scope="row"><input class="form-check-input" type="radio" name="option" id="'+pngfile+'" value="'+pngfile+'"></th>' +
-                    '<td>'+pngfile+'</td>' +
-                    '<td>2024-10-17</td>' +
-                    '</tr></table>;</ul>'+
-              '</div>'+
-            '</div>'+
-          '</div>');
+                    '<h2 class="accordion-header">'+
+                      '<button id="faqu"'+title+' class="accordion-button collapsed" data-bs-target="#faqsOne-'+title+'" type="button" data-bs-toggle="collapse">'+pdfname+'</button>'+
+                    '</h2>'+
+                    '<div id="faqsOne-'+title+'" class="accordion-collapse collapse" data-bs-parent="#faq-group-'+title+'">'+
+                      '<div class="accordion-body">'+
+                        '<ul class="list-group" id="faqu'+title+'"><li><table><tr>' +
+                            '<th scope="row"><input class="form-check-input" type="radio" name="option" id="'+pngfile+'" value="'+pngfile+'"></th>' +
+                            '<td>'+pngfile+'</td>' +
+                            '<td>2024-10-17</td>' +
+                            '</tr></table></li>'+
+                          '</ul>'+
+                      '</div>'+
+                    '</div>'+
+                  '</div>');
                 
               }
           }         
