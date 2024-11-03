@@ -690,21 +690,23 @@
 }
 
 function init(){
-  $("#entries").html('<span>initializing...</span>');
+  //$("#entries").html('<span>initializing...</span>');
   var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=init&action=normal&data=none';
     $.ajax({
       url: API_URL,
       type: 'GET',
       dataType: 'json',
           headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-      success: function(data){                              
-          //resp = JSON.stringify(data);
+      success: function(data){
           for(k in data){
-            $("#entries").append('<ul>'+k+'</ul>');
-            
-              $("#entries ul").append('<li>'+k+':'+data[k]+'</li>');
-            
-    
+            //$("#entries").append('<span>'+k+'</span><br>');
+              for(j in data[k]){
+                x = data[k][j].split('_folder');
+                y = x[0];
+                z = x[1];
+                $("#entries").append('<span>'+k+'--'+z+'</span><br>');
+                
+              }
           }         
       }
     });
