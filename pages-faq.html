@@ -698,10 +698,14 @@ function init(){
       dataType: 'json',
           headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
       success: function(data){                              
-          resp = JSON.stringify(data);
-          //pser = JSON.parse(data);
-          $("#entries").append('<p>'+resp+'</p>');
-          //$("#entries").append('<p>'+pser+'</p>');       
+          //resp = JSON.stringify(data);
+          for(k in data){
+            $("#entries").append('<ul>'+k+'</ul>');
+            
+              $("#entries ul").append('<li>'+k+':'+data[k]+'</li>');
+            
+    
+          }         
       }
     });
 }
