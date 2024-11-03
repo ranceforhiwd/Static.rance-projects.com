@@ -675,19 +675,18 @@
   <script src="assets/js/main.js"></script>
   <script src="documents/app.js"></script>
   <script>
-  function checkForAdx(){
-    var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=checkadx&data=none';
-    
-    $.ajax({
-            url: ADX_URL,
-            type: 'GET',
-            dataType: 'json',
-            headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-            success: function(data){                        
-                $("#globeloc").html("<p>"+JSON.stringify(data)+"</p>");                           
-            }
-    });
-}
+      function checkForAdx(){
+        var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=checkadx&data=none';
+             $.ajax({
+                  url: ADX_URL,
+                  type: 'GET',
+                  dataType: 'json',
+                  headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                  success: function(data){                        
+                      $("#globeloc").html("<p>"+JSON.stringify(data)+"</p>");                           
+                  }
+          });
+      }
 
       function init(){
         var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=init&action=normal&data=none';
@@ -695,7 +694,7 @@
             url: API_URL,
             type: 'GET',
             dataType: 'json',
-                headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+            headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
             success: function(data){
                 for(title in data){
                   $("#entries").append('<legend class="">'+title+'</legend>');
@@ -714,7 +713,8 @@
       $("button#adxbtn").click(function(){
             var radioValue = $("#entries input[name='option']:checked").val();            
             if(radioValue){
-              checkForAdx(radioValue);                
+              alert(radioValue);
+              //checkForAdx(radioValue);                
             }else{
                   alert('select a document');
                 }      
