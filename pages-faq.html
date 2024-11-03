@@ -703,10 +703,11 @@ function init(){
                 x = data[title][j].split('_folder');
                 y = x[0];
                 pngfile = x[1];
-                $("#entries").append('<div class="accordion accordion-flush" id="faq-group-'+title+'"><div class="accordion-item">'+
-                    '<h2 class="accordion-header">'+
-                      '<button id="faqu"'+title+' class="accordion-button collapsed" data-bs-target="#faqsOne-'+title+'" type="button" data-bs-toggle="collapse">'+pdfname+'</button>'+
-                    '</h2></div>');                
+                $("#entries").append('<div class="accordion accordion-flush" id="faq-group-'+title+'"></div>');
+                $('#faq-group-'+title).append('<div class="accordion-item"></div>');
+                $('#faq-group-'+title+' div.accordion-item').append('<h2 class="accordion-header">'+
+                      '<button id="faqu"'+title+' class="accordion-button collapsed" data-bs-target="#faqsOne-'+title+'" type="button" data-bs-toggle="collapse">'+title+'</button>'+
+                    '</h2>');                  
               }
           }         
       }
@@ -715,7 +716,8 @@ function init(){
 
 function add_file(data){
   /*item = ;*/
-  +
+  /*'+
+                    );
                     '<div id="faqsOne-'+title+'" class="accordion-collapse collapse" data-bs-parent="#faq-group-'+title+'">'+
                       '<div class="accordion-body">'+
                         '<ul class="list-group" id="faqu'+title+'"><li><table><tr>' +
@@ -729,7 +731,7 @@ function add_file(data){
                 '</div>');*/
   //$('ul#faqu').append('<li class="list-group-item">'+tablerow+'</li>');
   
-  return;
+  //return;
 }
  
 
