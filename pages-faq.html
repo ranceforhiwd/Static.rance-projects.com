@@ -675,8 +675,8 @@
   <script src="assets/js/main.js"></script>
   <script src="documents/app.js"></script>
   <script>
-      function checkForAdx(){
-        var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=checkadx&data=none';
+      function checkForAdx(selected_doc){
+        var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=checkadx&data='+selected_doc;
              $.ajax({
                   url: ADX_URL,
                   type: 'GET',
