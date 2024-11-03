@@ -703,11 +703,10 @@ function init(){
                 x = data[title][j].split('_folder');
                 y = x[0];
                 pngfile = x[1];
-                $("#entries").append('<div class="accordion accordion-flush" id="faq-group-'+title+'"></div>');
-                $('#faq-group-'+title).append('<div class="accordion-item"></div>');
-                $('#faq-group-'+title+' div.accordion-item').append('<h2 class="accordion-header">'+
-                      '<button id="faqu"'+title+' class="accordion-button collapsed" data-bs-target="#faqsOne-'+title+'" type="button" data-bs-toggle="collapse">'+title+'</button>'+
-                    '</h2>');                  
+                t = '<table border="1" id="'+title+'"></table>';
+                $('#entries').append(t);
+                $('table#'+title).append('<tr id="'+title+'"></tr>');
+                $('tr#'+title).append('<td>'+pngfile+'</td>');                   
               }
           }         
       }
