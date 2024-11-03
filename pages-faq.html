@@ -703,8 +703,8 @@ function init(){
               for(j in data[title]){
                 x = data[title][j].split('_folder');
                 y = x[0];
-                pngfile = x[1];                
-                $("#entries").append('<a id="'+pngfile+'">'+pngfile+'</a><br>');                   
+                pngfile = x[1];
+                $("#entries").append('<input class="form-check-input" type="radio" name="option" id="'+pngfile+'" value="'+pngfile+'">');                   
               }
           }         
       }
@@ -718,7 +718,7 @@ function add_file(data){
                     '<div id="faqsOne-'+title+'" class="accordion-collapse collapse" data-bs-parent="#faq-group-'+title+'">'+
                       '<div class="accordion-body">'+
                         '<ul class="list-group" id="faqu'+title+'"><li><table><tr>' +
-                            '<th scope="row"><input class="form-check-input" type="radio" name="option" id="'+pngfile+'" value="'+pngfile+'"></th>' +
+                            '<th scope="row"></th>' +
                             '<td>'+pngfile+'</td>' +
                             '<td>2024-10-17</td>' +
                             '</tr></table></li>'+
