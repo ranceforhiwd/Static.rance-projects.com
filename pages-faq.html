@@ -699,12 +699,12 @@ function init(){
           headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
       success: function(data){
           for(title in data){
-            $("#entries").append('<p id="'+title+'">'+title+'</p>');
+            $("#entries").append('<h3 id="'+title+'">'+title+'</h3>');
               for(j in data[title]){
                 x = data[title][j].split('_folder');
                 y = x[0];
                 pngfile = x[1];                
-                $("#entries").append('<span>'+pngfile+'</span><br>');                   
+                $("#entries").append('<a id="'+pngfile+'">'+pngfile+'</a><br>');                   
               }
           }         
       }
