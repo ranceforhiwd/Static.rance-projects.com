@@ -699,7 +699,6 @@ function init(){
           headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
       success: function(data){
           for(title in data){
-            //$("#entries").append('<span>'+k+'</span><br>');
               for(j in data[title]){
                 x = data[title][j].split('_folder');
                 y = x[0];
@@ -718,8 +717,7 @@ function init(){
                           '</ul>'+
                       '</div>'+
                     '</div>'+
-                  '</div>');
-                
+                '</div>');                
               }
           }         
       }
