@@ -697,13 +697,13 @@
             headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
             success: function(data){
                 for(title in data){
-                  $("#entries").append('<fieldset><legend class="col-form-label">'+title+'</legend>');
+                  $("#entries").append('<fieldset class="row mb-6"><legend class="col-form-label">'+title+'</legend>');
                     for(j in data[title]){
                       x = data[title][j].split('_folder');
                       y = x[0];
                       pngfile = x[1];
-                      $("#entries").append('<div class="form-check"><input class="form-check-input" type="radio" name="option" id="'+pngfile+'" value="'+pngfile+'">');                   
-                      $("#entries").append('<label class="form-check-label" for="'+pngfile+'">'+pngfile+'</label></div></fieldset>');
+                      $("#entries").append('<div class="col"><div class="form-check"><input class="form-check-input" type="radio" name="option" id="'+pngfile+'" value="'+pngfile+'">');                   
+                      $("#entries").append('<label class="form-check-label" for="'+pngfile+'">'+pngfile+'</label></div></fieldset></div>');
                     }
                 }         
             }
