@@ -701,9 +701,9 @@
                     for(j in data[title]){
                       x = data[title][j].split('_folder');
                       y = x[0];
-                      pngfile = x[1];
-                      $("#entries").append('<div class="col"><div class="form-check"><input class="form-check-input" type="radio" name="option" id="'+pngfile+'" value="'+pngfile+'">');                   
-                      $("#entries .form-check ").append('<label class="form-check-label" for="'+pngfile+'">'+pngfile+'</label></div></fieldset></div>');
+                      pngfile = x[1].split('/');
+                      $("#entries").append('<div class="col"><div class="form-check"><input class="form-check-input" type="radio" name="option" id="'+pngfile[0]+'" value="'+pngfile[0]+'">');                   
+                      $("#entries .form-check ").append('<label class="form-check-label" for="'+pngfile[0]+'">'+pngfile[0]+'</label></div></fieldset></div>');
                     }
                 }         
             }
