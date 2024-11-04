@@ -695,18 +695,14 @@
             type: 'GET',
             dataType: 'json',
             headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-            success: function(data){
+            success: function(data){              
                 for(title in data){
-                  $("#entries").append('<fieldset><legend class="col-form-label">'+title+'</legend>');
+                  $("#entries").append('<fieldset class="col"><legend class="col-form-label">'+title+'</legend>');
                     for(j in data[title]){
-                      x = data[title][j].split('_folder');
-                      //y = x[0];
-                      p = x[1];
-                      p1 = p.split('/');
-                      pngfile = p1[0];
-                      $("#entries").append('<div class="form-check"><input class="form-check-input" type="radio" name="option" id="'+pngfile+'" value="'+pngfile+'">');                   
-                      $("#entries div.form-check").append('<label class="form-check-label" for="'+pngfile+'">'+pngfile+'</label></div></fieldset>');
+                      x = data[title][j].split('_folder/');                      
+                      $("#entries").append('<div class="form-check"><input class="form-check-input" type="radio" name="option" id="'+x[1]+'" value="'+x[1]+'"><label class="form-check-label" for="'+x[1]+'">'+x[1]+'</label></div>');                      
                     }
+                  $('#entries').append('</fieldset>');
                 }         
             }
           });
