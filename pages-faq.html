@@ -676,6 +676,7 @@
   <script src="documents/app.js"></script>
   <script>
       function checkForAdx(selected_doc){
+        $("#globeloc").html("<p>fuck it</p>");
         var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=checkadx&data='+selected_doc;
              $.ajax({
                   url: ADX_URL,
