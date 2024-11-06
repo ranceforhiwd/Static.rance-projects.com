@@ -675,20 +675,6 @@
   <script src="assets/js/main.js"></script>
   <script src="documents/app.js"></script>
   <script>
-      function checkForAdx(selected_doc){
-        var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=checkadx&data='+selected_doc;
-             $.ajax({
-                  url: ADX_URL,
-                  type: 'GET',
-                  dataType: 'json',
-                  headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-                  success: function(data){                        
-                      //$("#globeloc").html("<p>"+JSON.stringify(data)+"</p>");
-                      gofly(JSON.stringify(data));                           
-                  }
-          });
-      }
-
       function init(){
         var API_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=init&action=normal&data=none';
           $.ajax({
@@ -706,6 +692,19 @@
                   $('#entries').append('</fieldset>');
                 }         
             }
+          });
+      }
+
+      function checkForAdx(selected_doc){
+        var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action=checkadx&data='+selected_doc;
+             $.ajax({
+                  url: ADX_URL,
+                  type: 'GET',
+                  dataType: 'json',
+                  headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
+                  success: function(data){                        
+                      $("#globeloc").html("<p>"+JSON.stringify(data)+"</p>");                             
+                  }
           });
       }
 
@@ -749,41 +748,9 @@ init();
       /*$('#addresses').on('DOMSubtreeModified', function(){
                        
       });*/
-
-      function gofly(c){
-        viewer.camera.flyTo({
-                destination: Cesium.Cartesian3.fromDegrees(-80.843124, 35.227085, 1000.0),
-                duration:20,
-                easingFunction : Cesium.EasingFunction.LINEAR_NONE,
-                complete: function(){
-                  viewer.camera.flyTo({
-                      destination:Cesium.Cartesian3.fromDegrees(-122.4194, 37.7749, 800.0),
-                      duration:20,
-                      orientation: {
-                          heading: Cesium.Math.toRadians(0.0),
-                          pitch: Cesium.Math.toRadians(-25.0),
-                          roll: 0.0,
-                      },
-                      easingFunction : Cesium.EasingFunction.LINEAR_NONE,
-                      complete: function(){
-                          viewer.camera.flyTo({
-                              destination:Cesium.Cartesian3.fromDegrees(-122.4194, 37.7749, 100.0),
-                              duration:20,
-                              orientation: {
-                                  heading: Cesium.Math.toRadians(190.0),
-                                  pitch: Cesium.Math.toRadians(-25.0),
-                                  roll: 0.0,
-                              },
-                              easingFunction : Cesium.EasingFunction.LINEAR_NONE
-                          });      
-                      }
-                  });
-                }
-            });
-      }
-
-      /*$('#globeloc').on('DOMSubtreeModified', function(coords){        
-        
+      
+      $('#globeloc').on('DOMSubtreeModified', function(coords){        
+        alert(JSON.stringify(coords));
         viewer.camera.flyTo({
                 destination: Cesium.Cartesian3.fromDegrees(-80.843124, 35.227085, 1000.0),
                 duration:20,
@@ -813,7 +780,7 @@ init();
                   });
                 }
             });        
-      });*/
+      });
   </script>        
 </body>
 </html>
