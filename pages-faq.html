@@ -749,8 +749,7 @@ init();
                        
       });*/
       
-      $('#globeloc').on('DOMSubtreeModified', function(coords){        
-        alert(JSON.stringify(coords));
+      $('#globeloc').on('DOMSubtreeModified', function(coords){
         viewer.camera.flyTo({
                 destination: Cesium.Cartesian3.fromDegrees(-80.843124, 35.227085, 1000.0),
                 duration:20,
