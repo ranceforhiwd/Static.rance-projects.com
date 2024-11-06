@@ -1,0 +1,159 @@
+[
+    {
+        "Place": {
+            "Label": "Boston, MA, USA",
+            "Geometry": {
+                "Point": [
+                    -71.0586293,
+                    42.3589942
+                ]
+            },
+            "Municipality": "Boston",
+            "SubRegion": "Suffolk County",
+            "Region": "Massachusetts",
+            "Country": "USA",
+            "Interpolated": false,
+            "Categories": [
+                "MunicipalityType"
+            ]
+        },
+        "Relevance": 1
+    },
+    {
+        "Place": {
+            "Label": "Boston, MA, USA",
+            "Geometry": {
+                "Point": [
+                    -71.05977,
+                    42.35843
+                ]
+            },
+            "Municipality": "Boston",
+            "SubRegion": "Suffolk County",
+            "Region": "Massachusetts",
+            "Country": "USA",
+            "Interpolated": false,
+            "Categories": [
+                "MunicipalityType"
+            ]
+        },
+        "Relevance": 1
+    },
+    {
+        "Place": {
+            "Label": "Boston MA, 174 Harvard Ave, Allston, MA, 02134, USA",
+            "Geometry": {
+                "Point": [
+                    -71.131265,
+                    42.351311
+                ]
+            },
+            "AddressNumber": "174",
+            "Street": "Harvard Ave",
+            "Municipality": "Allston",
+            "SubRegion": "Suffolk County",
+            "Region": "Massachusetts",
+            "Country": "USA",
+            "PostalCode": "02134",
+            "Interpolated": false,
+            "Categories": [
+                "PointOfInterestType",
+                "Restaurant"
+            ]
+        },
+        "Relevance": 1
+    },
+    {
+        "Place": {
+            "Label": "Boston, 20 Sargent Ave, Somerville, MA, 02145, USA",
+            "Geometry": {
+                "Point": [
+                    -71.0930522,
+                    42.3906214
+                ]
+            },
+            "AddressNumber": "20",
+            "Street": "Sargent Ave",
+            "Neighborhood": "Winter Hill",
+            "Municipality": "Somerville",
+            "SubRegion": "Middlesex County",
+            "Region": "Massachusetts",
+            "Country": "USA",
+            "PostalCode": "02145 2914",
+            "Interpolated": false,
+            "Categories": [
+                "PointOfInterestType",
+                "Hotel"
+            ]
+        },
+        "Relevance": 1
+    },
+    {
+        "Place": {
+            "Label": "Boston, 49 Hyde St, Revere, MA, 02151, USA",
+            "Geometry": {
+                "Point": [
+                    -71.0128689,
+                    42.4073039
+                ]
+            },
+            "AddressNumber": "49",
+            "Street": "Hyde St",
+            "Municipality": "Revere",
+            "SubRegion": "Suffolk County",
+            "Region": "Massachusetts",
+            "Country": "USA",
+            "PostalCode": "02151 5010",
+            "Interpolated": false,
+            "Categories": [
+                "PointOfInterestType",
+                "Hotel"
+            ]
+        },
+        "Relevance": 1
+    },
+    {
+        "Place": {
+            "Label": "Boston, 531 Boston Post Rd, Wayland, MA, 01778, USA",
+            "Geometry": {
+                "Point": [
+                    -71.390067,
+                    42.362574
+                ]
+            },
+            "AddressNumber": "531",
+            "Street": "Boston Post Rd",
+            "Municipality": "Wayland",
+            "SubRegion": "Middlesex County",
+            "Region": "Massachusetts",
+            "Country": "USA",
+            "PostalCode": "01778",
+            "Interpolated": false,
+            "Categories": [
+                "PointOfInterestType",
+                "Car Dealer"
+            ]
+        },
+        "Relevance": 1
+    },
+    {
+        "Place": {
+            "Label": "Boston, MA, USA",
+            "Geometry": {
+                "Point": [
+                    -71.01643,
+                    42.33222
+                ]
+            },
+            "Municipality": "City of Boston",
+            "SubRegion": "Suffolk County",
+            "Region": "Massachusetts",
+            "Country": "USA",
+            "Interpolated": false,
+            "Categories": [
+                "MunicipalityType"
+            ]
+        },
+        "Relevance": 1
+    }
+]
