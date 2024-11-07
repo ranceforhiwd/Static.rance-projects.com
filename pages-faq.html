@@ -703,8 +703,10 @@
                   dataType: 'json',
                   headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                   success: function(data){
-                    window.lat = -80;
-                    window.lng = 40;
+                    rb = data["ResultBBox"]
+                    
+                    window.lat = rb[0];
+                    window.lng = rb[1];
                       //window.lat = JSON.stringify(data['Point']['Geometry'][0]);
                       //window.lng = JSON.stringify(data['Point']['Geometry'][1]);                        
                       //$("#globeloc").html("<p>"+JSON.stringify(data['Point'])+"</p>");
