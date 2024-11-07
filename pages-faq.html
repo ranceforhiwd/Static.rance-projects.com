@@ -707,7 +707,8 @@
                       //window.lng = JSON.stringify(data['Point']['Geometry'][1]);                        
                       //$("#globeloc").html("<p>"+JSON.stringify(data['Point'])+"</p>");
                       //$("#globeloc").html("<p>More Data Here</p>");
-                      $("#addresses").html('<span>'+data["Text"]+'</span>');                             
+                      $("#addresses").html('<span>'+data["Text"]+'</span>');
+                      $("#globeloc").html('<span>'+data["Place"]+'</span>');                             
                   }
           });
       }
