@@ -705,7 +705,8 @@
                   success: function(data){
                       window.lat = JSON.stringify(data['Point'][0]);
                       window.lng = JSON.stringify(data['Point'][1]);                        
-                      $("#globeloc").html("<p>"+JSON.stringify(data['Point'])+"</p>");                             
+                      $("#globeloc").html("<p>"+JSON.stringify(data['Point'])+"</p>");
+                      $("#globeloc").append("<p>"+JSON.stringify(data)+"</p>");                             
                   }
           });
       }
@@ -753,22 +754,22 @@ init();
       
       $('#globeloc').on('DOMSubtreeModified', function(coords){        
         viewer.camera.flyTo({
-                destination: Cesium.Cartesian3.fromDegrees(window.lat, window.lng, 1000.0),
+                destination: Cesium.Cartesian3.fromDegrees(window.lat, window.lng, 3000.0),
                 duration:20,
-                easingFunction : Cesium.EasingFunction.LINEAR_NONE,
+                easingFunction : Cesium.EasingFunction.QUADRATIC_IN_OUT,
                 complete: function(){
                   viewer.camera.flyTo({
                       destination:Cesium.Cartesian3.fromDegrees(window.lat, window.lng, 800.0),
-                      duration:20,
+                      duration:25,
                       orientation: {
                           heading: Cesium.Math.toRadians(0.0),
-                          pitch: Cesium.Math.toRadians(-25.0),
+                          pitch: Cesium.Math.toRadians(-38.0),
                           roll: 0.0,
                       },
                       easingFunction : Cesium.EasingFunction.LINEAR_NONE,
                       complete: function(){
                           viewer.camera.flyTo({
-                              destination:Cesium.Cartesian3.fromDegrees(window.lat, window.lng, 100.0),
+                              destination:Cesium.Cartesian3.fromDegrees(window.lat, window.lng, 150.0),
                               duration:20,
                               orientation: {
                                   heading: Cesium.Math.toRadians(190.0),
