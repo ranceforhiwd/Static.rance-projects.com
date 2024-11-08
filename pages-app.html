@@ -406,7 +406,7 @@
         <h5 class="card-title">Files</h5>
         <form id="myform">
           <button id="adxbtn" type="button" class="btn btn-outline-info">Find Address</button>
-          <div id="entries"></div>
+          <div class="container-fluid" id="entries"></div>
         </form>
       </div>
     </div>     
@@ -473,7 +473,7 @@
                   $("#entries").append('<fieldset class="col"><legend class="col-form-label">'+title+'</legend>');
                     for(j in data[title]){
                       x = data[title][j].split('_folder/');                      
-                      $("#entries").append('<div class="form-check"><input class="form-check-input" type="radio" name="option" id="'+x[1]+'" value="'+x[1]+'"><label class="form-check-label" for="'+x[1]+'">'+x[1]+'</label></div>');                      
+                      $("#entries").append('<div class="form-check col"><input class="form-check-input" type="radio" name="option" id="'+x[1]+'" value="'+x[1]+'"><label class="form-check-label" for="'+x[1]+'">'+x[1]+'</label></div>');                      
                     }
                   $('#entries').append('</fieldset>');
                 }         
