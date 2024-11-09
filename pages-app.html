@@ -390,47 +390,103 @@
       <div class="col-lg-12">
         <div class="card">
           <div class="card-body">
-            <h5 class="card-title">No Labels / Placeholders as labels Form</h5>
+            <h5 class="card-title">Serverless Application</h5>
+            <!-- Form -->
+            <form id="upload-form">
+              <div class="row mb-3">
+                <label for="inputText" class="col-sm-2 col-form-label">Find Location</label>
+                <div class="col-sm-10">
+                  <input type="text" id="use_adx" class="form-control">
+                </div>
+              </div>              
+              <div class="row mb-3">
+                <label for="inputNumber" class="col-sm-2 col-form-label">Zip Code</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="inputNumber" class="col-sm-2 col-form-label">File PDF</label>
+                <div class="col-sm-10">
+                  <input class="form-control" type="file" id="file-input">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
+                <div class="col-sm-10">
+                  <input type="date" class="form-control">
+                </div>
+              </div>
+              <div class="row mb-3">
+                <label for="inputTime" class="col-sm-2 col-form-label">Time</label>
+                <div class="col-sm-10">
+                  <input type="time" class="form-control">
+                </div>
+              </div>            
+              <fieldset class="row mb-3">
+                <legend class="col-form-label col-sm-2 pt-0">Docs with Addresses</legend>
+                <div class="col-sm-10">
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                    <label class="form-check-label" for="gridRadios1">
+                      First radio
+                    </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                    <label class="form-check-label" for="gridRadios2">
+                      Second radio
+                    </label>
+                  </div>
+                  <div class="form-check disabled">
+                    <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios" value="option" disabled>
+                    <label class="form-check-label" for="gridRadios3">
+                      Third disabled radio
+                    </label>
+                  </div>
+                </div>
+              </fieldset>
+              <div class="container-fluid" id="entries"></div>              
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Select</label>
+                <div class="col-sm-10">
+                  <select class="form-select" aria-label="Default select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+              </div>
 
-            <!-- No Labels Form -->
-            <form class="row g-3">
-              <div class="col-md-12">
-                <input type="text" class="form-control" placeholder="Your Name">
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Multi Select</label>
+                <div class="col-sm-10">
+                  <select class="form-select" multiple aria-label="multiple select example">
+                    <option selected>Open this select menu</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
               </div>
-              <div class="col-md-6">
-                <input type="email" class="form-control" placeholder="Email">
+
+              <div class="row mb-3">
+                <label class="col-sm-2 col-form-label">Submit Button</label>
+                <div class="col-sm-10">
+                  <button type="submit" class="btn btn-primary">Submit Form</button>
+                </div>
               </div>
-              <div class="col-md-6">
-                <input type="password" class="form-control" placeholder="Password">
-              </div>
-              <div class="col-12">
-                <input type="text" class="form-control" placeholder="Address">
-              </div>
-              <div class="col-md-6">
-                <input type="text" class="form-control" placeholder="City">
-              </div>
-              <div class="col-md-4">
-                <select id="inputState" class="form-select">
-                  <option selected>Choose...</option>
-                  <option>...</option>
-                </select>
-              </div>
-              <div class="col-md-2">
-                <input type="text" class="form-control" placeholder="Zip">
-              </div>
-              <div class="text-center">
-                <button type="submit" class="btn btn-primary">Submit</button>
-                <button type="reset" class="btn btn-secondary">Reset</button>
-              </div>
-            </form><!-- End No Labels Form -->
+
+            </form>
 
           </div>
         </div>
         <div class="card basic">
           <div class="card-body">
                     <h5 class="card-title">Upload PDF Document</h5>
-                    <form id="upload-form">
-                      <input class="file" type="file" id="file-input">
+                    <form id="upload-form_old">
+                      <input class="file" type="file" id="file-input_old">
                       <button class="btn btn-outline-info" type="submit">Upload File</button>
                     </form>
             </div>
@@ -443,8 +499,8 @@
       <div class="card-body">
         <h5 class="card-title">Files</h5>
         <form id="myform">
-          <button id="adxbtn" type="button" class="btn btn-outline-info">Find Address</button>
-          <div class="container-fluid" id="entries"></div>
+          <button id="adxbtn_old" type="button" class="btn btn-outline-info">Find Address</button>
+          
         </form>
       </div>
     </div>     
