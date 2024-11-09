@@ -446,7 +446,9 @@
                   </div>
                 </div>
               </fieldset>
-              <div class="container-fluid" id="entries"></div>              
+              <div class="container-fluid" id="entries">
+                <button id="adxbtn" type="button" class="btn btn-outline-info">Find Address</button>
+              </div>              
               <div class="row mb-3">
                 <label class="col-sm-2 col-form-label">Select</label>
                 <div class="col-sm-10">
@@ -477,33 +479,11 @@
                   <button type="submit" class="btn btn-primary">Submit Form</button>
                 </div>
               </div>
-
             </form>
-
           </div>
-        </div>
-        <div class="card basic">
-          <div class="card-body">
-                    <h5 class="card-title">Upload PDF Document</h5>
-                    <form id="upload-form_old">
-                      <input class="file" type="file" id="file-input_old">
-                      <button class="btn btn-outline-info" type="submit">Upload File</button>
-                    </form>
-            </div>
-          </div>
-        </div>
+        </div>        
       </div>
-    </div>
-        
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title">Files</h5>
-        <form id="myform">
-          <button id="adxbtn_old" type="button" class="btn btn-outline-info">Find Address</button>
-          
-        </form>
-      </div>
-    </div>     
+    </div> <!--End of row-->    
   
     <!-- Cesium Card -->
     <div id="globe" class="card">
@@ -514,9 +494,7 @@
         <div id="globeloc"></div>
         <div id="cesiumContainer"></div> 
       </div>
-      <div class="card-footer">
-        Github Project Link
-      </div>
+      <div class="card-footer"></div>
     </div>
 
   </section>
@@ -566,8 +544,11 @@
                 for(title in data){
                   $("#entries").append('<fieldset class="col"><legend class="col-form-label">'+title+'</legend>');
                     for(j in data[title]){
-                      x = data[title][j].split('_folder/');                      
-                      $("#entries").append('<div class="form-check col"><input class="form-check-input" type="radio" name="option" id="'+x[1]+'" value="'+x[1]+'"><label class="form-check-label" for="'+x[1]+'">'+x[1]+'</label></div>');                      
+                      x = data[title][j].split('_folder/');
+                      pagepro1 = x[1].split('~');
+                      pagepro2 = pagepro1.split('.');
+                      pagenumber = 'page - '+pagepro2;                     
+                      $("#entries").append('<div class="form-check col"><input class="form-check-input" type="radio" name="option" id="'+x[1]+'" value="'+x[1]+'"><label class="form-check-label" for="'+x[1]+'">'+pagenumber+'</label></div>');                      
                     }
                   $('#entries').append('</fieldset>');
                 }         
