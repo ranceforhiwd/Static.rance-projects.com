@@ -511,8 +511,8 @@
                     for(j in data[title]){
                       x = data[title][j].split('_folder/');
                       pagepro1 = x[1].split('~');
-                      pagepro2 = pagepro1.split('.');
-                      pagenumber = 'page - '+pagepro2;                     
+                      pagepro2 = pagepro1[1].split('.');
+                      pagenumber = 'page - '+pagepro2[0];                     
                       $("#entries").append('<div class="form-check col"><input class="form-check-input" type="radio" name="option" id="'+x[1]+'" value="'+x[1]+'"><label class="form-check-label" for="'+x[1]+'">'+pagenumber+'</label></div>');                      
                     }
                   $('#entries').append('</fieldset>');
