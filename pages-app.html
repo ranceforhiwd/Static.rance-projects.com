@@ -422,25 +422,17 @@
                   <input type="time" class="form-control">
                 </div>
               </div>
-              <div class="row mb-12">                
+              <div class="row mb-12">
+                <div class="col-sm-10">                
                   <button type="submit" class="btn btn-outline-info">Submit Form</button>                
-              </div>            
-              <div class="row mb-12" id="entries">
-                <button id="adxbtn" type="button" class="btn btn-outline-info">Find Address</button>
-              </div>
+                  <button id="adxbtn" type="button" class="btn btn-outline-info">Find Address</button>
+                </div>
+              </div>              
+           
               <div class="card">
                 <div class="card-body">
                   <h5 class="card-title">Default List Group</h5>
-    
-                  <!-- Default List group -->
-                  <ul class="list-group">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                    <li class="list-group-item">A fourth item</li>
-                    <li class="list-group-item">And a fifth one</li>
-                  </ul><!-- End Default List group -->
-    
+                  <div class="row mb-12" id="entries"></div>        
                 </div>
               </div>              
             </form>
@@ -506,14 +498,16 @@
             headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
             success: function(data){              
                 for(title in data){              
-                  $("#entries").append('<ul id="'+title+'" class="list-group"></ul>');
-                    for(j in data[title]){
+                  $("#entries").append('<ul id="'+title+'" class="list-group">');
+                  $('#entries ul#'+title).append('<li id="item-'+title+'" class="list-group-item">'+title+'</li>');
+                    /*for(j in data[title]){
                       x = data[title][j].split('_folder/');
                       pagepro1 = x[1].split('~');
                       pagepro2 = pagepro1[1].split('.');
                       pagenumber = 'page - '+pagepro2[0];                     
-                      $('#entries ul#'+title).append('<li id="'+pagenumber+'" class="list-group-item">'+pagenumber+'</li>');                      
-                    }              
+                      $("#entries ul").append('<li id="'+pagenumber+'" class="list-group-item">'+pagenumber+'</li>');                      
+                    }*/
+                  $("#entries").append('</ul>');                                  
                 }         
             }
           });
