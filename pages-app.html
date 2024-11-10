@@ -504,7 +504,7 @@
                       pagepro1 = x[1].split('~');
                       pagepro2 = pagepro1[1].split('.');
                       pagenumber = pagepro2[0];                            
-                      $(`#entries table`).append('<tr><td>'+title+'</td><td><a id="'+data[title][j]+'" href="#">'+pagenumber+'</a></td></tr>');                      
+                      $(`#entries table`).append('<tr><td>'+title+'</td><td><a id="'+data[title][j]+'" href="">'+pagenumber+'</a></td></tr>');                      
                   }   
                 }
                 $('#entries').append('</table>');                  
@@ -529,14 +529,25 @@
           });
       }
 
-      $("button#adxbtn").click(function(){
+      $("#entries a").click(function(){
+            //var Value = $("#entries input[name='option']:checked").val();
+            var Value = this.id;            
+            if(Value){
+              alert(Value);
+              //checkForAdx(Value);                
+            }else{
+                  alert('must select a document');
+                }      
+      });
+      
+      $("button#adxbtn_bk").click(function(){
             var radioValue = $("#entries input[name='option']:checked").val();            
             if(radioValue){
               checkForAdx(radioValue);                
             }else{
                   alert('must select a document');
                 }      
-      });  
+      });
 
       init();
   </script>
