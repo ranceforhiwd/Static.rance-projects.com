@@ -488,8 +488,8 @@
                   t += '<tr><td>'+title+'</td>';
                   for(j in data[title]){
                     f = data[title][j]['files'].split("_folder/");
-                    t +='<td><a id="'+f+'">'+data[title][j]["adx"]+'</a></td>';
-                    t += '<td>'+f+'</td>';
+                    t +='<td><a style="text-decoration:underline" id="'+f[1]+'">'+data[title][j]["adx"]+'</a></td>';
+                    t += '<td>'+f[1]+'</td>';
                   }
                   t += '</tr>';
                 }
