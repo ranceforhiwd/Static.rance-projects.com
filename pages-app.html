@@ -409,24 +409,9 @@
                 <div class="col-sm-10">
                   <input class="form-control" type="file" id="file-input">
                 </div>
-              </div>
-              <div class="row mb-12">
-                <label for="inputDate" class="col-sm-2 col-form-label">Date</label>
-                <div class="col-sm-10">
-                  <input type="date" class="form-control">
-                </div>
-              </div>
-              <div class="row mb-12">
-                <label for="inputTime" class="col-sm-2 col-form-label">Time</label>
-                <div class="col-sm-10">
-                  <input type="time" class="form-control">
-                </div>
-              </div>
-              <div class="row mb-12">
-                <div class="col-sm-10">                
-                  <button type="submit" class="btn btn-outline-info">Submit Form</button>                
-                  <button id="adxbtn" type="button" class="btn btn-outline-info">Find Address</button>
-                </div>
+              </div>            
+              <div class="row mb-12">                                
+                <button type="submit" class="btn btn-outline-info">Submit Form</button>                
               </div>              
            
               <div class="card">
@@ -535,17 +520,12 @@
           pngFileName = pngArr[1];
 
           if(pngFileName){
-            checkForAdx(radioValue);                
+            checkForAdx(pngFileName);                
           }else{
                 alert('must select a document');
           }
       });
       
-      $("button#adxbtn_bk").click(function(){
-            var radioValue = $("#entries input[name='option']:checked").val();            
-                  
-      });
-
       init();
   </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
