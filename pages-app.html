@@ -496,19 +496,18 @@
             type: 'GET',
             dataType: 'json',
             headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
-            success: function(data){              
-                for(title in data){              
-                  $("#entries").append('<ul id="'+title+'" class="list-group">');
-                  $('#entries ul#'+title).append('<li id="item-'+title+'" class="list-group-item">'+title+'</li>');
-                    /*for(j in data[title]){
+            success: function(data){
+                $('#entries').append('<table class="table"><thead><th>Document</th><th>Page</th></thead><tbody>');                
+                for(title in data){
+                  for(j in data[title]){
                       x = data[title][j].split('_folder/');
                       pagepro1 = x[1].split('~');
                       pagepro2 = pagepro1[1].split('.');
-                      pagenumber = 'page - '+pagepro2[0];                     
-                      $("#entries ul").append('<li id="'+pagenumber+'" class="list-group-item">'+pagenumber+'</li>');                      
-                    }*/
-                  $("#entries").append('</ul>');                                  
-                }         
+                      pagenumber = pagepro2[0];                            
+                      $(`#entries table`).append('<tr><td>'+title+'</td><td><a id="'+data[title][j]+'" href="#">'+pagenumber+'</a></td></tr>');                      
+                  }   
+                }
+                $('#entries').append('</table>');                  
             }
           });
       }
