@@ -518,9 +518,7 @@
       }
 
       $("#entries").on("click", "a", function(e){
-          pngFolder = this.id;
-          pngArr = pngFolder.split('/');
-          pngFileName = pngArr[1];
+          pngFileName = this.id;
 
           if(pngFileName){
             checkForAdx(pngFileName);                
