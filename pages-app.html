@@ -404,20 +404,18 @@
                   <input type="number" class="form-control">
                 </div>
               </div>
-              <div class="row mb-12">
-                <label for="inputNumber" class="col-sm-2 col-form-label">Upload PDF</label>
+              <div class="row mb-12">                
                 <div class="col-sm-10">
                   <input class="form-control" type="file" id="file-input">
                 </div>
               </div>            
               <div class="row mb-12">                                
-                <button type="submit" class="btn btn-outline-info">Submit Form</button>                
+                <button type="submit" class="btn btn-outline-info">Upload PDF</button>                
               </div>              
            
               <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Default List Group</h5>
-                  <div class="row mb-12" id="entries"></div>        
+                <div class="card-body">                  
+                  <div id="entries"></div>        
                 </div>
               </div>              
             </form>
@@ -482,13 +480,12 @@
             dataType: 'json',
             headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
             success: function(data){                
-                t = '<table class="table"><thead><th>Document</th><th>Address</th><th>Page</th></thead><tbody>';
+                t = '<table class="table"><thead><th>Address</th><th>Page</th></thead><tbody>';
 
-                for(title in data){
-                  t += '<tr><td>'+title+'</td>';
+                for(title in data){                  
                   for(j in data[title]){
                     f = data[title][j]['files'].split("_folder/");
-                    t +='<td><a style="text-decoration:underline" id="'+f[1]+'">'+data[title][j]["adx"]+'</a></td>';
+                    t +='<tr><td><a style="text-decoration:underline" id="'+f[1]+'">'+data[title][j]["adx"]+'</a></td>';
                     t += '<td>'+f[1]+'</td>';
                   }
                   t += '</tr>';
@@ -512,7 +509,7 @@
                     window.lat = rb[0];
                     window.lng = rb[1];                    
                     $("#addresses").html('<span>'+data["Text"]+'</span>');
-                    $("#globeloc").html('<span>'+data["ResultBBox"]+'</span>');                             
+                    $("#globeloc").html('<span>'+window.lat+'</span><span>'+window.lng+'</span>');                             
                   }
           });
       }
