@@ -386,43 +386,39 @@
   </div>
 
   <section id="app-section" class="section">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="card">
-          <div class="card-body">
-            <!-- Form -->
-            <form id="upload-form">
-              <div class="row mb-12">
-                <label for="inputText" class="col-sm-2 col-form-label">Address</label>
-                <div class="col-sm-10">
-                  <input type="text" id="use_adx" class="form-control">
-                </div>
-              </div>              
-              <div class="row mb-12">
-                <label for="inputNumber" class="col-sm-2 col-form-label">Zip Code</label>
-                <div class="col-sm-10">
-                  <input type="number" class="form-control">
-                </div>
-              </div>
-              <div class="row mb-12">                
-                <div class="col-sm-10">
-                  <input class="form-control" type="file" id="file-input">
-                </div>
-              </div>            
-              <div class="row mb-12">                                
-                <button type="submit" class="btn btn-outline-info">Upload PDF</button>                
-              </div>              
-           
-              <div class="card">
-                <div class="card-body">                  
-                  <div id="entries"></div>        
-                </div>
-              </div>              
-            </form>
+    <div id="control-panel" class="card">
+      <div class="card-body">
+        <!-- Form -->
+        <form id="upload-form">
+          <div class="row mb-12">
+            <label for="inputText" class="col-sm-2 col-form-label">Address</label>
+            <div class="col-sm-10">
+              <input type="text" id="use_adx" class="form-control">
+            </div>
+          </div>              
+          <div class="row mb-12">
+            <label for="inputNumber" class="col-sm-2 col-form-label">Zip Code</label>
+            <div class="col-sm-10">
+              <input type="number" class="form-control">
+            </div>
           </div>
-        </div>        
+          <div class="row mb-12">                
+            <div class="col-sm-10">
+              <input class="form-control" type="file" id="file-input">
+            </div>
+            <div class="col-sm-2">
+              <button type="submit" class="btn btn-outline-info">Upload PDF</button>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">                  
+              <div id="entries"></div>        
+            </div>
+          </div>              
+        </form>
       </div>
-    </div> <!--End of row-->    
+    </div>        
+             
   
     <!-- Cesium Card -->
     <div id="globe" class="card">
