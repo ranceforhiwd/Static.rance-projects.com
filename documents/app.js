@@ -17,7 +17,7 @@ document.getElementById('upload-form').addEventListener('submit', (event) => {
         use_adx = $("input#use_adx").val();
         zipcode = $("input#zipcode").val();
         $("#addresses").html('<span>User Address Lookup:'+use_adx+zipcode+'</span>');
-        checkForAdx(use_adx);
+        checkForAdx(use_adx, 'user');
         return;
     }
 
