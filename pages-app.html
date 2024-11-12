@@ -406,7 +406,7 @@
             <div class="row mb-12">
               <label for="inputNumber" class="col-sm-2 col-form-label">Zip Code</label>
               <div class="col-sm-10">
-                <input type="number" class="form-control">
+                <input id="zipcode" type="number" class="form-control">
               </div>
             </div>
           </div>
@@ -514,14 +514,19 @@
                   success: function(data){
                     rb = data[0]['ResultBBox'];                    
                     window.lat = rb[0];
-                    window.lng = rb[1];
-                                                           
+                    window.lng = rb[1];                                                           
                                         
                     $("#addresses").html('<span>'+data[0]["Text"]+'</span><br>');
-                    $('#addresses').append('<p>Hospitals Nearby</p>');
-                    for( h in data[1]){
-                      $("#addresses").append('<p>'+data[1][h]+'</p>');
+                    
+                    if(data[1].length){
+                      $('#addresses').append('<p>Hospitals Nearby: '+data[1].length+'</p>');
+                      for( h in data[1]){
+                        $("#addresses").append('<p>'+data[1][h]+'</p>');
+                      }
+                    }else{
+                      $("#addresses").append('<p>No facilities found in range</p>');
                     }
+                    
                     
                     $("#globeloc").html('<span>'+window.lat+' / '+window.lng+'</span>');                             
                   }
