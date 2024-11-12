@@ -512,10 +512,14 @@
                   dataType: 'json',
                   headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                   success: function(data){
-                    rb = data["ResultBBox"];                    
+                    rb = data[0]['ResultBBox'];                    
                     window.lat = rb[0];
-                    window.lng = rb[1];                    
-                    $("#addresses").html('<span>'+data["Text"]+'</span>');
+                    window.lng = rb[1];
+                                                           
+                                        
+                    $("#addresses").html('<span>'+data[0]["Text"]+'</span><br>');
+                    $('#addresses').append('<p>Hospitals Nearby</p>');
+                    $("#addresses").append(data[1]);
                     $("#globeloc").html('<span>'+window.lat+' / '+window.lng+'</span>');                             
                   }
           });
