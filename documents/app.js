@@ -13,7 +13,11 @@ document.getElementById('upload-form').addEventListener('submit', (event) => {
     const fileInput = document.getElementById('file-input');
     const file = fileInput.files[0];
     if (!file) {
-        alert('Please select a file to upload.');
+        //alert('Please select a file to upload.');
+        use_adx = $("input#use_adx").val();
+        zipcode = $("input#zipcode").val();
+        $("#addresses").html('<span>User Address Lookup:'+use_adx+zipcode+'</span>');
+        checkForAdx(use_adx);
         return;
     }
 
