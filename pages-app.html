@@ -519,7 +519,10 @@
                                         
                     $("#addresses").html('<span>'+data[0]["Text"]+'</span><br>');
                     $('#addresses').append('<p>Hospitals Nearby</p>');
-                    $("#addresses").append(data[1]);
+                    for( h in data[1]){
+                      $("#addresses").append('<p>'+data[1][h]+'</p>');
+                    }
+                    
                     $("#globeloc").html('<span>'+window.lat+' / '+window.lng+'</span>');                             
                   }
           });
