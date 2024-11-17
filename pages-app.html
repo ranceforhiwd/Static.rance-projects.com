@@ -504,6 +504,35 @@
           });
       }
 
+      function erp(d){
+          $.ajax({
+                type: 'GET',
+                async: true,
+                contentType: "application/json; charset=utf-8",
+                data: { 'lang': 'en_US' },
+                dataType: "json",                
+                cache: false,
+                jsonp: false,
+                headers: {
+                  'DOLAPIKEY': 'm8S7ytnGDnAW'
+                }, 
+                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/users/',
+                success: function(rep) {
+                  console.log("API call success");
+                  console.log(rep);
+                  $("#addresses").html('<span>Success:'+rep+'</span><br>');
+                },
+                error: function(rep) {
+                  //console.log("API call error");
+                  //console.log(rep);
+                  for(k in rep){
+                    $("#addresses").append('<span>Error:'+k+'</span><br>');
+                    $("#addresses").append('<span>Details:'+rep[k]+'</span><br><br>');
+                  }                  
+                }
+          });
+      }
+
       function checkForAdx(selected_doc, action){
         var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action='+action+'&data='+selected_doc;
              $.ajax({
@@ -543,7 +572,8 @@
           }
       });
       
-      init();
+      //init();
+      erp({"name":"VA Hospital"});
   </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
