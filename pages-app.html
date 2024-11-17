@@ -521,8 +521,10 @@
                   console.log("API call success");
                   console.log(rep);
                   for(k in rep){
-                    $("#addresses").append('<span>Error:'+k+'</span><br>');
-                    $("#addresses").append('<span>Details:'+rep[k]+'</span><br><br>');
+                    $("#addresses").append('<span>Success:'+k+'</span><br>');
+                    for(i in rep[k]){
+                      $("#addresses").append('<span>Details:'+rep[k][i]+'</span><br><br>');
+                    }                    
                   }
                 },
                 error: function(rep) {
