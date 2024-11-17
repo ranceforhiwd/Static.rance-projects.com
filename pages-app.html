@@ -523,7 +523,9 @@
                   for(k in rep){
                     $("#addresses").append('<span>Success:'+k+'</span><br>');
                     for(i in rep[k]){
-                      $("#addresses").append('<span>Details:'+rep[k][i]+'</span><br><br>');
+                      if(rep[k][i].length > 0){
+                        $("#addresses").append('<span>Details:'+rep[k][i]+'</span><br><br>');
+                      }                      
                     }                    
                   }
                 },
