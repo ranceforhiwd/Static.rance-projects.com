@@ -520,7 +520,10 @@
                 success: function(rep) {
                   console.log("API call success");
                   console.log(rep);
-                  $("#addresses").html('<span>Success:'+rep+'</span><br>');
+                  for(k in rep){
+                    $("#addresses").append('<span>Error:'+k+'</span><br>');
+                    $("#addresses").append('<span>Details:'+rep[k]+'</span><br><br>');
+                  }
                 },
                 error: function(rep) {
                   //console.log("API call error");
