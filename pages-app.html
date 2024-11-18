@@ -506,10 +506,10 @@
 
       function erp(d){
           $.ajax({
-                type: 'GET',
+                type: 'POST',
                 async: true,
                 contentType: "application/json; charset=utf-8",
-                data: { 'lang': 'en_US' },
+                data: { 'name': 'Test2' },
                 dataType: "json",                
                 cache: false,
                 jsonp: false,
@@ -523,7 +523,7 @@
                   for(k in rep){
                     $("#addresses").append('<span>Success:'+k+'</span><br>');
                     for(i in rep[k]){
-                      if(rep[k][i] !== '' && rep[k][i] !== 'null'){
+                      if(rep[k][i] !== ''){
                         $("#addresses").append('<span>Details:'+rep[k][i]+'</span><br><br>');
                       }                      
                     }                    
