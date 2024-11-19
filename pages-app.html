@@ -511,13 +511,17 @@
                 async: true,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                data: {'name':"value"},                
+                data: {
+                  "request_data": [
+                    "hospital1"
+                  ]
+                },                
                 cache: false,
                 jsonp: false,
                 headers: {
                   'DOLAPIKEY': 'm8S7ytnGDnAW'
                 }, 
-                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/thirdparties/',
+                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/thirdparties',
                 success: function(rep) {
                   for(k in rep){
                     $("#addresses").append('<span>Success:'+k+'</span><br>');
