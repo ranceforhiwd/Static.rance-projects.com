@@ -499,7 +499,8 @@
                 }
                 t += '</table>';
 
-                $('#entries').html(t);                  
+                $('#entries').html(t);
+                erp({"name":"value"});                  
             }
           });
       }
@@ -509,7 +510,8 @@
                 type: 'POST',
                 async: true,
                 contentType: "application/json; charset=utf-8",
-                dataType: "json",                
+                dataType: "json",
+                data: d,                
                 cache: false,
                 jsonp: false,
                 headers: {
@@ -517,8 +519,6 @@
                 }, 
                 url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/thirdparties/',
                 success: function(rep) {
-                  //console.log("API call success");
-                  //console.log(rep);
                   for(k in rep){
                     $("#addresses").append('<span>Success:'+k+'</span><br>');
                     for(i in rep[k]){
@@ -529,8 +529,6 @@
                   }
                 },
                 error: function(rep) {
-                  //console.log("API call error");
-                  //console.log(rep);
                   for(k in rep){
                     $("#addresses").append('<span>Error:'+k+'</span><br>');
                     $("#addresses").append('<span>Details:'+rep[k]+'</span><br><br>');
@@ -579,7 +577,7 @@
       });
       
       init();
-      erp({"name":"VA Hospital"});
+    
   </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
