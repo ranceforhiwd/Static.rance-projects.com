@@ -499,8 +499,7 @@
                 }
                 t += '</table>';
 
-                $('#entries').html(t);
-                erp({'name': "Test Prospect Ltd"});                  
+                $('#entries').html(t);                  
             }
           });
       }
@@ -511,7 +510,7 @@
                 async: true,
                 contentType: "application/json; charset=utf-8",
                 dataType: "json",
-                data: '{"name":"Prospect99"}',                
+                data: d,                
                 cache: false,
                 jsonp: false,
                 headers: {
@@ -555,6 +554,7 @@
                       $('#addresses').append('<p>Hospitals Nearby: '+data[1].length+'</p>');
                       for( h in data[1]){
                         $("#addresses").append('<p>'+data[1][h]+'</p>');
+                        erp('{"name": "'+data[1][h]+'"}');
                       }
                     }else{
                       $("#addresses").append('<p>No facilities found in range</p>');
