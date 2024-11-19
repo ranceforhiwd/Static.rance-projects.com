@@ -509,7 +509,6 @@
                 type: 'POST',
                 async: true,
                 contentType: "application/json; charset=utf-8",
-                data: '{"name": "Test Hospital 1"}',
                 dataType: "json",                
                 cache: false,
                 jsonp: false,
@@ -518,12 +517,12 @@
                 }, 
                 url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/thirdparties/',
                 success: function(rep) {
-                  console.log("API call success");
-                  console.log(rep);
+                  //console.log("API call success");
+                  //console.log(rep);
                   for(k in rep){
                     $("#addresses").append('<span>Success:'+k+'</span><br>');
                     for(i in rep[k]){
-                      if(rep[k][i] !== ''){
+                      if(rep[k][i] !== '' && rep[k][i] !== null){
                         $("#addresses").append('<span>Details:'+rep[k][i]+'</span><br><br>');
                       }                      
                     }                    
@@ -579,7 +578,7 @@
           }
       });
       
-      //init();
+      init();
       erp({"name":"VA Hospital"});
   </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
