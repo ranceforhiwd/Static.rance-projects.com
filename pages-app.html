@@ -553,8 +553,17 @@
                     if(data[1].length){
                       $('#addresses').append('<p>Hospitals Nearby: '+data[1].length+'</p>');
                       for( h in data[1]){
+                        darr = data[1][h].split(',');
+                        thirdparty = {
+                          name: darr[0],
+                          adx: darr[1],
+                          city: darr[2],
+                          state: darr[3],
+                          zip: darr[4],
+                          country: darr[5]
+                        };
                         $("#addresses").append('<p>'+data[1][h]+'</p>');
-                        erp('{"name": "'+data[1][h]+'"}');
+                        erp('{"name": "'+thirdparty.name+'", "address": "'+thirdparty.adx+'", "town": "'+thirdparty.city+'",  "zip": "'+thirdparty.zip+'"}');
                       }
                     }else{
                       $("#addresses").append('<p>No facilities found in range</p>');
