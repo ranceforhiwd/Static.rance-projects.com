@@ -504,7 +504,7 @@
           });
       }
 
-      function erp(d){
+      function create_thirdparty(d){
           $.ajax({
                 type: 'POST',
                 async: true,
@@ -517,6 +517,102 @@
                   'DOLAPIKEY': 'm8S7ytnGDnAW'
                 }, 
                 url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/thirdparties',
+                success: function(rep) {
+                  for(k in rep){
+                    $("#addresses").append('<span>Success:'+k+'</span><br>');
+                    for(i in rep[k]){
+                      if(rep[k][i] !== '' && rep[k][i] !== null){
+                        $("#addresses").append('<span>Details:'+rep[k][i]+'</span><br><br>');
+                      }                      
+                    }                    
+                  }
+                },
+                error: function(rep) {
+                  for(k in rep){
+                    $("#addresses").append('<span>Error:'+k+'</span><br>');
+                    $("#addresses").append('<span>Details:'+rep[k]+'</span><br><br>');
+                  }                  
+                }
+          });
+      }
+
+      function create_contacts(d){
+          $.ajax({
+                type: 'POST',
+                async: true,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: d,                
+                cache: false,
+                jsonp: false,
+                headers: {
+                  'DOLAPIKEY': 'm8S7ytnGDnAW'
+                }, 
+                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/contacts',
+                success: function(rep) {
+                  for(k in rep){
+                    $("#addresses").append('<span>Success:'+k+'</span><br>');
+                    for(i in rep[k]){
+                      if(rep[k][i] !== '' && rep[k][i] !== null){
+                        $("#addresses").append('<span>Details:'+rep[k][i]+'</span><br><br>');
+                      }                      
+                    }                    
+                  }
+                },
+                error: function(rep) {
+                  for(k in rep){
+                    $("#addresses").append('<span>Error:'+k+'</span><br>');
+                    $("#addresses").append('<span>Details:'+rep[k]+'</span><br><br>');
+                  }                  
+                }
+          });
+      }
+
+      function create_product_list(d){
+          $.ajax({
+                type: 'POST',
+                async: true,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: d,                
+                cache: false,
+                jsonp: false,
+                headers: {
+                  'DOLAPIKEY': 'm8S7ytnGDnAW'
+                }, 
+                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/products',
+                success: function(rep) {
+                  for(k in rep){
+                    $("#addresses").append('<span>Success:'+k+'</span><br>');
+                    for(i in rep[k]){
+                      if(rep[k][i] !== '' && rep[k][i] !== null){
+                        $("#addresses").append('<span>Details:'+rep[k][i]+'</span><br><br>');
+                      }                      
+                    }                    
+                  }
+                },
+                error: function(rep) {
+                  for(k in rep){
+                    $("#addresses").append('<span>Error:'+k+'</span><br>');
+                    $("#addresses").append('<span>Details:'+rep[k]+'</span><br><br>');
+                  }                  
+                }
+          });
+      }
+
+      function create_proposals(d){
+          $.ajax({
+                type: 'POST',
+                async: true,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: d,                
+                cache: false,
+                jsonp: false,
+                headers: {
+                  'DOLAPIKEY': 'm8S7ytnGDnAW'
+                }, 
+                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/proposals',
                 success: function(rep) {
                   for(k in rep){
                     $("#addresses").append('<span>Success:'+k+'</span><br>');
@@ -563,7 +659,7 @@
                           country: darr[5]
                         };
                         $("#addresses").append('<p>'+data[1][h]+'</p>');
-                        erp('{"name": "'+thirdparty.name+'", "address": "'+thirdparty.adx+'", "town": "'+thirdparty.city+'",  "zip": "'+thirdparty.zip+'"}');
+                        create_thirdparty('{"name": "'+thirdparty.name+'", "address": "'+thirdparty.adx+'", "town": "'+thirdparty.city+'",  "zip": "'+thirdparty.zip+'"}');
                       }
                     }else{
                       $("#addresses").append('<p>No facilities found in range</p>');
