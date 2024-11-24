@@ -640,19 +640,18 @@
                   dataType: 'json',
                   headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                   success: function(data){
-                    //coordinates = Object.values(data[0]);
+                    coordinates = Object.values(data[0]['ResultBBox']);
                     hospitals = Object.values(data[1]);
                     vendors = Object.values(data[2]);
                     //rb = data[0]['ResultBBox'];                    
                     //window.lat = rb[0];
                     //window.lng = rb[1];                                                           
                                       
-                    $("#addresses").html('<h3>Address Summary</h3>');
-                    /*for(x in coordinates){
-                      $("#addresses").append('<p>'+coordinates[x]+'</p>');
-                    }*/                    
+                    //$("#addresses").html('<h3>Address Summary</h3>');
+                    $("#addresses").append('<h3>Hospitals</h3>');                                       
                     
-                    $("#globeloc").html('<h3>Hospitals</h3>');
+                    //$("#globeloc").append('<h3>Hospitals</h3>');
+                    
                     for(x in hospitals){
                       y = hospitals[x].split(',');
                         thirdparty = {
@@ -663,10 +662,12 @@
                           zip: y[4],
                           country: y[5]
                         };
-                      $("#globeloc").append('<p>'+thirdparty.name+'</p>');
+
+                      $("#addresses").append('<p>'+thirdparty.name+'</p>');
                     }                    
                                                             
-                    $("#globeloc").append('<h3>Supply Vendors</h3>');
+                    $("#addresses").append('<h3>Supply Vendors</h3>');
+
                     for(x in vendors){
                       y = vendors[x].split(',');
                         supply_vendors = {
@@ -677,10 +678,10 @@
                           zip: y[4],
                           country: y[5]
                         };
-                      $("#globeloc").append('<p>'+supply_vendors.name+'</p>');
+                      $("#addresses").append('<p>'+supply_vendors.name+'</p>');
                     }
                                                                             
-                  }//end success
+                  } //end success
           });
       }
 
