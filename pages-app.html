@@ -640,45 +640,47 @@
                   dataType: 'json',
                   headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                   success: function(data){
-                    //$("#addresses").html(data[0]);
-                    //$("#addresses").append('<br><br><p>Area Supply Vendors</p>');
-                    //$("#addresses").append(data[1]);
-
-                    rb = data[0]['ResultBBox'];                    
-                    window.lat = rb[0];
-                    window.lng = rb[1];                                                           
-                                        
-                    $("#addresses").html('<span>'+data[0]["Text"]+'</span><br>');
-                    
-                    /*if(data[0].length){
-                      $('#addresses').append('<p>Hospitals Nearby: '+data[0].length+'</p>');
-                      for( h in data[0]){
-                        darr = data[0][h].split(',');
-                        thirdparty = {
-                          name: darr[0],
-                          adx: darr[1],
-                          city: darr[2],
-                          state: darr[3],
-                          zip: darr[4],
-                          country: darr[5]
-                        };
-                        $("#addresses").append('<p>'+data[0][h]+'</p>');
-                        create_thirdparty('{"name": "'+thirdparty.name+'", "address": "'+thirdparty.adx+'", "town": "'+thirdparty.city+'",  "zip": "'+thirdparty.zip+'"}');
-                      }
-                    }else{
-                      $("#addresses").append('<p>No facilities found in range</p>');
-                    }*/                    
+                    //coordinates = Object.values(data[0]);
+                    hospitals = Object.values(data[1]);
+                    vendors = Object.values(data[2]);
+                    //rb = data[0]['ResultBBox'];                    
+                    //window.lat = rb[0];
+                    //window.lng = rb[1];                                                           
+                                      
                     $("#addresses").html('<h3>Address Summary</h3>');
-
-                    for(x in data[0]){
-                      $("#addresses").append('<p>'+data[0][x]+'</p>');
-                    }
-
-                    $("#globeloc").html('<h3>Hospitals</h3>');                    
-                    $("#globeloc").append('<p>'+data[1]+'</p>');                    
+                    /*for(x in coordinates){
+                      $("#addresses").append('<p>'+coordinates[x]+'</p>');
+                    }*/                    
+                    
+                    $("#globeloc").html('<h3>Hospitals</h3>');
+                    for(x in hospitals){
+                      y = hospitals[x].split(',');
+                        thirdparty = {
+                          name: y[0],
+                          adx: y[1],
+                          city: y[2],
+                          state: y[3],
+                          zip: y[4],
+                          country: y[5]
+                        };
+                      $("#globeloc").append('<p>'+thirdparty.name+'</p>');
+                    }                    
+                                                            
                     $("#globeloc").append('<h3>Supply Vendors</h3>');
-                    $("#globeloc").append('<p>'+data[2]+'</p>');
-                  }
+                    for(x in vendors){
+                      y = vendors[x].split(',');
+                        supply_vendors = {
+                          name: y[0],
+                          adx: y[1],
+                          city: y[2],
+                          state: y[3],
+                          zip: y[4],
+                          country: y[5]
+                        };
+                      $("#globeloc").append('<p>'+supply_vendors.name+'</p>');
+                    }
+                                                                            
+                  }//end success
           });
       }
 
