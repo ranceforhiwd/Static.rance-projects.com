@@ -664,7 +664,7 @@
                         };
                      
                       $("#addresses").append('<p>'+thirdparty.name+'</p>');
-                      
+                      create_thirdparty(thirdparty);
                     }                    
                                                             
                     $("#addresses").append('<h3>Supply Vendors</h3>');
@@ -696,10 +696,7 @@
           }
       });
       
-      //init();
-
-      create_thirdparty('{"name":"Atlibrary"}');
-    
+      init();    
   </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
