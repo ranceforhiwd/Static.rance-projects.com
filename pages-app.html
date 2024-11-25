@@ -689,16 +689,15 @@
       $("#entries").on("click", "a", function(e){
           pngFileName = this.id;
 
-          if(pngFileName){
+          if(pngFileName){            
             checkForAdx(pngFileName, 'checkadx');                
           }else{
                 alert('must select a document');
           }
       });
       
-      //init();
-
-      create_thirdparty('');
+      init();
+      create_thirdparty('{name:"Lovell"}');
     
   </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
