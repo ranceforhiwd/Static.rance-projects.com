@@ -654,10 +654,10 @@
                     
                     for(x in hospitals){
                       y = hospitals[x].split(',');
-                      thirdparty = '{"name": '+y[0]+',"adx": '+y[1]+',"city": '+y[2]+',"state": '+y[3]+', "zip": '+y[4]+',"country": '+y[5]+'}';
+                     // thirdparty = '{"name": '+y[0]+',"adx": '+y[1]+',"city": '+y[2]+',"state": '+y[3]+', "zip": '+y[4]+',"country": '+y[5]+'}';
                      
-                        create_thirdparty(thirdparty);
-                        //create_thirdparty('{"name":"second","type":"0"}');
+                        //create_thirdparty(thirdparty);
+                        create_thirdparty('{"name":"'+y[0]+'","type":"0"}');
                         $("#addresses").append('<p>'+thirdparty.name+'</p>');
                       
                     }                    
