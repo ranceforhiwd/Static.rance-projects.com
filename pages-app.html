@@ -656,7 +656,7 @@
                       y = hospitals[x].split(',');
                       thirdparty = {
                           "name": y[0],
-                          "adx": y[1],
+                          "address": y[1],
                           "city":y[2],
                           "state":y[3],
                           "zip":y[4],
@@ -664,7 +664,7 @@
                       };
                      
                         
-                        create_thirdparty('{"name":"'+thirdparty.name+'","adx":"'+thirdparty.adx+'","city":"'+thirdparty.city+'","state":"'+thirdparty.state+'","zip":"'+thirdparty.zip+'","country":"'+thirdparty.country+'"}');
+                        create_thirdparty('{"name":"'+thirdparty.name+'","addresses":"'+thirdparty.adx+'","city":"'+thirdparty.city+'","state":"'+thirdparty.state+'","zip":"'+thirdparty.zip+'","country":"'+thirdparty.country+'"}');
                         $("#addresses").append('<p>'+thirdparty.name+'</p>');
                       
                     }                    
