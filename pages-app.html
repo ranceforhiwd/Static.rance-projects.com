@@ -664,7 +664,7 @@
                       };
                      
                         
-                        create_thirdparty('{"name":"'+thirdparty.name+'","address":"'+thirdparty.address+'","city":"'+thirdparty.city+'","state":"'+thirdparty.state+'","zip":"'+thirdparty.zip+'","country":"'+thirdparty.country+'"}');
+                        create_thirdparty('{"name":"'+thirdparty.name+'","address":"'+thirdparty.address+'","town":"'+thirdparty.city+'","state":"'+thirdparty.state+'","zip":"'+thirdparty.zip+'","country":"'+thirdparty.country+'"}');
                         $("#addresses").append('<p>'+thirdparty.name+'</p>');
                       
                     }                    
@@ -681,7 +681,7 @@
                           zip: y[4],
                           country: y[5]
                         };
-                        create_thirdparty('{"fournisseur":"1","name":"'+thirdparty.name+'","address":"'+thirdparty.address+'","city":"'+thirdparty.city+'","state":"'+thirdparty.state+'","zip":"'+thirdparty.zip+'","country":"'+vendors.country+'"}');
+                        create_thirdparty('{"fournisseur":"1","name":"'+supply_vendors.name+'","address":"'+supply_vendors.address+'","town":"'+supply_vendors.city+'","state":"'+supply_vendors.state+'","zip":"'+supply_vendors.zip+'","country":"'+supply_vendors.country+'"}');
                       $("#addresses").append('<p>'+supply_vendors.name+'</p>');
                     }
                                                                             
