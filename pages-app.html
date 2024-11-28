@@ -688,9 +688,9 @@
 
                     $("#addresses").append('<h3>Shippers</h3>');
 
-                    for(x in vendors){
-                      y = vendors[x].split(',');
-                        shippers = {
+                    for(x in shippers){
+                      y = shippers[x].split(',');
+                        delivery = {
                           name: y[0],
                           adx: y[1],
                           city: y[2],
@@ -698,8 +698,8 @@
                           zip: y[4],
                           country: y[5]
                         };
-                        create_thirdparty('{"fournisseur":"1","name":"'+shippers.name+'","address":"'+shippers.address+'","town":"'+shippers.city+'","state":"'+shippers.state+'","zip":"'+shippers.zip+'","country":"'+shippers.country+'"}');
-                      $("#addresses").append('<p>'+shippers.name+'</p>');
+                        create_thirdparty('{"fournisseur":"1","name":"'+delivery.name+'","address":"'+delivery.address+'","town":"'+delivery.city+'","state":"'+delivery.state+'","zip":"'+delivery.zip+'","country":"'+delivery.country+'"}');
+                      $("#addresses").append('<p>'+delivery.name+'</p>');
                     }
                                                                             
                   } //end success
