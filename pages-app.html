@@ -643,9 +643,10 @@
                     coordinates = Object.values(data[0]['ResultBBox']);
                     hospitals = Object.values(data[1]);
                     vendors = Object.values(data[2]);
-                    //rb = data[0]['ResultBBox'];                    
-                    //window.lat = rb[0];
-                    //window.lng = rb[1];                                                           
+                    shippers = Object.valeus(data[3]);
+                    rb = data[0]['ResultBBox'];                    
+                    window.lat = rb[0];
+                    window.lng = rb[1];                                                           
                                       
                     //$("#addresses").html('<h3>Address Summary</h3>');
                     $("#addresses").append('<h3>Hospitals</h3>');                                       
@@ -683,6 +684,22 @@
                         };
                         create_thirdparty('{"fournisseur":"1","name":"'+supply_vendors.name+'","address":"'+supply_vendors.address+'","town":"'+supply_vendors.city+'","state":"'+supply_vendors.state+'","zip":"'+supply_vendors.zip+'","country":"'+supply_vendors.country+'"}');
                       $("#addresses").append('<p>'+supply_vendors.name+'</p>');
+                    }
+
+                    $("#addresses").append('<h3>Shippers</h3>');
+
+                    for(x in vendors){
+                      y = vendors[x].split(',');
+                        shippers = {
+                          name: y[0],
+                          adx: y[1],
+                          city: y[2],
+                          state: y[3],
+                          zip: y[4],
+                          country: y[5]
+                        };
+                        create_thirdparty('{"fournisseur":"1","name":"'+shippers.name+'","address":"'+shippers.address+'","town":"'+shippers.city+'","state":"'+shippers.state+'","zip":"'+shippers.zip+'","country":"'+shippers.country+'"}');
+                      $("#addresses").append('<p>'+shippers.name+'</p>');
                     }
                                                                             
                   } //end success
