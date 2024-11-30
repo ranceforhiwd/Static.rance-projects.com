@@ -631,6 +631,38 @@
                   }                  
                 }
           });
+      } 
+      
+      function create_price_request(d){
+          $.ajax({
+                type: 'POST',
+                async: true,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                data: d,                
+                cache: false,
+                jsonp: false,
+                headers: {
+                  'DOLAPIKEY': 'm8S7ytnGDnAW'
+                }, 
+                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/supplierproposals',
+                success: function(rep) {
+                  for(k in rep){
+                    $("#proposals").append('<span>Success:'+k+'</span><br>');
+                    for(i in rep[k]){
+                      if(rep[k][i] !== '' && rep[k][i] !== null){
+                        $("#proposals").append('<span>Details:'+rep[k][i]+'</span><br><br>');
+                      }                      
+                    }                    
+                  }
+                },
+                error: function(rep) {
+                  for(k in rep){
+                    $("#proposals").append('<span>Error:'+k+'</span><br>');
+                    $("#proposals").append('<span>Details:'+rep[k]+'</span><br><br>');
+                  }                  
+                }
+          });
       }
 
       function add_products(d){
