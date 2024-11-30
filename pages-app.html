@@ -720,8 +720,8 @@
       //create_thirdparty('{"name":"first","type":"0"}');
       mytimestamp = 1732909400;
       prod_opts = {"ref":"BPC-001","product_label":"Blood Pressure Cuff"};
-      //create_proposals('{"ref_client":"CP-11-29-2024-2","socid":"202","date":'+mytimestamp+',"lines":"[{qty:3}]"}');
-    
+      new_prop = create_proposals('{"ref_client":"CP-11-29-2024-2","socid":"202","date":'+mytimestamp+'}');
+      $("#addresses").append('<span>Proposal: '+new_prop+'</span>');
   </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
