@@ -435,6 +435,7 @@
     <div id="globe" class="card">
       <div class="card-header">
         <div id="addresses"></div>
+        <div id="proposals></div>
       </div>
       <div class="card-body">
         <div id="globeloc"></div>
@@ -615,18 +616,18 @@
                 url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/proposals',
                 success: function(rep) {
                   for(k in rep){
-                    $("#addresses").append('<span>Success:'+k+'</span><br>');
+                    $("#proposals").append('<span>Success:'+k+'</span><br>');
                     for(i in rep[k]){
                       if(rep[k][i] !== '' && rep[k][i] !== null){
-                        $("#addresses").append('<span>Details:'+rep[k][i]+'</span><br><br>');
+                        $("#proposals").append('<span>Details:'+rep[k][i]+'</span><br><br>');
                       }                      
                     }                    
                   }
                 },
                 error: function(rep) {
                   for(k in rep){
-                    $("#addresses").append('<span>Error:'+k+'</span><br>');
-                    $("#addresses").append('<span>Details:'+rep[k]+'</span><br><br>');
+                    $("#proposals").append('<span>Error:'+k+'</span><br>');
+                    $("#proposals").append('<span>Details:'+rep[k]+'</span><br><br>');
                   }                  
                 }
           });
@@ -751,22 +752,23 @@
       init();
       //create_thirdparty('{"name":"first","type":"0"}');
       mytimestamp = 1732909400;
-      p = {
-            "ref": "BPC-001",
-            "multicurrency_total_ht": 80.00000000,
-            "multicurrency_total_tva": 0.00000000,
-            "multicurrency_total_ttc": 80.00000000,
-            "parent_element": "propal",
-            "product_type": "0",
-            "fk_product": "1",
-            "qty": "10",
-            "subprice": "8.00000000",
-            "tva_tx": "0.0000",
-            "multicurrency_subprice": "8.00000000",
-            "fk_propal": "1",
-            "product_desc": "<font style=\"vertical-align:inherit\"><font style=\"vertical-align:inherit\">This is a product description</font></font>",
-            "fk_parent_attribute": "fk_propal"
-          };
+      
+      p = '{'+
+            '"ref": "BPC-001",' +
+            '"multicurrency_total_ht": 80.00000000,' +
+            '"multicurrency_total_tva": 0.00000000,' +
+            '"multicurrency_total_ttc": 80.00000000,' +
+            '"parent_element": "propal",' +
+            '"product_type": "0",' +
+            '"fk_product": "1",' +
+            '"qty": "10",' +
+            '"subprice": "8.00000000",' +
+            '"tva_tx": "0.0000",' +
+            '"multicurrency_subprice": "8.00000000",' +
+            '"fk_propal": "1",' +
+            '"product_desc": "<font style=\"vertical-align:inherit\"><font style=\"vertical-align:inherit\">This is a product description</font></font>",' +
+            '"fk_parent_attribute": "fk_propal"' +
+          '}';
 
       create_proposals('{"ref_client":"CP-11-29-2024-2","socid":"202","date":'+mytimestamp+'}');
       add_products(p);
