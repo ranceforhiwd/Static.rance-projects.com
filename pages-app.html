@@ -697,7 +697,7 @@
           });
       }
 
-      function add_products(d){
+      function add_products(d, id){
         $.ajax({
                 type: 'POST',
                 async: true,
@@ -709,7 +709,7 @@
                 headers: {
                   'DOLAPIKEY': 'm8S7ytnGDnAW'
                 }, 
-                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/proposals/24/line',
+                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/proposals/'+id+'/line',
                 success: function(rep) {
                   for(k in rep){
                     $("#addresses").append('<span>Success:'+k+'</span><br>');
@@ -819,13 +819,14 @@
       
       mytimestamp = Date();
       lead = "Lead120120241";
+      myid = 40;
 
       create_project('{"title": '+lead+',"socid": "202"}');
 
-      create_price_request('{"socid":"204","lines": [{ "fk_product": 1, "qty": 10 }]}');
+      create_price_request('{"socid":"204","lines": [{ "fk_product": 1, "qty": "10" }]}');
       
       create_proposals('{"ref_client":"CP-11-29-2024-2","socid":"202","date":'+mytimestamp+'}');
-      add_products('{"parent_element": "propal","product_type":"0","fk_product": "1","qty":"10", "subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}');
+      add_products('{"parent_element": "propal","product_type":"0","fk_product": "1","qty":"10", "subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}', myid);
       
       create_sales_order('{ "socid": 202, "date":"1595196000","product_type": 0, "lines": [{ "fk_product": 1, "qty": 10,"subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}] }');
   </script>
