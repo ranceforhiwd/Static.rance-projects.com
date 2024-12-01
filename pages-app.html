@@ -569,7 +569,7 @@
           });
       }
 
-      function create_product_list(d){
+      function create_sales_order(d){
           $.ajax({
                 type: 'POST',
                 async: true,
@@ -581,7 +581,7 @@
                 headers: {
                   'DOLAPIKEY': 'm8S7ytnGDnAW'
                 }, 
-                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/products',
+                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/orders',
                 success: function(rep) {
                   for(k in rep){
                     $("#addresses").append('<span>Success:'+k+'</span><br>');
@@ -789,7 +789,8 @@
 
       create_proposals('{"ref_client":"CP-11-29-2024-2","socid":"202","date":'+mytimestamp+'}');
       add_products('{"parent_element": "propal","product_type":"0","fk_product": "1","qty":"10", "subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}');
-      create_price_request('{"socid":"204","lines": [{"ref": "BPC-001","product_type":"0","fk_product": "1","qty":"5"}]}');
+      create_price_request('{"socid":"204","lines": [{"product_type":"0","fk_product": "1","qty":"5"}]}');
+      create_sales_order('{ "socid": 202, "date":"1595196000","product_type": 0, "lines": [{ "fk_product": 1, "qty": 10 }] }');
   </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
