@@ -797,11 +797,19 @@
                           zip: y[4],
                           country: y[5]
                         };
-                        api_ajax('thirdparties', '{"fournisseur":"1","name":"'+delivery.name+'","address":"'+delivery.address+'","town":"'+delivery.city+'","state":"'+delivery.state+'","zip":"'+delivery.zip+'","country":"'+delivery.country+'"}');
+
+                        if(delivery.address != 'undefined' && delivery.zip != 'USA~'){
+                          api_ajax('thirdparties', '{"fournisseur":"1","name":"'+delivery.name+'","address":"'+delivery.address+'","town":"'+delivery.city+'","state":"'+delivery.state+'","zip":"'+delivery.zip+'","country":"'+delivery.country+'"}');
+                        }
+                        
                       $("#addresses").append('<p>'+delivery.name+'</p>');
                     }
 
                     //Create projejct documents
+                    //api_ajax('shipments', '{}');
+                    //api_ajax('contacts', '{}');
+                    //api_ajax('purchaseorders', '{}');
+                    //api_ajax('invoices', '{}');
                     //api_ajax('projects', '{"ref":"lead-proj-1","title": "Lead1201020242","socid": "202"}');
 
                     //api_ajax('supplierproposals', '{"socid":"204"}');
@@ -827,11 +835,6 @@
       });
       
       init();
-
-      //api_ajax('shipments', '{}');
-      //api_ajax('contacts', '{}');
-      //api_ajax('purchaseorders', '{}');
-      //api_ajax('invoices', '{}');
 
       </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
