@@ -552,13 +552,13 @@
                 success: function(rep) {
                   for(k in rep){                    
                     if(rep[k]["client"]==2){
-                      $("#globeloc").append('<p>'+rep[k]["id"]+'::'+rep[k]["client"]+'</p>');
-                      api_ajax('projects', '{"ref":"'+rep[k]["ref"]+'","title": "'+rep[k]["name"]+'","socid": "'+rep[k]["id"]+'"}');
-                      api_ajax('supplierorders', '{ "socid": '+rep[k]["id"]+'","product_type": 0, "lines": [{ "fk_product": 1, "qty": 10,"subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}] }');
+                      $("#globeloc").append('<p>C-'+rep[k]["id"]+'::'+rep[k]["client"]+'</p>');
+                      api_ajax('projects', '{"ref":"'+rep[k]["ref"]+'","title": "'+rep[k]["name"]+'","socid": "'+rep[k]["id"]+'"}');                      
                       api_ajax('orders', '{ "socid": '+rep[k]["id"]+'","product_type": 0, "lines": [{ "fk_product": 1, "qty": 10,"subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}] }');
                     }else{
                       api_ajax('supplierproposals', '{"socid":"'+rep[k]["id"]+'"}');
-                      $("#addresses").append('<p>'+rep[k]["id"]+'</p>');
+                      api_ajax('supplierorders', '{"socid":"'+rep[k]["id"]+'"}');
+                      $("#addresses").append('<p>V-'+rep[k]["id"]+'</p>');
                     }                    
                                                
                         //api_ajax('shipments', '{}');
@@ -626,11 +626,6 @@
                     window.lat = rb[0];
                     window.lng = rb[1];                                                           
                                       
-                    //$("#addresses").html('<h3>Address Summary</h3>');
-                    $("#addresses").append('<h3>Hospitals</h3>');                                       
-                    
-                    //$("#globeloc").append('<h3>Hospitals</h3>');
-                    
                     for(x in hospitals){
                       y = hospitals[x].split(',');
                       thirdparty = {
@@ -642,14 +637,14 @@
                           "country":y[5]
                       };
                      
-                      if(thirdparty.address != 'undefined' && thirdparty.zip != 'USA~'){  
+                      if(thirdparty.address !== 'undefined' && thirdparty.zip !== 'USA~'){  
                         api_ajax('thirdparties', '{"client":"2","name":"'+thirdparty.name+'","address":"'+thirdparty.address+'","town":"'+thirdparty.city+'","state":"'+thirdparty.state+'","zip":"'+thirdparty.zip+'","country":"'+thirdparty.country+'"}');
                       }
-                      $("#addresses").append('<p>'+thirdparty.name+'</p>');
+                      //$("#addresses").append('<p>'+thirdparty.name+'</p>');
                     
                     }                    
                                                             
-                    $("#addresses").append('<h3>Supply Vendors</h3>');
+                    //$("#addresses").append('<h3>Supply Vendors</h3>');
 
                     for(x in vendors){
                       y = vendors[x].split(',');
@@ -664,10 +659,10 @@
                         if(supply_vendors.address != 'undefined' && supply_vendors.zip != 'USA~'){
                           api_ajax('thirdparties', '{"fournisseur":"1","name":"'+supply_vendors.name+'","address":"'+supply_vendors.address+'","town":"'+supply_vendors.city+'","state":"'+supply_vendors.state+'","zip":"'+supply_vendors.zip+'","country":"'+supply_vendors.country+'"}');
                         }    
-                        $("#addresses").append('<p>'+supply_vendors.name+'</p>');
+                        //$("#addresses").append('<p>'+supply_vendors.name+'</p>');
                     }
 
-                    $("#addresses").append('<h3>Shippers</h3>');
+                    //$("#addresses").append('<h3>Shippers</h3>');
 
                     for(x in shippers){
                       y = shippers[x].split(',');
@@ -684,7 +679,7 @@
                           api_ajax('thirdparties', '{"fournisseur":"1","name":"'+delivery.name+'","address":"'+delivery.address+'","town":"'+delivery.city+'","state":"'+delivery.state+'","zip":"'+delivery.zip+'","country":"'+delivery.country+'"}');
                         }
                         
-                      $("#addresses").append('<p>'+delivery.name+'</p>');
+                      //$("#addresses").append('<p>'+delivery.name+'</p>');
                     }
 
                     get_entities('thirdparties');
