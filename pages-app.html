@@ -552,7 +552,9 @@
                 success: function(rep) {
                   for(k in rep){
                     for(i in rep[k]){
-                      $("#globeloc").html('<p>'+k+'::'+rep[k][i]+'</p>');
+                      if(i == 'id' || i == 'name'){
+                        $("#globeloc").html('<p>'+i+'::'+rep[k][i]+'</p>');
+                      }
                     }                    
                   }                  
                 },
