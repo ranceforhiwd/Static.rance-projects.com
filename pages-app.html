@@ -552,7 +552,7 @@
                 success: function(rep) {
                   for(k in rep){
                     $("#globeloc").append('<p>'+rep[k]["id"]+'</p>');
-                    api_ajax('projects', '{"ref":"'+rep[k][i]["ref"]+'","title": "'+rep[k][i]["name"]+'","socid": "'+rep[k][i]["rid"]+'"}');
+                    api_ajax('projects', '{"ref":"'+rep[k][i]["ref"]+'","title": "'+rep[k][i]["name"]+'","socid": "'+rep[k][i]["id"]+'"}');
                     //for(i in rep[k]){                       
                       //if(i == 'ref'){
                         //$("#globeloc").append('<p>'+i+'::'+rep[k][i]+'</p>');
