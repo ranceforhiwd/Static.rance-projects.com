@@ -550,24 +550,22 @@
                 }, 
                 url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/'+m,
                 success: function(rep) {
-                  for(k in rep){
-                    $("#globeloc").append('<p>'+rep[k]["id"]+'::'+rep[k]["client"]'</p>');
-                    api_ajax('projects', '{"ref":"'+rep[k]["ref"]+'","title": "'+rep[k]["name"]+'","socid": "'+rep[k]["id"]+'"}');
-                    
-                    
-                        
-                        
+                  for(k in rep){                    
+                    if(rep[k]["client"]==2){
+                      $("#globeloc").append('<p>'+rep[k]["id"]+'::'+rep[k]["client"]+'</p>');
+                      api_ajax('projects', '{"ref":"'+rep[k]["ref"]+'","title": "'+rep[k]["name"]+'","socid": "'+rep[k]["id"]+'"}');
+                      api_ajax('supplierorders', '{ "socid": '+rep[k]["id"]+'","product_type": 0, "lines": [{ "fk_product": 1, "qty": 10,"subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}] }');
+                      api_ajax('orders', '{ "socid": '+rep[k]["id"]+'","product_type": 0, "lines": [{ "fk_product": 1, "qty": 10,"subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}] }');
+                    }else{
+                      api_ajax('supplierproposals', '{"socid":"'+rep[k]["id"]+'"}');
+                      $("#addresses").append('<p>'+rep[k]["id"]+'</p>');
+                    }                    
+                                               
                         //api_ajax('shipments', '{}');
                         //api_ajax('contacts', '{}');
-                        //api_ajax('supplierorders', '{}');
-                        //api_ajax('invoices', '{}');
-                        
-                        //api_ajax('supplierproposals', '{"socid":"204"}');
-                        
+                        //api_ajax('invoices', '{}');                    
                         //api_ajax('proposals', '{"ref_client":"CP-11-29-2024-2","socid":"'+rep[k]["id"]+'","date":"'+rep[k]["date"]+'"}');
-                        //add_products('{"parent_element": "propal","product_type":"0","fk_product": "1","qty":"10", "subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}', 40);
-                        
-                    api_ajax('orders', '{ "socid": '+rep[k]["id"]+'","product_type": 0, "lines": [{ "fk_product": 1, "qty": 10,"subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}] }');                  
+                        //add_products('{"parent_element": "propal","product_type":"0","fk_product": "1","qty":"10", "subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}', 40);             
                                         
                   }                  
                 },
