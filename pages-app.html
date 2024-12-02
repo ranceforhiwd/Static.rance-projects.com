@@ -552,7 +552,7 @@
                 success: function(rep) {
                   for(k in rep){
                     for(i in rep[k]){
-                      if(i == 'id' || i == 'name'){
+                      if(i == 'ref'){
                         $("#globeloc").html('<p>'+i+'::'+rep[k][i]+'</p>');
                       }
                     }                    
