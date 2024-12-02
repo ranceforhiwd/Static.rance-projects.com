@@ -505,8 +505,6 @@
           });
       }
 
-     
-
       function api_ajax(m,d){
         $.ajax({
                 type: 'POST',
@@ -553,14 +551,7 @@
                 }, 
                 url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/'+m,
                 success: function(rep) {
-                  for(k in rep){
-                    $("#globeloc").append('<span>Success:'+k+'</span><br>');
-                    for(i in rep[k]){
-                      if(rep[k][i] !== '' && rep[k][i] !== null){
-                        $("#globeloc").append('<span>Details:'+rep[k][i]+'</span><br><br>');
-                      }                      
-                    }                    
-                  }
+                  $("#globeloc").html('<p>'+rep+'</p>');
                 },
                 error: function(rep) {
                   for(k in rep){
@@ -571,13 +562,6 @@
           });
       }
       
-
-      
-
-       
-      
-      
-
       function add_products(d, id){
         $.ajax({
                 type: 'POST',
