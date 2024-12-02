@@ -764,9 +764,9 @@
                       };
                      
                         
-                        create_thirdparty('{"client":"2","name":"'+thirdparty.name+'","address":"'+thirdparty.address+'","town":"'+thirdparty.city+'","state":"'+thirdparty.state+'","zip":"'+thirdparty.zip+'","country":"'+thirdparty.country+'"}');
-                        $("#addresses").append('<p>'+thirdparty.name+'</p>');
-                      
+                      api_ajax('thirdparties', '{"client":"2","name":"'+thirdparty.name+'","address":"'+thirdparty.address+'","town":"'+thirdparty.city+'","state":"'+thirdparty.state+'","zip":"'+thirdparty.zip+'","country":"'+thirdparty.country+'"}');
+                      $("#addresses").append('<p>'+thirdparty.name+'</p>');
+                    
                     }                    
                                                             
                     $("#addresses").append('<h3>Supply Vendors</h3>');
@@ -781,7 +781,7 @@
                           zip: y[4],
                           country: y[5]
                         };
-                        create_thirdparty('{"fournisseur":"1","name":"'+supply_vendors.name+'","address":"'+supply_vendors.address+'","town":"'+supply_vendors.city+'","state":"'+supply_vendors.state+'","zip":"'+supply_vendors.zip+'","country":"'+supply_vendors.country+'"}');
+                        api_ajax('thirdparties', '{"fournisseur":"1","name":"'+supply_vendors.name+'","address":"'+supply_vendors.address+'","town":"'+supply_vendors.city+'","state":"'+supply_vendors.state+'","zip":"'+supply_vendors.zip+'","country":"'+supply_vendors.country+'"}');
                       $("#addresses").append('<p>'+supply_vendors.name+'</p>');
                     }
 
@@ -797,9 +797,20 @@
                           zip: y[4],
                           country: y[5]
                         };
-                        create_thirdparty('{"fournisseur":"1","name":"'+delivery.name+'","address":"'+delivery.address+'","town":"'+delivery.city+'","state":"'+delivery.state+'","zip":"'+delivery.zip+'","country":"'+delivery.country+'"}');
+                        api_ajax('thirdparties', '{"fournisseur":"1","name":"'+delivery.name+'","address":"'+delivery.address+'","town":"'+delivery.city+'","state":"'+delivery.state+'","zip":"'+delivery.zip+'","country":"'+delivery.country+'"}');
                       $("#addresses").append('<p>'+delivery.name+'</p>');
                     }
+
+                    //Create projejct documents
+                    //api_ajax('projects', '{"ref":"lead-proj-1","title": "Lead1201020242","socid": "202"}');
+
+                    //api_ajax('supplierproposals', '{"socid":"204"}');
+                    
+                    //api_ajax('proposals', '{"ref_client":"CP-11-29-2024-2","socid":"202","date":"1732909400"}');
+                    //add_products('{"parent_element": "propal","product_type":"0","fk_product": "1","qty":"10", "subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}', 40);
+                    
+                    //api_ajax('orders', '{ "socid": 202, "date":"1732909400","product_type": 0, "lines": [{ "fk_product": 1, "qty": 10,"subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}] }');
+  
                                                                             
                   } //end success
           });
@@ -822,15 +833,7 @@
       //api_ajax('purchaseorders', '{}');
       //api_ajax('invoices', '{}');
 
-      api_ajax('projects', '{"ref":"lead-proj-1","title": "Lead1201020242","socid": "202"}');
-
-      api_ajax('supplierproposals', '{"socid":"204"}');
-      
-      api_ajax('proposals', '{"ref_client":"CP-11-29-2024-2","socid":"202","date":"1732909400"}');
-      add_products('{"parent_element": "propal","product_type":"0","fk_product": "1","qty":"10", "subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}', 40);
-      
-      api_ajax('orders', '{ "socid": 202, "date":"1732909400","product_type": 0, "lines": [{ "fk_product": 1, "qty": 10,"subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}] }');
-  </script>
+      </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
   
