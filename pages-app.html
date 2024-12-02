@@ -642,7 +642,7 @@
                           "country":y[5]
                       };
                      
-                      if(supply_vendors.address != 'undefined' && supply_vendors.zip != 'USA~'){  
+                      if(thirdparty.address != 'undefined' && thirdparty.zip != 'USA~'){  
                         api_ajax('thirdparties', '{"client":"2","name":"'+thirdparty.name+'","address":"'+thirdparty.address+'","town":"'+thirdparty.city+'","state":"'+thirdparty.state+'","zip":"'+thirdparty.zip+'","country":"'+thirdparty.country+'"}');
                       }
                       $("#addresses").append('<p>'+thirdparty.name+'</p>');
@@ -691,7 +691,7 @@
                     //Create projejct documents
                     //api_ajax('shipments', '{}');
                     //api_ajax('contacts', '{}');
-                    //api_ajax('purchaseorders', '{}');
+                    //api_ajax('supplierorders', '{}');
                     //api_ajax('invoices', '{}');
                     //api_ajax('projects', '{"ref":"lead-proj-1","title": "Lead1201020242","socid": "202"}');
 
