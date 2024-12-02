@@ -550,7 +550,9 @@
                 }, 
                 url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/'+m,
                 success: function(rep) {
-                  $("#globeloc").html('<p>'+rep+'</p>');
+                  for(k in rep){
+                    $("#globeloc").html('<p>'+k+'::'+rep[k]+'</p>');
+                  }                  
                 },
                 error: function(rep) {
                   for(k in rep){
