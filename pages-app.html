@@ -642,8 +642,9 @@
                           "country":y[5]
                       };
                      
-                        
-                      api_ajax('thirdparties', '{"client":"2","name":"'+thirdparty.name+'","address":"'+thirdparty.address+'","town":"'+thirdparty.city+'","state":"'+thirdparty.state+'","zip":"'+thirdparty.zip+'","country":"'+thirdparty.country+'"}');
+                      if(supply_vendors.address != 'undefined' && supply_vendors.zip != 'USA~'){  
+                        api_ajax('thirdparties', '{"client":"2","name":"'+thirdparty.name+'","address":"'+thirdparty.address+'","town":"'+thirdparty.city+'","state":"'+thirdparty.state+'","zip":"'+thirdparty.zip+'","country":"'+thirdparty.country+'"}');
+                      }
                       $("#addresses").append('<p>'+thirdparty.name+'</p>');
                     
                     }                    
@@ -660,8 +661,10 @@
                           zip: y[4],
                           country: y[5]
                         };
-                        api_ajax('thirdparties', '{"fournisseur":"1","name":"'+supply_vendors.name+'","address":"'+supply_vendors.address+'","town":"'+supply_vendors.city+'","state":"'+supply_vendors.state+'","zip":"'+supply_vendors.zip+'","country":"'+supply_vendors.country+'"}');
-                      $("#addresses").append('<p>'+supply_vendors.name+'</p>');
+                        if(supply_vendors.address != 'undefined' && supply_vendors.zip != 'USA~'){
+                          api_ajax('thirdparties', '{"fournisseur":"1","name":"'+supply_vendors.name+'","address":"'+supply_vendors.address+'","town":"'+supply_vendors.city+'","state":"'+supply_vendors.state+'","zip":"'+supply_vendors.zip+'","country":"'+supply_vendors.country+'"}');
+                        }    
+                        $("#addresses").append('<p>'+supply_vendors.name+'</p>');
                     }
 
                     $("#addresses").append('<h3>Shippers</h3>');
@@ -684,7 +687,7 @@
                       $("#addresses").append('<p>'+delivery.name+'</p>');
                     }
 
-                    get_entities();
+                    get_entities('thirdparties');
                     //Create projejct documents
                     //api_ajax('shipments', '{}');
                     //api_ajax('contacts', '{}');
