@@ -554,7 +554,7 @@
                     if(rep[k]["client"]==2){
                       $("#addresses").append('<p>C-'+rep[k]["id"]+'::'+rep[k]["client"]+'</p>');
                       api_ajax('projects', '{"ref":"'+rep[k]["ref"]+'","title": "'+rep[k]["name"]+'","socid": "'+rep[k]["id"]+'"}');                      
-                      api_ajax('proposals', '{"socid":"'+rep[k]["id"]+'"}');
+                      api_ajax('proposals', '{"socid":"'+rep[k]["id"]+'", "date":""}');
                     }else{
                       api_ajax('supplierproposals', '{"socid":"'+rep[k]["id"]+'"}');                      
                       $("#addresses").append('<p>V-'+rep[k]["id"]+'::'+rep[k]["client"]+'</p>');
@@ -600,13 +600,9 @@
                      
                       if(thirdparty.address !== 'undefined' && thirdparty.zip !== 'USA~'){  
                         api_ajax('thirdparties', '{"client":"2","name":"'+thirdparty.name+'","address":"'+thirdparty.address+'","town":"'+thirdparty.city+'","state":"'+thirdparty.state+'","zip":"'+thirdparty.zip+'","country":"'+thirdparty.country+'"}');
-                      }
-                      //$("#addresses").append('<p>'+thirdparty.name+'</p>');
+                      }                    
+                    }                                      
                     
-                    }                    
-                                                            
-                    //$("#addresses").append('<h3>Supply Vendors</h3>');
-
                     for(x in vendors){
                       y = vendors[x].split(',');
                         supply_vendors = {
@@ -620,10 +616,7 @@
                         if(supply_vendors.address != 'undefined' && supply_vendors.zip != 'USA~'){
                           api_ajax('thirdparties', '{"fournisseur":"1","name":"'+supply_vendors.name+'","address":"'+supply_vendors.address+'","town":"'+supply_vendors.city+'","state":"'+supply_vendors.state+'","zip":"'+supply_vendors.zip+'","country":"'+supply_vendors.country+'"}');
                         }    
-                        //$("#addresses").append('<p>'+supply_vendors.name+'</p>');
-                    }
-
-                    //$("#addresses").append('<h3>Shippers</h3>');
+                     }
 
                     for(x in shippers){
                       y = shippers[x].split(',');
@@ -638,9 +631,7 @@
 
                         if(delivery.address != 'undefined' && delivery.zip != 'USA~'){
                           api_ajax('thirdparties', '{"fournisseur":"1","name":"'+delivery.name+'","address":"'+delivery.address+'","town":"'+delivery.city+'","state":"'+delivery.state+'","zip":"'+delivery.zip+'","country":"'+delivery.country+'"}');
-                        }
-                        
-                      //$("#addresses").append('<p>'+delivery.name+'</p>');
+                        }    
                     }
 
                     get_entities('thirdparties');
