@@ -558,7 +558,8 @@
                       api_ajax('projects', '{"ref":"'+rep[k]["ref"]+'","title": "'+rep[k]["name"]+'","socid": "'+rep[k]["id"]+'"}');                      
                       api_ajax('proposals', '{"socid":"'+rep[k]["id"]+'", "date":"'+t+'"}');
                     }else{
-                      api_ajax('supplierproposals', '{"socid":"'+rep[k]["id"]+'"}');                      
+                      api_ajax('supplierproposals', '{"socid":"'+rep[k]["id"]+'"}'); 
+                      api_ajax('supplierorders', '{"ref": "'+rep[k]["ref"]+'", "ref_supplier": "1234", "socid": "'+rep[k]["id"]+'",  "multicurrency_tx": 1, "tva_tx": 25, "note": "Imported via the REST API"}')                     
                       $("#addresses").append('<p>V-'+rep[k]["id"]+'::'+rep[k]["client"]+'</p>');
                     }
                     //api_ajax('contacts', '{}');                   
