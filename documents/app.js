@@ -16,7 +16,7 @@ document.getElementById('upload-form').addEventListener('submit', (event) => {
         //alert('Please select a file to upload.');
         use_adx = $("input#use_adx").val();
         zipcode = $("input#zipcode").val();
-        $("#addresses").html('<span>User Address Lookup:'+use_adx+zipcode+'</span>');
+        $("#addresses").append('<span>User Address Lookup:'+use_adx+zipcode+'</span>');
         checkForAdx(use_adx, 'user');
         return;
     }
