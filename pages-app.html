@@ -645,8 +645,8 @@
       $("#entries").on("click", "a", function(e){
           pngFileName = this.id;
           let timestamp = Date.now();
-          theUnixTime = timestamp.getUnixTime();
-          $("#globeloc").html('<span>'+theUnixTime+'</span>');
+        
+          $("#globeloc").html('<span>'+timestamp+'</span>');
           if(pngFileName){            
             checkForAdx(pngFileName, 'checkadx');                
           }else{
