@@ -552,18 +552,21 @@
                 success: function(rep) {
                   let timestamp = Date.now();
                   t = timestamp/1000;
+                  
                   for(k in rep){                    
                     if(rep[k]["client"]==2){
                       $("#addresses").append('<p>C-'+rep[k]["id"]+'::'+rep[k]["client"]+'</p>');
                       api_ajax('projects', '{"ref":"'+rep[k]["ref"]+'","title": "'+rep[k]["name"]+'","socid": "'+rep[k]["id"]+'"}');                      
                       api_ajax('proposals', '{"socid":"'+rep[k]["id"]+'", "date":"'+t+'"}');
+                      $("#addresses").append('<span>'+get_project()+'</span>');
                     }else{
                       api_ajax('supplierproposals', '{"socid":"'+rep[k]["id"]+'"}'); 
                       api_ajax('supplierorders', '{"ref": "'+rep[k]["ref"]+'", "ref_supplier": "1234", "socid": "'+rep[k]["id"]+'",  "multicurrency_tx": 1, "tva_tx": 25, "note": "Imported via the REST API"}')                     
                       $("#addresses").append('<p>V-'+rep[k]["id"]+'::'+rep[k]["client"]+'</p>');
                     }
                     //api_ajax('contacts', '{}');                   
-                  }                  
+                  }                
+            
                 },
                 error: function(rep) {
                   for(k in rep){
@@ -572,6 +575,36 @@
                   }                  
                 }
           });
+      }
+      
+      function get_project(d){
+        projectids = [];
+
+        $.ajax({
+                type: 'POST',
+                async: true,
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",                              
+                cache: false,
+                jsonp: false,
+                headers: {
+                  'DOLAPIKEY': 'm8S7ytnGDnAW'
+                }, 
+                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/sortfield=t.rowid&sortorder=ASC&limit=100&thirdparty_ids='+d+'/',
+                success: function(rep) {
+                  for(k in rep){
+                    projectids.append(rep[k]);                     
+                  }
+                },
+                error: function(rep) {
+                  for(k in rep){
+                    $("#addresses").append('<span>Error:'+k+'</span><br>');
+                    $("#addresses").append('<span>Details:'+rep[k]+'</span><br><br>');
+                  }                  
+                }
+          });
+
+          return projectids;
       }
       
       function checkForAdx(selected_doc, action){
@@ -643,11 +676,10 @@
           });
       }
 
+      
       $("#entries").on("click", "a", function(e){
           pngFileName = this.id;
-          let timestamp = Date.now();
-          t = timestamp/1000;
-          $("#globeloc").html('<span>'+t+'</span>');
+          
           if(pngFileName){            
             checkForAdx(pngFileName, 'checkadx');                
           }else{
