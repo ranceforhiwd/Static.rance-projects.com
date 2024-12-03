@@ -554,8 +554,8 @@
                     if(rep[k]["client"]==2){
                       $("#globeloc").append('<p>C-'+rep[k]["id"]+'::'+rep[k]["client"]+'</p>');
                       api_ajax('projects', '{"ref":"'+rep[k]["ref"]+'","title": "'+rep[k]["name"]+'","socid": "'+rep[k]["id"]+'"}');                      
-                      api_ajax('proposals', '{"socid":"'+rep[k]["id"]+'"}');
-                      api_ajax('orders', '{"socid":"'+rep[k]["id"]+'","product_type": 0, "lines": [{ "fk_product": 1, "qty": 10,"subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}] }');
+                      api_ajax('proposals', '{"socid":"'+rep[k]["id"]+'","date":"'+rep[k]["date"]+'"}');
+                      api_ajax('orders', 'date":"'+rep[k]["date"]+'","socid":"'+rep[k]["id"]+'","product_type": 0, "lines": [{ "fk_product": 1, "qty": 10,"subprice": "8.00000000","tva_tx": "0.0000","multicurrency_subprice":"8.00000000"}] }');
                     }else{
                       api_ajax('supplierproposals', '{"socid":"'+rep[k]["id"]+'"}');
                       api_ajax('supplierorders', '{"socid":"'+rep[k]["id"]+'"}');
