@@ -593,7 +593,8 @@
                 url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/projects',
                 success: function(rep) {
                   for(k in rep){
-                    projectids.append(rep[k]);                     
+                    projectids.append(rep[k]);
+                    $("#addresses").append('<span>'+rep[k]+'</span>');                     
                   }
                 },
                 error: function(rep) {
