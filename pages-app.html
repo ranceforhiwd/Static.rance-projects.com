@@ -505,109 +505,6 @@
           });
       }
 
-      function api_ajax(m,d){
-        $.ajax({
-                type: 'POST',
-                async: true,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                data: d,                
-                cache: false,
-                jsonp: false,
-                headers: {
-                  'DOLAPIKEY': 'm8S7ytnGDnAW'
-                }, 
-                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/'+m,
-                success: function(rep) {
-                  for(k in rep){
-                    $("#addresses").append('<span>Success:'+k+'</span><br>');
-                    for(i in rep[k]){
-                      if(rep[k][i] !== '' && rep[k][i] !== null){
-                        $("#addresses").append('<span>Details:'+rep[k][i]+'</span><br><br>');
-                      }                      
-                    }                    
-                  }
-                },
-                error: function(rep) {
-                  for(k in rep){
-                    $("#addresses").append('<span>Error:'+k+'</span><br>');
-                    $("#addresses").append('<span>Details:'+rep[k]+'</span><br><br>');
-                  }                  
-                }
-          });
-      }
-
-      function get_entities(m){
-        $.ajax({
-                type: 'GET',
-                async: true,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",                
-                cache: false,
-                jsonp: false,
-                headers: {
-                  'DOLAPIKEY': 'm8S7ytnGDnAW'
-                }, 
-                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/'+m,
-                success: function(rep) {
-                  let timestamp = Date.now();
-                  t = timestamp/1000;
-                  
-                  for(k in rep){                    
-                    if(rep[k]["client"]==2){
-                      $("#addresses").append('<p>C-'+rep[k]["id"]+'::'+rep[k]["client"]+'</p>');
-                      api_ajax('projects', '{"ref":"'+rep[k]["ref"]+'","title": "'+rep[k]["name"]+'","socid": "'+rep[k]["id"]+'"}');                      
-                      api_ajax('proposals', '{"socid":"'+rep[k]["id"]+'", "date":"'+t+'"}');
-                      $("#addresses").append('<span>'+get_project()+'</span>');
-                    }else{
-                      api_ajax('supplierproposals', '{"socid":"'+rep[k]["id"]+'"}'); 
-                      api_ajax('supplierorders', '{"ref": "'+rep[k]["ref"]+'", "ref_supplier": "1234", "socid": "'+rep[k]["id"]+'",  "multicurrency_tx": 1, "tva_tx": 25, "note": "Imported via the REST API"}')                     
-                      $("#addresses").append('<p>V-'+rep[k]["id"]+'::'+rep[k]["client"]+'</p>');
-                    }
-                    //api_ajax('contacts', '{}');                   
-                  }                
-            
-                },
-                error: function(rep) {
-                  for(k in rep){
-                    $("#globeloc").append('<span>Error:'+k+'</span><br>');
-                    $("#globeloc").append('<span>Details:'+rep[k]+'</span><br><br>');
-                  }                  
-                }
-          });
-      }
-      
-      function get_project(d){
-        projectids = [];
-
-        $.ajax({
-                type: 'GET',
-                async: true,
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",                              
-                cache: false,
-                jsonp: false,
-                headers: {
-                  'DOLAPIKEY': 'm8S7ytnGDnAW'
-                }, 
-                url: 'http://ec2-18-232-38-40.compute-1.amazonaws.com/api/index.php/projects',
-                success: function(rep) {
-                  for(k in rep){
-                    projectids.append(rep[k]);
-                    $("#addresses").append('<span>'+rep[k]+'</span>');                     
-                  }
-                },
-                error: function(rep) {
-                  for(k in rep){
-                    $("#addresses").append('<span>Error:'+k+'</span><br>');
-                    $("#addresses").append('<span>Details:'+rep[k]+'</span><br><br>');
-                  }                  
-                }
-          });
-
-          return projectids;
-      }
-      
       function checkForAdx(selected_doc, action){
         var ADX_URL = 'https://du2c8lhymg.execute-api.us-east-1.amazonaws.com/getObject?method=globe&action='+action+'&data='+selected_doc;
              $.ajax({
@@ -616,67 +513,16 @@
                   dataType: 'json',
                   headers: {'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'},
                   success: function(data){
-                    coordinates = Object.values(data[0]['ResultBBox']);
-                    hospitals = Object.values(data[1]);
-                    vendors = Object.values(data[2]);
-                    shippers = Object.values(data[3]);
+                    coordinates = Object.values(data[0]['ResultBBox']);                    
                     rb = data[0]['ResultBBox'];                    
                     window.lat = rb[0];
-                    window.lng = rb[1];                                                           
+                    window.lng = rb[1];                                    
                                       
-                    for(x in hospitals){
-                      y = hospitals[x].split(',');
-                      thirdparty = {
-                          "name": y[0],
-                          "address": y[1],
-                          "city":y[2],
-                          "state":y[3],
-                          "zip":y[4],
-                          "country":y[5]
-                      };
-                     
-                      if(thirdparty.address !== 'undefined' && thirdparty.zip !== 'USA~'){  
-                        api_ajax('thirdparties', '{"client":"2","name":"'+thirdparty.name+'","address":"'+thirdparty.address+'","town":"'+thirdparty.city+'","state":"'+thirdparty.state+'","zip":"'+thirdparty.zip+'","country":"'+thirdparty.country+'"}');
-                      }                    
-                    }                                      
-                    
-                    for(x in vendors){
-                      y = vendors[x].split(',');
-                        supply_vendors = {
-                          name: y[0],
-                          adx: y[1],
-                          city: y[2],
-                          state: y[3],
-                          zip: y[4],
-                          country: y[5]
-                        };
-                        if(supply_vendors.address != 'undefined' && supply_vendors.zip != 'USA~'){
-                          api_ajax('thirdparties', '{"fournisseur":"1","name":"'+supply_vendors.name+'","address":"'+supply_vendors.address+'","town":"'+supply_vendors.city+'","state":"'+supply_vendors.state+'","zip":"'+supply_vendors.zip+'","country":"'+supply_vendors.country+'"}');
-                        }    
-                     }
-
-                    for(x in shippers){
-                      y = shippers[x].split(',');
-                        delivery = {
-                          name: y[0],
-                          adx: y[1],
-                          city: y[2],
-                          state: y[3],
-                          zip: y[4],
-                          country: y[5]
-                        };
-
-                        if(delivery.address != 'undefined' && delivery.zip != 'USA~'){
-                          api_ajax('thirdparties', '{"fournisseur":"1","name":"'+delivery.name+'","address":"'+delivery.address+'","town":"'+delivery.city+'","state":"'+delivery.state+'","zip":"'+delivery.zip+'","country":"'+delivery.country+'"}');
-                        }    
-                    }
-
-                    get_entities('thirdparties');
-                                                                            
+                    $("#addresses").html('<span>'+rb+'</span>');
+                                                             
                   } //end success
           });
       }
-
       
       $("#entries").on("click", "a", function(e){
           pngFileName = this.id;
@@ -689,8 +535,7 @@
       });
       
       init();
-
-      </script>
+  </script>
   <script src="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Cesium.js"></script>
   <link href="https://cesium.com/downloads/cesiumjs/releases/1.122/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
   
