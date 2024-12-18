@@ -4,6 +4,7 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: 'us-east-1:d67a078c-2f97-4551-8d7a-c1a25b4970c3'
 });
 
+// Demo Rance
 // Create an S3 client
 const s3 = new AWS.S3();
 
